@@ -1,0 +1,8 @@
+rows=db(db.person.birth.month()==12).select()
+rows=db(db.person.birth.year()>1900).select()
+rows=db(db.person.birth==None).select()
+rows=db(db.person.birth!=None).select()
+rows=db(db.person.name.upper()=='MAX').select()
+rows=db(db.person.name.like('%ax')).select()
+rows=db(db.person.name.upper().like('%AX')).select()
+rows=db(~db.person.name.upper().like('%AX')).select()

@@ -1,0 +1,8 @@
+---
+# コメント行。先頭に＃を書くか...
+mysql: # キー定義の後#を書くか...
+  # 値が始まる前に書く
+  dbhost: localhost
+  user: testuser
+  passwd: p@ssw0rd
+  dbname: test

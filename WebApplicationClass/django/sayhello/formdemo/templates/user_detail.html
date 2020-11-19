@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>ユーザ詳細</h2>
+<table border="1">
+  <tr>
+    <th>name</th>
+    <th>email</th>
+    <th>nickname</th>
+    <th>about_you</th>
+  </tr>
+  <tr>
+    <td>{{ user.name }}</td>
+    <td>{{ user.email }}</td>
+    <td>{{ user.nickname }}</td>
+    <td>{{ user.about_you }}</td>
+  </tr>
+<a href="{% url 'formdemo:user_update' user.pk %}">[修正]</a>
+{% endblock %}

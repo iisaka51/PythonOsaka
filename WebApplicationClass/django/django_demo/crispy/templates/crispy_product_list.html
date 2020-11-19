@@ -1,0 +1,12 @@
+{% extends "crispy_base.html" %}
+{% block content %}
+<a href="{% url 'crispy:product_create' %}"> プロダクト追加</a>
+
+<h2>プロダクト一覧</h2>
+{% for product in product_list %}
+  <p>
+  プロダクト:{{ product.name }} / 詳細:{{ product.description }}
+  <a href="{% url 'crispy:product_update' product.pk %}">[修正]</a>
+  </p>
+{% endfor %}
+{% endblock %}

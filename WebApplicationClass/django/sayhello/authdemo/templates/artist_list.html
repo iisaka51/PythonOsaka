@@ -1,0 +1,18 @@
+<html>
+ <body>
+  <h1>Artist Birthday (Artist: {{ artist_list|length }})</h1>
+  <table>
+    <tr><td> Name </td>
+        <td> Birthday </td>
+        <td> Born place </td>
+    </tr>
+    {% for artist in artist_list %}
+     <tr>
+       <td> {{ artist.firstname }} {{ artist.lastname }} </td>
+       <td> {{ artist.born_date }} </td>
+       <td> {{ artist.born_place }} </td>
+     </tr>
+    {% endfor %}
+    </table>
+ </body>
+</html>

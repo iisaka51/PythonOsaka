@@ -1,0 +1,16 @@
+{% extends "crispy_base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <form method="post" novalidate>
+    {% csrf_token %}
+    <div class="row">
+      <div class="col align-self-center">
+        {{ form.name|as_crispy_field }}
+        {{ form.email|as_crispy_field }}
+        {{ form.nickname|as_crispy_field }}
+        {{ form.about_you|as_crispy_field }}
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success">Save User</button>
+  </form>
+{% endblock %}

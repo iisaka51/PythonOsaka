@@ -1,0 +1,6 @@
+import pandas as pd
+
+baseurl = 'https://www.analyticsvidhya.com/wp-content/uploads/2016/02/'
+url = baseurl + 'AirPassengers.csv'
+df = pd.read_csv(url)
+

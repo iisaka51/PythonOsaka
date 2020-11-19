@@ -1,0 +1,41 @@
+<html>
+ <body>
+  <h1>Jinja2 filter examples</h1>
+
+  <h2> Escape </h2>
+  {% for item in items -%}
+  <li> {{ item | escape }} </li>
+  {% endfor %}
+
+  <h2>select("even")</h2>
+  {% for num in numbers|select("even") -%}
+  <li>{{ num }}</li>
+  {% endfor %}
+
+  <h2>select("odd")</h2>
+  {% for num in numbers|select("odd") -%}
+  <li>{{ num }}</li>
+  {% endfor %}
+
+  <h2>select("divisibleby",2)</h2>
+  {% for num in numbers|select("divisibleby", 2) -%}
+  <li>{{ num }}</li>
+  {% endfor %}
+
+  <h2>select("lessthan",3)</h2>
+  {% for num in numbers|select("lessthan", 3) -%}
+  <li>{{ num }}</li>
+  {% endfor %}
+
+  <h2>select("equalto","Python")</h2>
+  {% for item in items|select("equalto", "Python") -%}
+  <li>{{ item }}</li>
+  {% endfor %}
+
+  <h2>join('|')</h2>
+  <li>{{ items | join('|') }}</li>
+
+  <li>{{ [1,2,3,4,5] | select("even") }}</li>
+
+ </body>
+</html>

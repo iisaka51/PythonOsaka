@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<a href="{% url 'formdemo:user_create' %}"> ユーザ追加</a>
+
+<h2>ユーザ一覧</h2>
+{% for user in user_list %}
+  <p>
+  ユーザ:{{ user.name }} / Email:{{ user.email }}
+  <a href="{% url 'formdemo:user_detail' user.pk %}">[詳細]</a>
+  <a href="{% url 'formdemo:user_delete' user.pk %}">[削除]</a>
+  </p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>ユーザ削除確認</h2>
+<p>{{ user.name }} を削除していいですか?</p>
+<form method="post">
+  {% csrf_token %}
+  <input type="submit" value="削除">
+</form>
+
+{% endblock %}
+

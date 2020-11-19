@@ -1,0 +1,10 @@
+$ echo FLASK_APP=myapp.py > .flaskenv
+
+$ flask shell
+Python 3.6.9 |Anaconda, Inc.| (default, Jul 30 2019, 13:42:17)
+[GCC 4.2.1 Compatible Clang 4.0.1 (tags/RELEASE_401/final)] on darwin
+IPython: 7.13.0
+App: app [production]
+Instance: /Users/goichiiisaka/Downloads/Python.Osaka/WebApplicationClass/flask/dbdemo/instance
+In [1]: User
+Out[1]: app.models.User

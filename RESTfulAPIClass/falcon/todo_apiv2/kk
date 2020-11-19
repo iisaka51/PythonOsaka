@@ -1,0 +1,25 @@
+import sqlalchemy as sa
+from sqlalchemy.orm import sessionmaker
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchema, auto_field
+from models import Base, db_engine, Task
+
+Session = sessionmaker(db_engine)
+session = Session()
+
+class TaskSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model = Task
+
+task_schema = TaskSchema()
+# print(task_schema.declared_fields)
+
+raw_data = session.query(Task).all()
+print(f'raw_data: {raw_data}')
+
+data = task_schema.dump(raw_data[0])
+print(data)
+
+req_data = {'title': 'Drink Beer', 'description': 'I Love LAGAR'}
+data = Task( title=req_data['title'], description=req_data['description'])
+print(data)
+
