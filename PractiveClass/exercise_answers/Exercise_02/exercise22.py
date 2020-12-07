@@ -1,16 +1,14 @@
-from datetime import date
+import typer
+from datetime import datetime
 
 def days_delta(date):
     delta = date.today() - date
-    click.echo(f"Days os life: {delta} ")
+    typer.echo(f"Days os life: {delta} ")
 
 if __name__ == '__main__':
-    import click
-    @click.command()
-    @click.option('-D', '--date', type=click.DateTime(formats=["%Y/%m/%d"]),
-                  default="1962/01/13", required=False,
+    def cli(date: datetime = typer.Option('1962/01/13', formats=["%Y/%m/%d"],
                   help='Your birthday')
-    def cli(date):
+        ):
         days_delta(date)
 
-    cli()
+    typer.run(cli)
