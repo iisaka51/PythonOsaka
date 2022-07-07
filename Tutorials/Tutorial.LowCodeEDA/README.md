@@ -15,29 +15,29 @@ pandasのデータフレームを使ったデータ探索は、一つ一つの�
 ここでは、次のパッケージについて紹介します。
 
 - ローコードタイプ (Low Code)
-  - [skimpy https://github.com/aeturrell/skimpy]
-  - [snapedautility https://pypi.org/project/snapedautility/] 
-  - [Pandas-profiling https://github.com/pandas-profiling/pandas-profiling]
-  - [DataPrep https://github.com/sfu-db/dataprep] 
-  - [Sweetviz https://github.com/fbdesignpro/sweetviz]
-  - [Lux https://pypi.org/project/lux/]
+  - [skimpy](https://github.com/aeturrell/skimpy)
+  - [snapedautility](https://pypi.org/project/snapedautility/)
+  - [Pandas-profiling](https://github.com/pandas-profiling/pandas-profiling)
+  - [DataPrep](https://github.com/sfu-db/dataprep)
+  - [Sweetviz](https://github.com/fbdesignpro/sweetviz)
+  - [Lux](https://pypi.org/project/lux/)
 
 - ノーコード/ゼロコードタイプ(No Code/Zero Code)
-  - [Pandas_UI https://github.com/arunnbaba/pandas_ui]
-  - [PandasGUI https://pypi.org/project/pandasgui/]
-  - [Autoviz https://pypi.org/project/autoviz/]
-  - [D-Tale https://pypi.org/project/dtale/]
-  - [Ba,boolib https://pypi.org/project/bamboolib/]
-  - [Visidata  https://pypi.org/project/visidata/]
-  - [Mito https://www.trymito.io/]
-  - [ScatterText https://github.com/JasonKessler/scattertext]
-  - [OpenRefine https://openrefine.org/]
+  - [Pandas_UI](https://github.com/arunnbaba/pandas_ui)
+  - [PandasGUI](https://pypi.org/project/pandasgui/)
+  - [Autoviz](https://pypi.org/project/autoviz/)
+  - [D-Tale](https://pypi.org/project/dtale/)
+  - [Ba,boolib](https://pypi.org/project/bamboolib/)
+  - [Visidata](https://pypi.org/project/visidata/)
+  - [Mito](https://www.trymito.io/)
+  - [ScatterText](https://github.com/JasonKessler/scattertext)
+  - [OpenRefine](https://openrefine.org/)
 
 - 可視化ツールタイプ
-  - [HoloViz https://holoviz.org/tutorial/]
+  - [HoloViz](https://holoviz.org/tutorial/)
 
 - クラウドサービス
-  - Google - [Cloud Dataprep by Trifacta https://cloud.google.com/dataprep?hl=ja]
+  - Google - [Cloud Dataprep by Trifacta](https://cloud.google.com/dataprep?hl=ja)
     - GCP 管理コンソールからの Dataprep のフローやレシピの作成は無料で利用できますが、フローを実行する際には Dataflow ジョブを使ってデータ処理を行うため、Dataflow の利用料金がかかります。
 
 
@@ -137,7 +137,7 @@ skimpy の使用方法は簡単です。`skim()` にデータフレームを与�
  │ │ booly_col            │        520 │                0.52 │    █    █     │  │
  │ └──────────────────────┴────────────┴─────────────────────┴───────────────┘  │
  ╰──────────────────────────────────── End ─────────────────────────────────────╯
- 
+
  In [3]: df.describe()
  Out[3]:
              length        width        depth         rnd
@@ -149,9 +149,9 @@ skimpy の使用方法は簡単です。`skim()` にデータフレームを与�
  50%       0.497570     1.467916    10.000000   -0.000774
  75%       0.860224     2.952881    12.000000    0.663878
  max       0.999999    13.908001    20.000000    3.716621
- 
+
  In [4]:
- 
+
 ```
 
 
@@ -168,7 +168,7 @@ snapedautility は次のようにインストールします。
 
  bash
 ```
- $ python -m pip install snapedautility altair_viewer 
+ $ python -m pip install snapedautility altair_viewer
 ```
 
 altair_viewer はバックエンドの 可視化ライブラリAltair を表示させるためのもので、 IPython など Jupyter Notebook/Jupyterlab の環境でない場合に使用します。altair_viewer があれば作図を確認できるため、snapedautility は軽量であることが特徴のひとつになっています。
@@ -203,7 +203,7 @@ Jupyterlab の環境では次の拡張機能を有効にしておきます。
     ...:
  Out[2]: RendererRegistry.enable('altair_viewer')
  Displaying chart at http://localhost:18906/
- 
+
  In [3]:
 ```
 
@@ -230,9 +230,9 @@ Jupyterlab の環境では次の拡張機能を有効にしておきます。
     ...:
  Out[2]: RendererRegistry.enable('altair_viewer')
  Displaying chart at http://localhost:23611/
- 
+
  In [3]:
- 
+
 ```
 ![](https://gyazo.com/d0c24c5841ebe561f7deb78a8d756366.png)
 ## detect_outliers で外れ値を調べる
@@ -255,12 +255,12 @@ Jupyterlab の環境では次の拡張機能を有効にしておきます。
     ...:
  Out[2]: RendererRegistry.enable('altair_viewer')
  Displaying chart at http://localhost:16094/
- 
+
  In [3]: data
  Out[3]: [-8.0, 20.0]
- 
+
  In [4]:
- 
+
 ```
 
 
@@ -308,7 +308,7 @@ DataPrepは、データを準備(prepare)するために2020年から開発が�
 
 DataPrepパッケージは、高速にデータ探索を行うことができるように設計されていて、PandasやDaskのDataFrameオブジェクトとうまく連携して動作します。データ探査ではHTMLオブジェクトを返すため、ブラウザやJupyterlab などで分析したり、情報を共有することができます。EDAでの計算処理をDaskで行っているため Pandas-Profileing と比較して5〜10倍高速で、メモリに乗り切らないような大規模データセットについても処理することができます。
 
-- [DAtaPrep での分析サンプル https://docs.dataprep.ai/_downloads/1a61c6aebb3ecbe9dc9742bd6ca78ddb/titanic_dp.html]
+- [DAtaPrep での分析サンプル](https://docs.dataprep.ai/_downloads/1a61c6aebb3ecbe9dc9742bd6ca78ddb/titanic_dp.html)
 - [DataPrepで探査的データ分析をしてみよう]
 
 
@@ -360,7 +360,7 @@ PandasGUIには既にいくつかのサンプルデータセットが付属し�
  import pandas as pd
  from pandasgui import show
  from pandasgui.datasets import titanic
- 
+
  gui = show(titanic)
 ```
 
@@ -504,9 +504,9 @@ scattertext は次のようにインストールします。
     ...: open('./demo_compact.html', 'w').write(html)
     ...:
  Out[2]: 1655720
- 
+
  In [3]:
- 
+
 ```
 
 ![](https://gyazo.com/9cdbeb6aec8996986c0da88acdc22dad.png)
@@ -550,45 +550,45 @@ HoloViz は次のPythonパッケージで構成されています。
 
 # 参考
 - snapedautility
-  - [Pypi - snapedautility https://pypi.org/project/snapedautility/]
-  - [ソースコード https://github.com/UBC-MDS/snapedautility]
-  - [公式ドキュメント https://snapedautility.readthedocs.io/en/latest/]
+  - [Pypi - snapedautility](https://pypi.org/project/snapedautility/)
+  - [ソースコード](https://github.com/UBC-MDS/snapedautility)
+  - [公式ドキュメント](https://snapedautility.readthedocs.io/en/latest/)
 - Pandas-profilint
-  - [PyPI - Pandas-profiling https://github.com/pandas-profiling/pandas-profiling]
+  - [PyPI - Pandas-profiling](https://github.com/pandas-profiling/pandas-profiling)
 - DataPrep
-  - [ソースコード  https://github.com/sfu-db/dataprep] 
+  - [ソースコード](https://github.com/sfu-db/dataprep)
 - Sweetviz
-  - [ソースコード https://github.com/fbdesignpro/sweetviz]
+  - [ソースコード](https://github.com/fbdesignpro/sweetviz)
 - Lux
-  - [PyPI - Lux https://pypi.org/project/lux/]
+  - [PyPI - Lux](https://pypi.org/project/lux/)
 
 
 - Visidata
-  - [オフィシャルサイト https://www.visidata.org/]
-  - [PyPI - visidata https://pypi.org/project/visidata/]
-  - [公式ドキュメント https://www.visidata.org/docs/]
-  - [デモ動画　https://www.youtube.com/watch?v=N1CBDTgGtOU]
+  - [オフィシャルサイト](https://www.visidata.org/)
+  - [PyPI - visidata](https://pypi.org/project/visidata/)
+  - [公式ドキュメント](https://www.visidata.org/docs/)
+  - [デモ動画](https://www.youtube.com/watch?v=N1CBDTgGtOU)
 
 - Altair
-  - [オフィシャルサイト https://altair-viz.github.io/]
-  - [PyPI - altair https://pypi.org/project/altair/]
+  - [オフィシャルサイト](https://altair-viz.github.io/)
+  - [PyPI - altair](https://pypi.org/project/altair/)
 
 - OpenRefine
-  - [オフィシャルサイト https://openrefine.org/]
-  - [公式ドキュメント https://docs.openrefine.org/]
-  - 書籍 Packt - [Using OpenRefine https://www.packtpub.com/product/using-openrefine/9781783289080]
+  - [オフィシャルサイト](https://openrefine.org/)
+  - [公式ドキュメント](https://docs.openrefine.org/)
+  - 書籍 Packt - [Using OpenRefine](https://www.packtpub.com/product/using-openrefine/9781783289080)
 
 - PyViz.org
-  - [PyViz.org https://pyviz.org/dashboarding/index.html] Pythonでの可視化ツール/ライブラリを整理しているサイト
+  - [PyViz.org](https://pyviz.org/dashboarding/index.html) Pythonでの可視化ツール/ライブラリを整理しているサイト
 
 - Laggle
-  - [Lean Pandas Tutorials https://www.kaggle.com/learn/pandas]
+  - [Lean Pandas Tutorials](https://www.kaggle.com/learn/pandas)
 - DataSchool
-  - [100 pandas tricks to save you time and energy https://www.dataschool.io/python-pandas-tips-and-tricks/]
+  - [100 pandas tricks to save you time and energy](https://www.dataschool.io/python-pandas-tips-and-tricks/)
 - Klipfolio
-  - [The Starter Guide to Data Visualizations https://www.kaggle.com/learn/pandas]
+  - [The Starter Guide to Data Visualizations](https://www.kaggle.com/learn/pandas)
 - Qiita
-  - [特徴量エンジニアリングおさらいメモ https://qiita.com/takahashi_yukou/items/2b6d7776634ef55cec58]
+  - [特徴量エンジニアリングおさらいメモ](https://qiita.com/takahashi_yukou/items/2b6d7776634ef55cec58)
 - PythonOsaka
   - [学習に使えるデータソース]
 
