@@ -293,7 +293,7 @@ Sweetviz では次の3種類のレポートを作成することができ、そ�
 # Lux
 ![](https://gyazo.com/6e41ac8eba279abb964e928c53275688.png)
 
-[Lux https://pypi.org/project/lux/] は、データを可視化するためのインテリジェントPython ライブラリです。探索的データ解析の可視化処理を自動化する Jjupyterウィジェットを通して視覚的発見が容易になります。
+[Lux](https://pypi.org/project/lux/) は、データを可視化するためのインテリジェントPython ライブラリです。探索的データ解析の可視化処理を自動化する Jjupyterウィジェットを通して視覚的発見が容易になります。
 
   - [Luxで探査的データ分析をしてみよう]
 
@@ -313,8 +313,8 @@ DataPrepパッケージは、高速にデータ探索を行うことができる
 
 
 # Pandas_UI
-[Pandas_ui https://github.com/arunnbaba/pandas_ui] は、Jupyterlab と連携して、Pandas のユーザインタフェースを提供するパッケージです。
-ソフトウェア構造としては非常にシンプルで、[pandas https://pandas.pydata.org/]、[NumPy https://numpy.org/]、[plotly https://plotly.com/]、[ipywidgets https://github.com/jupyter-widgets/ipywidgets]、[pandas_profiling https://github.com/pandas-profiling/pandas-profiling]、[qgrid https://github.com/quantopian/qgrid]　などの優れたPythonライブラリの能力を利用して、ユーザーがPandas の操作や可視化のための操作をノーコードで実現することができます。
+[Pandas_ui](https://github.com/arunnbaba/pandas_ui) は、Jupyterlab と連携して、Pandas のユーザインタフェースを提供するパッケージです。
+ソフトウェア構造としては非常にシンプルで、[pandas](https://pandas.pydata.org/)、[NumPy](https://numpy.org/)、[plotly](https://plotly.com/)、[ipywidgets](https://github.com/jupyter-widgets/ipywidgets)、[pandas_profiling](https://github.com/pandas-profiling/pandas-profiling)、[qgrid](https://github.com/quantopian/qgrid)などの優れたPythonライブラリの能力を利用して、ユーザーがPandas の操作や可視化のための操作をノーコードで実現することができます。
 
 Pandas_uiの主な特徴と利点には次のようになります。
 
@@ -338,7 +338,7 @@ Pandas_uiは、Pandas のデータフレームに対して指定された操作�
 
 
 # PandasGUI
-[PandasGUI https://pypi.org/project/pandasgui/] は、Pandas にグラフィカルユーザインタフェース(GUI) を提供するアプリケーションとライブラリで、マウスをクリックするだけでpandasのデータフレームにアクセスしたり、操作することができます。
+[PandasGUI](https://pypi.org/project/pandasgui/) は、Pandas にグラフィカルユーザインタフェース(GUI) を提供するアプリケーションとライブラリで、マウスをクリックするだけでpandasのデータフレームにアクセスしたり、操作することができます。
 
 次のような機能をもっています。
 
@@ -379,20 +379,20 @@ PandasGUIのアプリケーションが起動して、初めの画面ではデ�
 ![](https://gyazo.com/169d1fc3235b9c3bde269e8aa9dc6d48.png)
 
 小さなデータセットの可視化は簡単でそれほど問題になることはありませんが、数百の変数を持つ大規模なデータセットでは、データセットから強調すべき最良の特徴量を決定することはほぼ不可能です。データ分析を行う環境によっては、標準的でない可視化ライブラリを使用しなければならず、洞察を得るための最適な可視化を行うにはかなりのコーディングが必要となることが多いものです。
-[Autoviz https://pypi.org/project/autoviz/] は、データ可視化のための作業を行うときに発生する、こうしたさまざまな課題の多くに対処することができます。AutoViz は、pandasのDataFrameオブジェクトや、CSVファイルのいずれかを与える、たった1行のコードで実現することができます。
+[Autoviz](https://pypi.org/project/autoviz/) は、データ可視化のための作業を行うときに発生する、こうしたさまざまな課題の多くに対処することができます。AutoViz は、pandasのDataFrameオブジェクトや、CSVファイルのいずれかを与える、たった1行のコードで実現することができます。
 
   - [AutoVizで探査的データ分析をしてみよう]
 
 # D-Tale
 ![](https://gyazo.com/2fd4c1042c129e327d96fd9125a511d7.png)
 
-Python自体の学習コストは低いものの、こうしたライブラリの学習は難しく、初心者にとっては使い方を覚えるのに時間がかかることがあります。経験豊かなPythonユーザーであっても、いくつかの作業は繰り返し行われることがあり、時間を浪費してしまうことになりがちです。こんなときに役立つのが [D-Tale https://github.com/man-group/dtale]です。
+Python自体の学習コストは低いものの、こうしたライブラリの学習は難しく、初心者にとっては使い方を覚えるのに時間がかかることがあります。経験豊かなPythonユーザーであっても、いくつかの作業は繰り返し行われることがあり、時間を浪費してしまうことになりがちです。こんなときに役立つのが [D-Tale](https://github.com/man-group/dtale)です。
 D-Taleは探索的データ分析やデータクリーニングといったタスクの最適化を支援してくれます。時間を節約することで、コードの洗練や機械学習モデルのチューニングなど、より重要なタスクに集中することができます。
 
   - [D-Taleで探査的データ分析をしてみよう]
 
 # Bamboolib
-[Bamboolib https://pypi.org/project/bamboolib/]　は、Jupyter NotebookやJupyterLabで誰でもPythonを扱えるようにするためのpandas DataFramesのGUIです。2021年にDatabricks社がローコード/ノーコード開発企業の8080 Labsを買収したことで、一部の機能は有料化されましたが、ローカルコンピュータやBinder経由のOpen Dataでbamboolibを利用する場合は、無料で利用することができます。Databricks は 2020 年には Redash を買収しており、Redash による使いやすいダッシュボードおよび視覚化機能と、8080 Labs による bamboolib の統合によ、りデータサイエンティストを含む多くのユーザーがデータと AI を利活用しやすいプラットフォームを提供しています。
+[Bamboolib](https://pypi.org/project/bamboolib/)　は、Jupyter NotebookやJupyterLabで誰でもPythonを扱えるようにするためのpandas DataFramesのGUIです。2021年にDatabricks社がローコード/ノーコード開発企業の8080 Labsを買収したことで、一部の機能は有料化されましたが、ローカルコンピュータやBinder経由のOpen Dataでbamboolibを利用する場合は、無料で利用することができます。Databricks は 2020 年には Redash を買収しており、Redash による使いやすいダッシュボードおよび視覚化機能と、8080 Labs による bamboolib の統合によ、りデータサイエンティストを含む多くのユーザーがデータと AI を利活用しやすいプラットフォームを提供しています。
 
 Bamboolib には次のような’特徴があります。
 
@@ -413,7 +413,7 @@ bamboolib の主な利点には次のものがあります。
 # Visidata
 ![](https://gyazo.com/078c880aa72f2511d84c186b22d0d34f.png)
 
-[Visidata  https://pypi.org/project/visidata/] は、コンピュータの端末でデータセットを素早く開き、探索し、要約し、分析することができる、無料のオープンソースツールです。VisiDataは、CSV/JSON/YAML/XMLファイル、Excelスプレッドシート、SQLデータベース、その他多くのデータソースをサポートしています。 Windows では [WSL（Windows Subsystem for Linux） https://docs.microsoft.com/en-us/windows/wsl/] の環境が必要になります。
+[Visidata](https://pypi.org/project/visidata/) は、コンピュータの端末でデータセットを素早く開き、探索し、要約し、分析することができる、無料のオープンソースツールです。VisiDataは、CSV/JSON/YAML/XMLファイル、Excelスプレッドシート、SQLデータベース、その他多くのデータソースをサポートしています。 Windows では [WSL（Windows Subsystem for Linux） https://docs.microsoft.com/en-us/windows/wsl/] の環境が必要になります。
 
 ## インストール
 visidata は次のようにインストールします。
@@ -437,14 +437,14 @@ visidata のカーソルを移動するには、キーボードの `h`/`j`/`k`/`
 
 現在開いているシートを閉じるときは、`q` キーを押下します。visidata を終了するときは、`gq` を押下します。
 
-操作はキーボードとマウスが使用できます。詳細は[キー操作の一覧 https://jsvine.github.io/visidata-cheat-sheet/en/] を参照してみてください。
+操作はキーボードとマウスが使用できます。詳細は[キー操作の一覧](https://jsvine.github.io/visidata-cheat-sheet/en/) を参照してみてください。
 
 
 
 # Mito
 ![](https://gyazo.com/52c5b4817376a77c63383cd7264b6925.png)
 
-[Mito https://www.trymito.io/] は Jupyterlab をベースにしたPythonの拡張モジュールです。次のような機能を提供しています。
+[Mito](https://www.trymito.io/) は Jupyterlab をベースにしたPythonの拡張モジュールです。次のような機能を提供しています。
 
   - ポイント＆クリックでCSVやXLSXをインポート
   - Excelスタイルのピボットテーブル
@@ -514,13 +514,13 @@ scattertext は次のようにインストールします。
 
 最も政党に関連する2,000のユニグラム（Unigram: 任意の文字列が1文字だけ続いた文字列）が散布図に点として表示されます。X軸とY軸は、それぞれ共和党と民主党のスピーカーによって使用された頻度を表しています。
 
-  - [Scattetext 2017 PyData Talk https://github.com/JasonKessler/Scattertext-PyData]
+  - [Scattetext 2017 PyData Talk](https://github.com/JasonKessler/Scattertext-PyData)
 
 
 # Holoviz
 ![](https://gyazo.com/40a323195cca6965ca69c95f34425440.png)
 
-[HoloViz https://holoviz.org/] は、EDAのためのツールというわけではないのですが、可視化をより簡単に、より正確に、より強力にすることができます。 EDAで得た知見や洞察をプレゼンテーションするときに役立ちます。
+[HoloViz](https://holoviz.org/) は、EDAのためのツールというわけではないのですが、可視化をより簡単に、より正確に、より強力にすることができます。 EDAで得た知見や洞察をプレゼンテーションするときに役立ちます。
 HoloViz は次のPythonパッケージで構成されています。
 
   - Panel ー　プロットライブラリからアプリやダッシュボードを作る
@@ -536,7 +536,7 @@ HoloViz は次のPythonパッケージで構成されています。
 
 
 # OpenRefine
-[OpenRefine https://openrefine.org/]（以前はGoogle Refineとして知られていました）は、乱雑なデータのクリーニング、あるフォーマットを別のフォーマットへの変換、ウェブサービスや外部データとの拡張を行う強力なツールです。OpenRefineは、ローカルのコンピュータ上で小さなサーバを動作させ、それをウェブブラウザを使ってそのサーバと対話することで機能します。つまり、OpenRefineは、共有やコラボレーションをしたいと思うまで、データは常にローカルのコンピュータ上にあり非公開の状態にあります。
+[OpenRefine](https://openrefine.org/)（以前はGoogle Refineとして知られていました）は、乱雑なデータのクリーニング、あるフォーマットを別のフォーマットへの変換、ウェブサービスや外部データとの拡張を行う強力なツールです。OpenRefineは、ローカルのコンピュータ上で小さなサーバを動作させ、それをウェブブラウザを使ってそのサーバと対話することで機能します。つまり、OpenRefineは、共有やコラボレーションをしたいと思うまで、データは常にローカルのコンピュータ上にあり非公開の状態にあります。
 
 
 
