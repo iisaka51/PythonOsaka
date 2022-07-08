@@ -29,3 +29,4 @@
  - [PythonでのShellラッパー・ライブラリ](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Shell)
  - [Pythonの関数をタイムアウトさせるときに便利なライブラリ](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Timeout)
  - [Pythonチュートリアル：スクリプトの高速化](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Optimizing)
+ - [クラスの属性をバリデーションしてみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.DataValidation)
