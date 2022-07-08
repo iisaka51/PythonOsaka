@@ -1,0 +1,16 @@
+table.insert_all([{
+    "id": 1,
+    "name": "Cleo",
+    "species": "dog",
+    "age": 6
+}, {
+    "id": 2,
+    "name": "Lila",
+    "species": "chicken",
+    "age": 0.8,
+}, {
+    "id": 3,
+    "name": "Bants",
+    "species": "chicken",
+    "age": 0.8,
+}], pk="id")
