@@ -39,4 +39,4 @@
  - [Pythonでの分岐処理のあれこれ](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Branching)
  - [singledispatchを使ってみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.singledispatch)
  - [Excelファイルの読み書きしてみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Excel)
- - [Tutorial.Pydantic_as_ORM](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Pydantic)
+ - [pydantic をORMとして使って みよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Pydantic)
