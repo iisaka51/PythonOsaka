@@ -7,6 +7,7 @@
  - [Pythonチュートリアル：イベントによりタスクを実行しよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Filesystem_Events)
  - [Pythonチュートリアル：デバッギング](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Debugging)
  - [Pythonチュートリアル：Python のテストフレームワーク](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Testing)
+ - [Python チュートリアル：プロファイリングツール](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Profiling)
  - [Pythonチュートリアル：ロギングモジュール](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Logging)
  - [Pythonチュートリアル：Peewee ORM を使ってみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.PeeWee)
  - [Pythonチュートリアル：タスクランナー](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Taskrunner)
