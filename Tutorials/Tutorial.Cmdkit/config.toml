@@ -1,0 +1,5 @@
+server = "localhost"
+dbname = "sample"
+dbuser_env = $USER
+dbpass_eval = "dbpassword.sh dot.dbpassword.gpg"
+

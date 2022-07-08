@@ -1,0 +1,9 @@
+from croniter import croniter
+from datetime import datetime
+
+iter = croniter("0 4 1 1 fri", datetime(2000,1,1),
+                   day_or=False, max_years_between_matches=15)
+
+it = iter.all_next(datetime)
+for i in range(5):
+    print(next(it))
