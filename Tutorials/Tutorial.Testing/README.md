@@ -58,10 +58,10 @@ Django の startapp テンプレートは、アプリケーションディレク
  tests.py
 ```
  from django.test import TestCase
- 
+
  class MyTestCase(TestCase):
      # ここにテストコードを書く
-     
+
 ```
 
 unittestとの大きな違いは、 `unittest.TestCase` ではなく  `django.test.TestCase` を継承する必要があることです。これらのクラスは同じ API を持っていますが、 Django TestCase クラスはテストに必要な全ての状態を設定します。
@@ -71,7 +71,7 @@ unittestとの大きな違いは、 `unittest.TestCase` ではなく  `django.te
  bash
 ```
  $ python manage.py test
- 
+
 ```
 
 複数のテストファイルを作りたい場合は、 `tests.py` を tests というフォルダに置き換え、その中に  `__init__.py` という空のファイルを入れて、  `test_*.py` ファイルを作ります。Django はこれらを読み込んで実行します。
@@ -89,18 +89,18 @@ Flask では、アプリをインポートしてからテストモードにす�
 ```
  import my_app
  import unittest
- 
- 
+
+
  class MyTestCase(unittest.TestCase):
- 
+
      def setUp(self):
          my_app.app.testing = True
          self.app = my_app.app.test_client()
- 
+
      def test_home(self):
          result = self.app.get('/')
          # アサーションを記述
-         
+
 ```
 
 その後、次のコマンドを使用してテストケースを実行することができます。
@@ -108,7 +108,7 @@ Flask では、アプリをインポートしてからテストモードにす�
  bash
 ```
  $ python -m unittest discover
- 
+
 ```
 
 より詳しい情報は、Flaskの [ドキュメン ](https://flask.palletsprojects.com/en/2.0.x/testing/) を参照してください。
@@ -168,7 +168,7 @@ Flask では、アプリをインポートしてからテストモードにす�
      └── integration/
          ├── __init__.py
          └── test_integration.py
-         
+
 ```
 
 選択したテストのグループだけを実行する方法はたくさんあります。ソース・ディレクトリ指定オプション `-s` は、テストを含むパスを指定してunittest discoverに追加することができます。
@@ -176,7 +176,7 @@ Flask では、アプリをインポートしてからテストモードにす�
  bash
 ```
  $ python -m pytest discover -s tests/integration
- 
+
 ```
 
 unittest は、 `tests/integration` ディレクトリ内のすべてのテストの結果を表示します。
@@ -211,7 +211,7 @@ unittest は、 `tests/integration` ディレクトリ内のすべてのテス�
          |
          ├── __init__.py
          └── test_integration.py
-         
+
 ```
 
 テストケースの中では、 `.setUp()` メソッドを使って、既知のパスにあるフィクスチャファイルからテストデータを読み込み、そのテストデータに対して多くのテストを実行することができます。ひとつの Python ファイルに複数のテストケースを含めることができ、 unittest discovery はその両方を実行することになります。テストデータのセットごとに1つのテストケースを持つことができます。
@@ -219,38 +219,38 @@ unittest は、 `tests/integration` ディレクトリ内のすべてのテス�
 
 ```
  import unittest
- 
- 
+
+
  class TestBasic(unittest.TestCase):
      def setUp(self):
          # Load test data
          self.app = App(database='fixtures/test_basic.json')
- 
+
      def test_customer_count(self):
          self.assertEqual(len(self.app.customers), 100)
- 
+
      def test_existence_of_customer(self):
          customer = self.app.get_customer(id=10)
          self.assertEqual(customer.name, "Org XYZ")
          self.assertEqual(customer.address, "10 Red Road, Reading")
- 
- 
+
+
  class TestComplexData(unittest.TestCase):
      def setUp(self):
          # load test data
          self.app = App(database='fixtures/test_complex.json')
- 
+
      def test_customer_count(self):
          self.assertEqual(len(self.app.customers), 10000)
- 
+
      def test_existence_of_customer(self):
          customer = self.app.get_customer(id=9999)
          self.assertEqual(customer.name, u"バナナ")
          self.assertEqual(customer.address, "10 Red Road, Akihabara, Tokyo")
- 
+
  if __name__ == '__main__':
      unittest.main()
-     
+
 ```
 
 アプリケーションがリモート API などの遠隔地のデータに依存している場合、テストの再現性を確保する必要があります。APIがオフラインであったり、接続に問題があったりしてテストが失敗すると、開発が滞ってしまいます。このような状況では、リモートフィクスチャをローカルに保存して、アプリケーションに呼び出して送信できるようにするのがベストです。
@@ -267,7 +267,7 @@ ToxはPyPIにpipでインストールできるパッケージとして公開さ�
  bash
 ```
  $ pip install tox
- 
+
 ```
 
 Toxのインストールが完了したら、次はToxを設定する必要があります。
@@ -284,7 +284,7 @@ Tox の設定シンタックスを学ぶ代わりに、tox-quickstart アプリ�
  bash
 ```
  $ tox-quickstart
- 
+
 ```
 
 Toxの設定ツールは、いくつかの質問をし回答することで、 `tox.ini` に以下のようなファイルを作成します。
@@ -293,10 +293,10 @@ Toxの設定ツールは、いくつかの質問をし回答することで、 `
 ```
  [tox]
  envlist = py27, py36
- 
+
  [testenv]
  deps =
- 
+
  commands =
      python -m unittest discover
 ```
@@ -310,7 +310,7 @@ Toxを実行する前に、アプリケーションフォルダ内に、パッ�
  [tox]
  envlist = py27, py36
  skipsdist=True
- 
+
 ```
 
  `setup.py` を作成せず、アプリケーションに PyPI からの依存関係がある場合は、 `[testenv]` セクションの下のいくつかの行でそれらを指定する必要があります。例えば、Djangoであれば以下のものが必要です。
@@ -319,7 +319,7 @@ Toxを実行する前に、アプリケーションフォルダ内に、パッ�
 ```
  [testenv]
  deps = django
- 
+
 ```
 
 この段階まで完了すると、テストを実行する準備が整います。
@@ -331,7 +331,7 @@ Toxを実行すると、Python 2.7用とPython 3.6用の2つの仮想環境が�
  bash
 ```
  $ tox
- 
+
 ```
 
 Toxは、各環境に対するテストの結果を出力します。初回の実行時には、仮想環境の作成に少し時間がかかりますが、一度作成してしまえば、2回目以降の実行はかなり速くなります。
@@ -346,7 +346,7 @@ Python 3.6のような単一の環境のみを実行します。
  bash
 ```
  $ tox -e py36
- 
+
 ```
 
 依存関係が変更されたり、site-packagesが破損している場合は、仮想環境を再構築してください。
@@ -354,7 +354,7 @@ Python 3.6のような単一の環境のみを実行します。
  bash
 ```
  $ tox -r
- 
+
 ```
 
 tox の出力を少なくしたい場合は、次のように実行します。
@@ -362,7 +362,7 @@ tox の出力を少なくしたい場合は、次のように実行します。
  bash
 ```
  $ tox -q
- 
+
 ```
 
 逆に、より詳細な出力でToxを実行しいたい場合は、次のように実行します。
@@ -370,7 +370,7 @@ tox の出力を少なくしたい場合は、次のように実行します。
  bash
 ```
  $ tox -v
- 
+
 ```
 
 Toxに関する詳しい情報は、Toxの [ドキュメント ](https://tox.wiki/en/latest/) を参照してください。
@@ -396,7 +396,7 @@ Travis CIはPythonと相性がよく、テストをすべて作成した後は�
    - pip install -r requirements.txt
  script:
    - python -m unittest discover
-   
+
 ```
 
 この設定はTravis CIに次のことを指示します。
@@ -417,13 +417,11 @@ Python には、アプリケーションが設計通りに動作するかどう�
 - Python 公式ドキュメント
   - [doctest - 対話的な実行例をテストする  ](https://docs.python.org/ja/3/library/doctest.html#module-doctest)
   - [unittest - ユニットテストフレームワーク ](https://docs.python.org/ja/3/library/unittest.html)
-- [テスト駆動開発 ](https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA#:~:text=%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%20(%E3%81%A6%E3%81%99%E3%81%A8%E3%81%8F%E3%81%A9%E3%81%86,%E6%B4%97%E7%B7%B4%E3%81%95%E3%81%9B%E3%82%8B%E3%80%81%E3%81%A8%E3%81%84%E3%81%86%E7%9F%AD%E3%81%84%E5%B7%A5%E7%A8%8B)
-- [A simple example of Python OOP development (with TDD) - Part 1 ](https://www.thedigitalcatonline.com/blog/2015/05/13/python-oop-tdd-example-part1/)
-  - 日本語訳: [PythonでのTDDを用いたOOP開発の簡単な例 - パート１]
+- [テスト駆動開発](https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA#:~:text=%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%20(%E3%81%A6%E3%81%99%E3%81%A8%E3%81%8F%E3%81%A9%E3%81%86,%E6%B4%97%E7%B7%B4%E3%81%95%E3%81%9B%E3%82%8B%E3%80%81%E3%81%A8%E3%81%84%E3%81%86%E7%9F%AD%E3%81%84%E5%B7%A5%E7%A8%8B)
+- [A simple example of Python OOP development (with TDD) - Part 1](https://www.thedigitalcatonline.com/blog/2015/05/13/python-oop-tdd-example-part1/)
 - [A simple example of Python OOP development (with TDD) - Part 2 ](https://www.thedigitalcatonline.com/blog/2015/09/10/python-oop-tdd-example-part2/)
-  - 日本語訳: [PythonでのTDDを用いたOOP開発の簡単な例 - パート２]
 - [Packaging Python Projects ](https://packaging.python.org/tutorials/packaging-projects/#packaging-python-projects)
 - [tox オフィシャルサイト  ](https://tox.wiki/en/latest/#)
-- [Travis CI オフィシャルサイト ](https://travis-ci.org/) 
+- [Travis CI オフィシャルサイト ](https://travis-ci.org/)
 
 
