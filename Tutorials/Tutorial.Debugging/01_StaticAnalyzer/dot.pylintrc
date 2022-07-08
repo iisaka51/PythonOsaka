@@ -1,0 +1,581 @@
+[MASTER]
+
+# C拡張がロードされるパッケージやモジュールの名前をカンマで区切ったリストです。
+# エクステンションはアクティブなPythonインタープリタにロードされ、
+# 任意のコードを実行することができます。任意のコードを実行することができます。
+extension-pkg-allow-list=
+
+# C拡張がロードされるパッケージやモジュールの名前をカンマで区切ったリストです。
+# 拡張はアクティブな Python インタープリタにロードされ、
+# 任意のコードを実行することができます。
+# (これは後方互換性のための extension-pkg-allow-list の代替名です)
+extension-pkg-whitelist=
+
+# これらのメッセージ／カテゴリーのいずれかが検出された場合、
+# たとえスコアが --fail-under 値以上であっても、ゼロ以外の終了コードを返します。# 構文は enable と同じです。指定されたメッセージは有効になり、
+# カテゴリーはすでに有効になっているメッセージのみをチェックします。
+fail-on=
+
+# プログラムがエラーで終了する前に、スコアのしきい値を指定します。
+fail-under=10.0
+
+# スキップされるファイルまたはディレクトリ。
+# パスではなくベース名で与える必要があります。
+ignore=CVS
+
+# regexパターンにマッチするファイルやディレクトリを無視リストに追加します。
+# 正規表現はパスに対してマッチします。
+ignore-paths=
+
+# 正規表現のパターンに一致するファイルやディレクトリはスキップされます。
+# 正規表現はパスではなくベース名に対してマッチします。
+ignore-patterns=
+
+# 実行するPythonコードです。
+# 通常は pygtk.require() のように sys.path を操作するためのもの
+#init-hook=
+
+# 複数のプロセスを使用してPylintを高速化します。
+# 0 を指定すると、使用可能なプロセッサ数を自動検出します。
+jobs=1
+
+# 1つのオブジェクトを推論する際に, 潜在的に推論される値の量を制御します。
+# これにより、大きな関数や複雑なネストされた条件を扱う際の
+# パフォーマンスを改善することができます。
+limit-inference-results=100
+
+# ロードするプラグインのリスト(Pythonモジュール名のカンマ区切り)です。
+# 通常は追加のチェッカーを登録します。
+load-plugins=
+
+# 後で比較するためにデータを集めてピクル化するかどうか。yes/no
+persistent=yes
+
+# バージョン依存性のチェックに使用する Python の最小バージョン。
+# pylintの実行に使われたPythonのバージョンがデフォルトになります。
+py-version=3.9
+
+# この機能を有効にすると、pylintは一般的な設定ミスを推測し、
+# 誤ったエラーメッセージの代わりにユーザーフレンドリーなヒントを表示します。
+suggestion-mode=yes
+
+# 任意のC拡張の読み込みを許可する。
+# 拡張機能はアクティブなPythonインタープリタにインポートされ、
+# 任意のコードを実行することができます。
+unsafe-load-any-extension=no
+
+
+[MESSAGES CONTROL]
+
+# リストアップされた信頼性レベルの警告のみを表示します。
+# 空にすると全て表示されます。
+# 有効なレベル HIGH, INFERENCE, INFERENCE_FAILURE, UNDEFINED.
+confidence=
+
+# 指定されたIDを持つメッセージ、レポート、カテゴリ、チェッカーを無効にします。
+# 複数のIDをカンマ(,)で区切って指定することもできますし、
+# このオプションを複数回指定することもできます。
+# (コマンドラインのみで, 設定ファイルでは1回しか指定できません)。
+# "--disable=all "を使うと、最初にすべてのチェックを無効にしてから、
+# 特定のチェックを再び有効にすることもできます。
+# 例えば、類似性チェックだけを実行したい場合は、
+# "--disable=all --enable=similarities" を与えます。
+# クラスチェッカーだけを実行して、
+# 警告レベルのメッセージを表示しないようにしたい場合は、
+# "--disable=all --enable=classes --disable=W" を与えます。
+disable=raw-checker-failed,
+        bad-inline-option,
+        locally-disabled,
+        file-ignored,
+        suppressed-message,
+        useless-suppression,
+        deprecated-pragma,
+        use-symbolic-message-instead
+
+# 与えられたIDを持つメッセージ、レポート、カテゴリ、チェッカーを有効にします。
+# コンマ(,)で区切って複数の識別子を指定することも、
+# このオプションを複数回指定することもできます。
+# (コマンドラインのみで、設定ファイルには一度しか表示されません)。
+# "--disable "オプションの例も参照してください。
+enable=c-extension-no-member
+
+
+[REPORTS]
+
+# 10以下のスコアを返すPython式です。
+# 変数 'error', 'warning', 'refactor', 'convention' には、
+# それぞれのカテゴリのメッセージ数が、
+# また 'statement' には解析されたステートメントの総数が格納されています。
+# このスコアはグローバル評価レポート(RP0004)で使用されます。
+evaluation=10.0 - ((float(5 * error + warning + refactor + convention) / statement) * 10)
+
+# メッセージを表示するためのテンプレートです。
+# これはメッセージの情報をフォーマットするために使われる
+# Pythonの新しいスタイルのフォーマット文字列です。
+# 全ての詳細はdocを参照してください。
+msg-template="{msg_id}:{line:3d},{column}: {obj}: {msg}"
+
+# 出力形式を設定します。
+# 利用可能なフォーマットは次のものです。
+# text, parseable, colorized, json, msvs (visual studio)
+# mypackage.mymodule.MyReporterClassのように、
+# レポータークラスを指定することもできます。
+output-format=text
+
+# レポート全体を表示するか、メッセージのみを表示するかを指定します。
+reports=no
+
+# 評価スコアを有効にする
+score=yes
+
+
+[REFACTORING]
+
+# 関数/メソッド本体の最大ネストブロック数
+max-nested-blocks=5
+
+# 戻り値を持たない関数の完全な名前。
+# 矛盾した戻り値の記述をチェックする際に、
+# 戻り値を持たない関数が呼び出された場合、
+# それは明示的な戻り値の記述とみなされ、メッセージは出力されません。
+never-returning-functions=sys.exit,argparse.parse_error
+
+
+[LOGGING]
+
+# ロギングメソッドが行う文字列のフォーマットの種類です。
+# 'old' は '%'形式を使用することを意味します。
+# 'new' は '{}'形式を使用することを意味します。
+logging-format-style=old
+
+# ロギングモジュールで、文字列形式の引数がロギング機能の
+# パラメータ形式であることを確認します。
+logging-modules=logging
+
+
+[SPELLING]
+
+# スペルミスを指摘されたときに表示する回数を制限します
+max-spelling-suggestions=4
+
+# スペルの辞書名です。利用可能な辞書: なし。
+# 動作させるには、python-enchant パッケージのインストールが必要です。
+spelling-dict=
+
+# コンマで区切られた単語のリストで、
+# コメントの先頭に現れた場合は指示語とみなされ、
+# チェックされるべきではありません。
+spelling-ignore-comment-directives=fmt: on,fmt: off,noqa:,noqa,nosec,isort:skip,mypy:
+
+# チェックしてはいけないコンマ区切りの単語のリスト。
+spelling-ignore-words=
+
+# 1行に1つの単語を含むプライベート辞書を含むファイルへのパス。
+spelling-private-dict-file=
+
+# 未知の単語を、メッセージを出す代わりに、
+# プライベート辞書に保存するかどうかを指定します。
+# --spelling-private-dict-file オプション参照
+spelling-store-unknown-words=no
+
+
+[MISCELLANEOUS]
+
+# 考慮すべきノートタグのリストをカンマで区切って表示します。
+notes=FIXME,
+      XXX,
+      TODO
+
+# 考慮すべきノートタグの正規表現。
+#notes-rgx=
+
+
+[TYPECHECK]
+
+# contextlib.contextmanagerのような、
+# コンテキストマネージャーを生成するデコレーターのリストです。
+# 有効なコンテキストマネージャーを生成する他のデコレーターを登録するときは、
+# このリストに追加します。
+contextmanager-decorators=contextlib.contextmanager
+
+# 動的に設定され、pylintの推論システムが見逃しているため、
+# アクセスされてもE1101を引き起こすべきではないメンバーのリストです。
+# Pythonの正規表現が使えます。
+generated-members=
+
+# Mixinクラスでアクセスされた欠落したメンバーを無視するかどうかを指定します。
+# クラス名が "mixin "で終わっている場合、mixinクラスが検出されます。
+# 大文字小文字の区別はありません。
+ignore-mixin-members=yes
+
+# 属性の所有者がNoneと推測される場合に、
+# メンバーの欠落について警告するかどうかを指定します。
+ignore-none=yes
+
+# このフラグは、推論時に不透明なオブジェクトが返された場合に、
+# pylintが no-member や同様のチェックについて警告するかどうかを制御します。
+# 推論は Python オブジェクトを評価しながら
+# 複数の潜在的な結果を返すことができますが、
+# いくつかのブランチは評価されないかもしれず、
+# 結果として部分的な推論になります。
+# その場合、推論された残りのオブジェクトに対しても
+# no-member などのチェックを発することが有用かもしれません。
+ignore-on-opaque-inference=yes
+
+# メンバー属性をチェックしてはいけないクラス名のリストです。
+# これは、動的に属性が設定されるクラスに有効です。
+# これにより、修飾名の使用をサポートします。
+ignored-classes=optparse.Values,thread._local,_thread._local
+
+# メンバー属性をチェックしてはいけないモジュール名のリスト です。
+# これは、実行時に名前空間が操作され、
+# 静的な分析では既存のメンバー属性を推測できないモジュールに有用です。
+# Unixのパターンマッチと同様に修飾されたモジュール名をサポートしています。
+ignored-modules=
+
+# メンバーの名前が見つからなかった場合に、候補となる名前のヒントを表示します。
+# ヒントの探し方は、編集距離に基づいています。
+missing-member-hint=yes
+
+# 行方不明のメンバーの名前と類似しているとみなされるために、
+# 名前が持つべき最小の編集距離です。
+missing-member-hint-distance=1
+
+# 行方不明のメンバーのヒントを示す際に考慮すべき類似の名前の総数です。
+missing-member-max-choices=1
+
+# デコレーションされた関数のシグネチャを変更するデコレータのリストです。
+signature-mutators=
+
+
+[VARIABLES]
+
+# ビルドインで定義されることになっている追加の名前のリストです。
+# 新しいビルトインを定義することは、
+# できる限り避けるべきであることを覚えておいてください。
+additional-builtins=
+
+# 未使用のグローバル変数を違反として扱うかどうかを指示します。
+allow-global-unused-variables=yes
+
+# ビルドインをシャドーイングすることが許される名前のリスト
+allowed-redefined-builtins=
+
+# コールバック関数の名前を特定するための文字列のリストです。
+# コールバック名は、これらの文字列のいずれかで始まるか終わる必要があります。
+callbacks=cb_,
+          _cb
+
+# ダミー変数の名前にマッチする正規表現です。
+# すなわち、使用されないことが期待される変数。
+dummy-variables-rgx=_+$|(_[a-zA-Z0-9_]*[a-zA-Z0-9]+?$)|dummy|^ignored_|^unused_
+
+# この式にマッチする引数名は無視されます。
+# デフォルトでは、先頭にアンダースコアを持つ名前になります。
+ignored-argument-names=_.*|^ignored_|^unused_
+
+# __init__ファイルで未使用のインポートをチェックするかどうかを指定します。
+init-import=no
+
+# ビルドインを再定義できるオブジェクトを持つことができる
+# 修飾されたモジュール名のリストです。
+redefining-builtins-modules=six.moves,past.builtins,future.builtins,builtins,io
+
+
+[FORMAT]
+
+# 空（任意の行末）、LFまたはCRLFなどの期待される行末のフォーマット。
+expected-line-ending-format=
+
+# 制限値より長くても許される行のためのRegexp。
+ignore-long-lines=^\s*(# )?<?https?://\S+>?$
+
+# ぶら下がり行や継続行の内側に必要なインデントのスペース数。
+indent-after-paren=4
+
+# インデントの単位となる文字列。
+# 通常は "    " (4つのスペース)、または "\t" (1つのタブ)です。
+indent-string='    '
+
+# 1行の最大文字数です。
+max-line-length=100
+
+# モジュールの最大行数。
+max-module-lines=1000
+
+# クラスのボディに単一のステートメントが含まれている場合、
+# 宣言と同じ行にクラスのボディを置くことができます。
+single-line-class-stmt=no
+
+# else がない場合、ifの本体を条件式と同じ行に置くことを許可する。
+single-line-if-stmt=no
+
+
+[SIMILARITIES]
+
+# コメントが類似性の計算から除外される
+ignore-comments=yes
+
+# docstrings が類似性の計算から除外される
+ignore-docstrings=yes
+
+# import が類似性の計算から除外される
+ignore-imports=no
+
+# シグネチャーが類似性の計算から除外される
+ignore-signatures=no
+
+# 相似と判断する最小ライン数。
+min-similarity-lines=4
+
+
+[BASIC]
+
+# ネーミングスタイルが正しい引数名と一致する
+argument-naming-style=snake_case
+
+# 正しい引数名にマッチする正規表現。
+# argument-naming-styleをオーバーライドします。
+#argument-rgx=
+
+# 正しいと判断する属性名のネーミングスタイル。
+attr-naming-style=snake_case
+
+# 正規表現による正しい属性名のマッチング。
+# attr-naming-styleをオーバーライドします。
+#attr-rgx=
+
+# 常に拒否されるべき悪い変数名をカンマで区切って与えます。
+bad-names=foo,
+          bar,
+          baz,
+          toto,
+          tutu,
+          tata
+
+# 悪い変数名の正規表現をカンマで区切って与えます。
+# どの正規表現にもマッチする名前は、常に拒否されます。
+bad-names-rgxs=
+
+# クラス属性名が正しいと判断するネーミングスタイル
+class-attribute-naming-style=any
+
+# 正規表現による正しいクラス属性名のマッチング。
+# class-attribute-naming-styleをオーバーライドします。
+#class-attribute-rgx=
+
+# 正しいクラス定数名と判断するネーミングスタイル
+class-const-naming-style=UPPER_CASE
+
+# 正規表現による正しいクラス定数名のマッチング。
+# class-const-naming-styleをオーバーライドします。
+#class-const-rgx=
+
+# 正しいクラス名と判断するネーミングスタイル
+class-naming-style=PascalCase
+
+# 正しいクラス名にマッチする正規表現。
+# class-naming-styleをオーバーライドします。
+#class-rgx=
+
+# 正しい定数名と判断するネーミングスタイル
+const-naming-style=UPPER_CASE
+
+# 正規表現による正しい定数名のマッチング。
+# const-naming-styleをオーバーライドします。
+#const-rgx=
+
+# docstringsを必要とする関数やクラスの最小行数で、短いものは除外されます。
+docstring-min-length=-1
+
+# 正しい関数名と判断するネーミングスタイル
+function-naming-style=snake_case
+
+# 正規表現による正しい関数名のマッチング。
+# function-naming-styleをオーバーライドします。
+#function-rgx=
+
+# 常に受け入れられるべき良い変数名をコンマで区切って与えます。
+good-names=i,
+           j,
+           k,
+           ex,
+           Run,
+           _
+
+# 良い変数名と判断する正規表現をカンマで区切って与えます。
+# どの正規表現にもマッチする名前は、常に受け入れられます
+good-names-rgxs=
+
+# 拒否された名前を含めて正しいネーミングフォーマットのヒントを出力します。
+include-naming-hint=no
+
+# 正しいインライン・イテレーション名と判断するネーミングスタイル
+inlinevar-naming-style=any
+
+# 正規表現による正しいインライン・イテレーション名のマッチング。
+# inlinevar-naming-styleをオーバーライドします。
+#inlinevar-rgx=
+
+# 正しいメソッド名と判断するネーミングスタイル
+method-naming-style=snake_case
+
+# 正しいメソッド名にマッチする正規表現。
+# method-naming-styleをオーバーライドします。
+#method-rgx=
+
+# 正しいモジュール名と判断するネーミングスタイル
+module-naming-style=snake_case
+
+# 正規表現で正しいモジュール名にマッチします。
+# module-naming-style をオーバーライドします。
+#module-rgx=
+
+# コロンで区切られた名前のセットで、
+# 名前の正規表現が複数のスタイルを許容する場合、
+# お互いの名前のスタイルを決定します。
+name-group=
+
+# docstring を必要としない関数名やクラス名にのみマッチする正規表現です。
+no-docstring-rgx=^_
+
+# abc.abstractproperty のようなプロパティを生成するデコレータのリストです。
+# このリストに追加して、有効なプロパティを生成する他のデコレーターを登録します。
+# これらのデコレーターは、invalid-nameの場合のみ考慮されます。
+property-classes=abc.abstractproperty
+
+# 正しい変数名と判断するネーミングスタイル
+variable-naming-style=snake_case
+
+# 正規表現による正しい変数名のマッチング。
+# variable-naming-styleをオーバーライドします。
+#variable-rgx=
+
+
+[STRING]
+
+# モジュール内で引用符の区切りとして使用される文字が矛盾している場合に、
+# inconsistent-quotesで警告を発生させるかどうかを制御します。
+check-quote-consistency=no
+
+# implicit-str-concatが、複数行に渡って定義されたシーケンスにおける
+# 暗黙の文字列連結に対して警告を生成するかどうかを制御します。
+check-str-concat-over-line-jumps=no
+
+
+[IMPORTS]
+
+# トップレベルのものだけでなく、
+# どのレベルのものでもインポートできるモジュールのリスト。
+allow-any-import-level=
+
+# __all__を定義しているモジュールからのワイルドカードインポートを許可する。
+allow-wildcard-with-all=no
+
+# インポートフォールバックブロックを分析します。
+# Python2とPython3の両方の互換性のあるコードをサポートするために
+# 使用することができます。
+# つまり、ブロックにはどちらか一方のインタープリタにのみ存在するコードが
+# 含まれている可能性があり、分析されたときに偽陽性になる可能性があります。
+analyse-fallback-blocks=no
+
+# 使用してはいけない非推奨のモジュールをカンマで区切って与えます。
+deprecated-modules=
+
+# 外部依存性のグラフを指定されたファイルに出力します。
+# .gvまたはサポートされている画像フォーマット。
+# レポートRP0402は無効であってはいけません。
+ext-import-graph=
+
+# Output a graph (.gv or any supported image format) of all (i.e. internal and external) dependencies to the given file (report RP0402 must not be disabled).
+# すべての（内部および外部の）依存関係のグラフを、
+# 与えられたファイルに出力します。
+# gvまたはサポートされている画像フォーマット。
+# レポートRP0402は無効であってはいけません。
+import-graph=
+
+# Output a graph (.gv or any supported image format) of internal dependencies to the given file (report RP0402 must not be disabled).
+# 内部依存関係のグラフを指定されたファイルに出力します。
+# .gvまたはサポートされている画像フォーマット。j
+# レポートRP0402は無効であってはいけません。
+int-import-graph=
+
+# 標準的な互換ライブラリの一部としてモジュールを認識するために、
+# 強制的にインポートを行います。
+known-standard-library=
+
+# サードパーティのライブラリの一部としてモジュールを認識するために、
+# 強制的にインポートします。
+known-third-party=enchant
+
+# コンマで区切られたモジュールと好ましいモジュールのカップル。
+preferred-modules=
+
+
+[CLASSES]
+
+# 特別なメソッド内の保護された属性へのアクセスについて警告する
+check-protected-access-in-special-methods=no
+
+# インスタンス属性の宣言（割り当て）に使用されるメソッド名のリストです。
+defining-attr-methods=__init__,
+                      __new__,
+                      setUp,
+                      __post_init__
+
+# 保護されたアクセスの警告から除外する必要のあるメンバー名のリスト。
+exclude-protected=_asdict,
+                  _fields,
+                  _replace,
+                  _source,
+                  _make
+
+# クラスメソッドの第一引数に有効な名前のリスト。
+valid-classmethod-first-arg=cls
+
+# メタクラスのメソッドの第1引数に有効な名前のリスト。
+valid-metaclass-classmethod-first-arg=cls
+
+
+[DESIGN]
+
+# クラスの親をカウントする際に無視する修飾クラス名のリスト（R0901参照)
+ignored-parents=
+
+# 関数/メソッドの最大引数数。
+max-args=5
+
+# クラス属性の最大数（R0902参照)
+max-attributes=7
+
+# if文に含まれるブーリアン式の最大数（R0916参照）
+max-bool-expr=5
+
+# 関数/メソッド本体の最大分岐数。
+max-branches=12
+
+# 関数/メソッド本体の最大ローカルオブジェクト数。
+max-locals=15
+
+# クラスの親クラスの最大数 (R0901参照)
+max-parents=7
+
+# クラスのパブリックメソッドの最大数 (R0904参照)
+max-public-methods=20
+
+# 関数/メソッド本体の return / yield の最大数
+max-returns=6
+
+# 関数/メソッドの最大ステートメント数
+max-statements=50
+
+# クラスのパブリックメソッドの最小数 (R0903参照)
+min-public-methods=2
+
+
+[EXCEPTIONS]
+
+# キャッチされたときに警告を発する例外です。
+# デフォルトは "BaseException, Exception "です。
+overgeneral-exceptions=BaseException,
+                       Exception

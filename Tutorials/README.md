@@ -5,6 +5,8 @@
  - [Pythonチュートリアル：Pythonによる探査的データ分析](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.LowCodeEDA/)
  - [Pythonチュートリアル：日時処理](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Datetime/)
  - [Pythonチュートリアル：イベントによりタスクを実行しよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Filesystem_Events)
+ - [Pythonチュートリアル：デバッギング](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Debugging)
+ - [Pythonチュートリアル：ロギングモジュール](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Logging)
  - [イベントスケジューラを使ってみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorialss/Tutorial.Eventtask)
  - [データ検証ライブラリCerberusを使ってみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Cerberus/)
  - [GoogleSpreadsheetsでGoogleFinanceのデータを読み出してみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.GoogleFinance/)

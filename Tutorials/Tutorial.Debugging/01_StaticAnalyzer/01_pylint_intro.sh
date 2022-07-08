@@ -1,0 +1,1 @@
+pylint mandelbrot.py

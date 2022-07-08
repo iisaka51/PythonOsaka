@@ -1,0 +1,278 @@
+2021-09-28 07:52:25 - log test <INFO> I am info, called using my shortcut method.
+2021-09-28 07:52:25 - log test <INFO> I am  info, called using log method.
+2021-09-28 07:52:25 - log test <WARNING> I am warn, called using my shortcut method.
+2021-09-28 07:52:25 - log test <WARNING> I am warn, called using log method.
+2021-09-28 07:52:25 - log test <ERROR> I am error, called using my shortcut method.
+2021-09-28 07:52:25 - log test <ERROR> I am error, called using log method.
+2021-09-28 07:52:25 - log test <CRITICAL> I am critical, called using my shortcut method.
+2021-09-28 07:52:25 - log test <CRITICAL> I am critical, called using log method.
+2021-09-28 07:52:25 - log test <DEBUG> I am debug, called using my shortcut method.
+2021-09-28 07:52:25 - log test <DEBUG> I am debug, called using log method.
+2021-09-28 07:52:25 - log test <SUPER CRITICAL> I am super critical, called using log method because I have no shortcut method.
+2021-09-28 07:52:25 - log test <info> I am wrong, called using log method because I have no shortcut method.
+2021-09-28 07:52:25 - log test <info> I am important, called using log method because I have no shortcut method.
+2021-09-28 07:52:25 - log test <INFO> Check out this data
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+2021-09-28 07:52:25 - log test <ERROR> unsupported operand type(s) for /: 'int' and 'range' (is this python ?)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/bin/ipython", line 8, in <module>
+    sys.exit(start_ipython())
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/__init__.py", line 126, in start_ipython
+    return launch_new_instance(argv=argv, **kwargs)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/traitlets/config/application.py", line 846, in launch_instance
+    app.start()
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/terminal/ipapp.py", line 356, in start
+    self.shell.mainloop()
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/terminal/interactiveshell.py", line 564, in mainloop
+    self.interact()
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/terminal/interactiveshell.py", line 555, in interact
+    self.run_cell(code, store_history=True)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 2898, in run_cell
+    result = self._run_cell(
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 2944, in _run_cell
+    return runner(coro)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/async_helpers.py", line 68, in _pseudo_sync_runner
+    coro.send(None)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 3169, in run_cell_async
+    has_raised = await self.run_ast_nodes(code_ast.body, cell_name,
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 3361, in run_ast_nodes
+    if (await self.run_code(code, result,  async_=asy)):
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 3441, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-2-fe6fd812954d>", line 73, in <module>
+    l.error('%s (is this python ?)'%err, tback=traceback.extract_stack())
+2021-09-28 07:54:14 - log test <INFO> I am info, called using my shortcut method.
+2021-09-28 07:54:14 - log test <INFO> I am  info, called using log method.
+2021-09-28 07:54:14 - log test <WARNING> I am warn, called using my shortcut method.
+2021-09-28 07:54:14 - log test <WARNING> I am warn, called using log method.
+2021-09-28 07:54:14 - log test <ERROR> I am error, called using my shortcut method.
+2021-09-28 07:54:14 - log test <ERROR> I am error, called using log method.
+2021-09-28 07:54:14 - log test <CRITICAL> I am critical, called using my shortcut method.
+2021-09-28 07:54:14 - log test <CRITICAL> I am critical, called using log method.
+2021-09-28 07:54:14 - log test <DEBUG> I am debug, called using my shortcut method.
+2021-09-28 07:54:14 - log test <DEBUG> I am debug, called using log method.
+2021-09-28 07:54:14 - log test <SUPER CRITICAL> I am super critical, called using log method because I have no shortcut method.
+2021-09-28 07:54:14 - log test <info> I am wrong, called using log method because I have no shortcut method.
+2021-09-28 07:54:14 - log test <info> I am important, called using log method because I have no shortcut method.
+2021-09-28 07:54:14 - log test <INFO> Check out this data
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+2021-09-28 07:54:14 - log test <ERROR> unsupported operand type(s) for /: 'int' and 'range' (is this python ?)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/bin/ipython", line 8, in <module>
+    sys.exit(start_ipython())
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/__init__.py", line 126, in start_ipython
+    return launch_new_instance(argv=argv, **kwargs)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/traitlets/config/application.py", line 846, in launch_instance
+    app.start()
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/terminal/ipapp.py", line 356, in start
+    self.shell.mainloop()
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/terminal/interactiveshell.py", line 564, in mainloop
+    self.interact()
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/terminal/interactiveshell.py", line 555, in interact
+    self.run_cell(code, store_history=True)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 2898, in run_cell
+    result = self._run_cell(
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 2944, in _run_cell
+    return runner(coro)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/async_helpers.py", line 68, in _pseudo_sync_runner
+    coro.send(None)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 3169, in run_cell_async
+    has_raised = await self.run_ast_nodes(code_ast.body, cell_name,
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 3361, in run_ast_nodes
+    if (await self.run_code(code, result,  async_=asy)):
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 3441, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-2-d168f91ffb1d>", line 73, in <module>
+    l.error('%s (is this python ?)'%err, tback=traceback.extract_stack())
+2021-09-28 07:56:58 - log test <INFO> I am info, called using my shortcut method.
+2021-09-28 07:56:58 - log test <INFO> I am  info, called using log method.
+2021-09-28 07:56:58 - log test <WARNING> I am warn, called using my shortcut method.
+2021-09-28 07:56:58 - log test <WARNING> I am warn, called using log method.
+2021-09-28 07:56:58 - log test <ERROR> I am error, called using my shortcut method.
+2021-09-28 07:56:58 - log test <ERROR> I am error, called using log method.
+2021-09-28 07:56:58 - log test <CRITICAL> I am critical, called using my shortcut method.
+2021-09-28 07:56:58 - log test <CRITICAL> I am critical, called using log method.
+2021-09-28 07:56:58 - log test <DEBUG> I am debug, called using my shortcut method.
+2021-09-28 07:56:58 - log test <DEBUG> I am debug, called using log method.
+2021-09-28 07:56:58 - log test <SUPER CRITICAL> I am super critical, called using log method because I have no shortcut method.
+2021-09-28 07:56:58 - log test <info> I am wrong, called using log method because I have no shortcut method.
+2021-09-28 07:56:58 - log test <info> I am important, called using log method because I have no shortcut method.
+2021-09-28 07:56:58 - log test <INFO> Check out this data
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+2021-09-28 07:56:58 - log test <ERROR> unsupported operand type(s) for /: 'int' and 'range' (is this python ?)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/bin/ipython", line 8, in <module>
+    sys.exit(start_ipython())
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/__init__.py", line 126, in start_ipython
+    return launch_new_instance(argv=argv, **kwargs)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/traitlets/config/application.py", line 846, in launch_instance
+    app.start()
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/terminal/ipapp.py", line 356, in start
+    self.shell.mainloop()
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/terminal/interactiveshell.py", line 564, in mainloop
+    self.interact()
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/terminal/interactiveshell.py", line 555, in interact
+    self.run_cell(code, store_history=True)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 2898, in run_cell
+    result = self._run_cell(
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 2944, in _run_cell
+    return runner(coro)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/async_helpers.py", line 68, in _pseudo_sync_runner
+    coro.send(None)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 3169, in run_cell_async
+    has_raised = await self.run_ast_nodes(code_ast.body, cell_name,
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 3361, in run_ast_nodes
+    if (await self.run_code(code, result,  async_=asy)):
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 3441, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-2-00b534f055d9>", line 73, in <module>
+    l.error('%s (is this python ?)'%err, tback=traceback.extract_stack())
+2021-09-28 07:59:49 - log test <INFO> I am info, called using my shortcut method.
+2021-09-28 07:59:49 - log test <INFO> I am  info, called using log method.
+2021-09-28 07:59:49 - log test <WARNING> I am warn, called using my shortcut method.
+2021-09-28 07:59:49 - log test <WARNING> I am warn, called using log method.
+2021-09-28 07:59:49 - log test <ERROR> I am error, called using my shortcut method.
+2021-09-28 07:59:49 - log test <ERROR> I am error, called using log method.
+2021-09-28 07:59:49 - log test <CRITICAL> I am critical, called using my shortcut method.
+2021-09-28 07:59:49 - log test <CRITICAL> I am critical, called using log method.
+2021-09-28 07:59:49 - log test <DEBUG> I am debug, called using my shortcut method.
+2021-09-28 07:59:49 - log test <DEBUG> I am debug, called using log method.
+2021-09-28 07:59:49 - log test <SUPER CRITICAL> I am super critical, called using log method because I have no shortcut method.
+2021-09-28 07:59:49 - log test <info> I am wrong, called using log method because I have no shortcut method.
+2021-09-28 07:59:49 - log test <info> I am important, called using log method because I have no shortcut method.
+2021-09-28 07:59:49 - log test <INFO> Check out this data
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+2021-09-28 07:59:49 - log test <ERROR> unsupported operand type(s) for /: 'int' and 'range' (is this python ?)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/bin/ipython", line 8, in <module>
+    sys.exit(start_ipython())
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/__init__.py", line 126, in start_ipython
+    return launch_new_instance(argv=argv, **kwargs)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/traitlets/config/application.py", line 846, in launch_instance
+    app.start()
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/terminal/ipapp.py", line 356, in start
+    self.shell.mainloop()
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/terminal/interactiveshell.py", line 564, in mainloop
+    self.interact()
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/terminal/interactiveshell.py", line 555, in interact
+    self.run_cell(code, store_history=True)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 2898, in run_cell
+    result = self._run_cell(
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 2944, in _run_cell
+    return runner(coro)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/async_helpers.py", line 68, in _pseudo_sync_runner
+    coro.send(None)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 3169, in run_cell_async
+    has_raised = await self.run_ast_nodes(code_ast.body, cell_name,
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 3361, in run_ast_nodes
+    if (await self.run_code(code, result,  async_=asy)):
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 3441, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-2-00b534f055d9>", line 73, in <module>
+    l.error('%s (is this python ?)'%err, tback=traceback.extract_stack())
+2021-09-28 08:13:57 - log test <INFO> I am info, called using my shortcut method.
+2021-09-28 08:13:57 - log test <INFO> I am  info, called using log method.
+2021-09-28 08:13:57 - log test <WARNING> I am warn, called using my shortcut method.
+2021-09-28 08:13:57 - log test <WARNING> I am warn, called using log method.
+2021-09-28 08:13:57 - log test <ERROR> I am error, called using my shortcut method.
+2021-09-28 08:13:57 - log test <ERROR> I am error, called using log method.
+2021-09-28 08:13:57 - log test <CRITICAL> I am critical, called using my shortcut method.
+2021-09-28 08:13:57 - log test <CRITICAL> I am critical, called using log method.
+2021-09-28 08:13:57 - log test <DEBUG> I am debug, called using my shortcut method.
+2021-09-28 08:13:57 - log test <DEBUG> I am debug, called using log method.
+2021-09-28 08:13:57 - log test <SUPER CRITICAL> I am super critical, called using log method because I have no shortcut method.
+2021-09-28 08:13:57 - log test <info> I am wrong, called using log method because I have no shortcut method.
+2021-09-28 08:13:57 - log test <info> I am important, called using log method because I have no shortcut method.
+2021-09-28 08:26:33 - log test <INFO> I am info, called using my shortcut method.
+2021-09-28 08:26:33 - log test <INFO> I am  info, called using log method.
+2021-09-28 08:26:33 - log test <WARNING> I am warn, called using my shortcut method.
+2021-09-28 08:26:33 - log test <WARNING> I am warn, called using log method.
+2021-09-28 08:26:33 - log test <ERROR> I am error, called using my shortcut method.
+2021-09-28 08:26:33 - log test <ERROR> I am error, called using log method.
+2021-09-28 08:26:33 - log test <CRITICAL> I am critical, called using my shortcut method.
+2021-09-28 08:26:33 - log test <CRITICAL> I am critical, called using log method.
+2021-09-28 08:26:33 - log test <DEBUG> I am debug, called using my shortcut method.
+2021-09-28 08:26:33 - log test <DEBUG> I am debug, called using log method.
+2021-09-28 08:26:33 - log test <SUPER CRITICAL> I am super critical, called using log method because I have no shortcut method.
+2021-09-28 08:26:33 - log test <info> I am wrong, called using log method because I have no shortcut method.
+2021-09-28 08:26:33 - log test <info> I am important, called using log method because I have no shortcut method.
+2021-09-28 08:27:17 - log test <INFO> I am info, called using my shortcut method.
+2021-09-28 08:27:17 - log test <INFO> I am  info, called using log method.
+2021-09-28 08:27:17 - log test <WARNING> I am warn, called using my shortcut method.
+2021-09-28 08:27:17 - log test <WARNING> I am warn, called using log method.
+2021-09-28 08:27:17 - log test <ERROR> I am error, called using my shortcut method.
+2021-09-28 08:27:17 - log test <ERROR> I am error, called using log method.
+2021-09-28 08:27:17 - log test <CRITICAL> I am critical, called using my shortcut method.
+2021-09-28 08:27:17 - log test <CRITICAL> I am critical, called using log method.
+2021-09-28 08:27:17 - log test <DEBUG> I am debug, called using my shortcut method.
+2021-09-28 08:27:17 - log test <DEBUG> I am debug, called using log method.
+2021-09-28 08:27:17 - log test <SUPER CRITICAL> I am super critical, called using log method because I have no shortcut method.
+2021-09-28 08:27:17 - log test <info> I am wrong, called using log method because I have no shortcut method.
+2021-09-28 08:27:17 - log test <info> I am important, called using log method because I have no shortcut method.
+2021-09-28 08:30:04 - log test <INFO> I am info, called using my shortcut method.
+2021-09-28 08:30:04 - log test <INFO> I am  info, called using log method.
+2021-09-28 08:30:04 - log test <WARNING> I am warn, called using my shortcut method.
+2021-09-28 08:30:04 - log test <WARNING> I am warn, called using log method.
+2021-09-28 08:30:04 - log test <ERROR> I am error, called using my shortcut method.
+2021-09-28 08:30:04 - log test <ERROR> I am error, called using log method.
+2021-09-28 08:30:04 - log test <CRITICAL> I am critical, called using my shortcut method.
+2021-09-28 08:30:04 - log test <CRITICAL> I am critical, called using log method.
+2021-09-28 08:30:04 - log test <DEBUG> I am debug, called using my shortcut method.
+2021-09-28 08:30:04 - log test <DEBUG> I am debug, called using log method.
+2021-09-28 08:30:04 - log test <SUPER CRITICAL> I am super critical, called using log method because I have no shortcut method.
+2021-09-28 08:30:04 - log test <info> I am wrong, called using log method because I have no shortcut method.
+2021-09-28 08:30:04 - log test <info> I am important, called using log method because I have no shortcut method.
+2021-09-28 08:32:41 - log test <INFO> Check out this data
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+2021-09-28 08:32:41 - log test <ERROR> unsupported operand type(s) for /: 'int' and 'range' (is this python ?)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/bin/ipython", line 8, in <module>
+    sys.exit(start_ipython())
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/__init__.py", line 126, in start_ipython
+    return launch_new_instance(argv=argv, **kwargs)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/traitlets/config/application.py", line 846, in launch_instance
+    app.start()
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/terminal/ipapp.py", line 356, in start
+    self.shell.mainloop()
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/terminal/interactiveshell.py", line 564, in mainloop
+    self.interact()
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/terminal/interactiveshell.py", line 555, in interact
+    self.run_cell(code, store_history=True)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 2898, in run_cell
+    result = self._run_cell(
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 2944, in _run_cell
+    return runner(coro)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/async_helpers.py", line 68, in _pseudo_sync_runner
+    coro.send(None)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 3169, in run_cell_async
+    has_raised = await self.run_ast_nodes(code_ast.body, cell_name,
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 3361, in run_ast_nodes
+    if (await self.run_code(code, result,  async_=asy)):
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 3441, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-2-03de5e7530ce>", line 17, in <module>
+    tback=traceback.extract_stack())
+2021-09-28 08:34:38 - log test <INFO> Check out this data
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+2021-09-28 08:36:01 - log test <ERROR> unsupported operand type(s) for /: 'int' and 'range' (is this python ?)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/bin/ipython", line 8, in <module>
+    sys.exit(start_ipython())
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/__init__.py", line 126, in start_ipython
+    return launch_new_instance(argv=argv, **kwargs)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/traitlets/config/application.py", line 846, in launch_instance
+    app.start()
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/terminal/ipapp.py", line 356, in start
+    self.shell.mainloop()
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/terminal/interactiveshell.py", line 564, in mainloop
+    self.interact()
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/terminal/interactiveshell.py", line 555, in interact
+    self.run_cell(code, store_history=True)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 2898, in run_cell
+    result = self._run_cell(
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 2944, in _run_cell
+    return runner(coro)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/async_helpers.py", line 68, in _pseudo_sync_runner
+    coro.send(None)
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 3169, in run_cell_async
+    has_raised = await self.run_ast_nodes(code_ast.body, cell_name,
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 3361, in run_ast_nodes
+    if (await self.run_code(code, result,  async_=asy)):
+  File "/Users/goichiiisaka/anaconda3/envs/tutorials/lib/python3.9/site-packages/IPython/core/interactiveshell.py", line 3441, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-2-568d1a35d02c>", line 10, in <module>
+    tback=traceback.extract_stack())

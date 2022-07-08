@@ -1,0 +1,9 @@
+digraph "classes" {
+rankdir=BT
+charset="utf-8"
+"sample.ClassA" [color="black", fontcolor="black", label="{ClassA|name\l|}", shape="record", style="solid"];
+"sample.ClassB" [color="black", fontcolor="black", label="{ClassB|name\l|}", shape="record", style="solid"];
+"sample.ClassC" [color="black", fontcolor="black", label="{ClassC|object_a\lobject_b\l|perform()\l}", shape="record", style="solid"];
+"sample.ClassA" -> "sample.ClassC" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="object_a", style="solid"];
+"sample.ClassB" -> "sample.ClassC" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="object_b", style="solid"];
+}

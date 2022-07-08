@@ -1,0 +1,71 @@
+#
+# CAUTION: pdb only accepts single-line statements
+#
+# Enable tab completion
+import pdb
+import rlcompleter
+pdb.Pdb.complete = rlcompleter.Completer(locals()).complete
+
+# まれにターミナルのエコーが消えてしまうことがあります
+# 次の設定は、新しい pdb をき遠うするときに復元されるはず
+import termios, sys
+termios_fd = sys.stdin.fileno()
+termios_echo = termios.tcgetattr(termios_fd)
+termios_echo[3] = termios_echo[3] | termios.ECHO
+termios_result = termios.tcsetattr(termios_fd, termios.TCSADRAIN, termios_echo)
+
+# 通常のPythonオブジェクトの場合、ppo　でメンバーとその値をきれいに印刷
+alias po pp %1.__dict__
+
+# ppioは一連のオブジェクトに対してppoを実行
+alias ppo po [a.__dict__ for a in %*]
+
+# 辞書をソートして印刷します。
+# 1 は辞書、%2 は名前のプレフィックスです。
+# alias p_ for k in sorted(%1.keys()): print("%s%-15s= %-80.80s" % ("%2", k, repr(%1[k])))
+alias p_ for k in sorted(%1): print("%s = %-80.80s" % (k, repr(%1[k])))
+
+# あるもののメンバー変数を表示
+# alias pi p_ %1.__dict__ %1.
+alias pi p_ %1.__dict__
+
+# selfのインスタンス変数を表示
+alias ps pi self
+
+# ローカル変数を表示
+alias pl p_ locals()
+
+# Nextしてlist, それと stepしてlist.
+alias nl n;;l
+alias sl s;;l
+
+# 'nspect x' は、メソッド、クラス、関数のソースコードを表示
+alias inspect import inspect; print(inspect.getsource(%1))
+
+# 'help x' は、オブジェクト上のインタプリタから man スタイルのヘルプを表示
+alias hh !print(help(%1))
+
+# pdbの小技、必要に応じてアンコメント
+# !global __currentframe, __stack; from inspect import currentframe as __currentframe, stack as __stack
+# !global __copy; from copy import copy as __copy
+# for Python <= 3.6
+# !global __Pdb; from IPython.terminal.debugger import TerminalPdb as __Pdb
+# for Python >= 3.7
+# !global __Pdb; from pdb import Pdb as __Pdb
+# !global __pdb_list; __pdb_list = [__fr[0].f_locals.get("pdb") or __fr[0].f_loc# als.get("self") for __fr in __stack() if ((type(__fr[0].f_locals.get("pdb")) is __Pdb) or (type(__fr[0].f_locals.get("self")) is __Pdb))]
+# !global __pdb; __pdb = __pdb_list[0]
+# alias _setup_watchpoint !global __key, __dict, __val; __key = '%1'; __dict = __currentframe().f_locals if (__key in __currentframe().f_locals) else __currentframe().f_globals; __val = __copy(%1)
+# alias _nextwatch_internal next;; !if __dict[__key] == __val: __pdb.cmdqueue.append("_nextwatch_internal %1")
+# alias _stepwatch_internal step;; !if __dict[__key] == __val: __pdb.cmdqueue.append("_stepwatch_internal %1")
+# alias nextwatch __pdb.cmdqueue.extend(["_setup_watchpoint %1", "_nextwatch_internal"])
+# alias stepwatch __pdb.cmdqueue.extend(["_setup_watchpoint %1", "_stepwatch_internal"])
+
+# for inspect
+import inspect
+alias inspect print(inspect.getsource(%1)
+
+# for command history
+import os
+with open(os.path.expanduser('~/.pdb-init.py')) as _f: _f = _f.read()
+exec(_f)
+del _f
