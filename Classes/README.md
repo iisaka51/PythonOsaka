@@ -6,7 +6,6 @@
  - [Pythonセミナー実践編](Class.Practice)
  - [Pythonセミナーデータベース編](Class.Database)
  - [PythonセミナーデータベースORM編](Class.ORM)
-Class.DataAnalysis
-Class.Optimizing
-Class.RESTfullAPI
-Class.WebApplication
+ - [Pythonセミナーデータ分析編](Class.DataAnalysis)
+ - [Pythonセミナー Webアプリケーション編](Class.WebApplication)
+ - [Pythonセミナー RESTful Webサービス編](Class.RESTfullAPI)

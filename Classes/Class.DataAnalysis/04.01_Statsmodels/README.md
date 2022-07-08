@@ -1,0 +1,3 @@
+ - [statsmodels を使ってみよう]
+ - [statsmodels で回帰分析をしてみよう]
+ - [statsmodelsで時系列データ分析をしてみよう]
