@@ -8,6 +8,7 @@
  - [Pythonチュートリアル：デバッギング](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Debugging)
  - [Pythonチュートリアル：ロギングモジュール](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Logging)
  - [Pythonチュートリアル：Peewee ORM を使ってみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.PeeWee)
+ - [Pythonチュートリアル：タスクランナー](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Taskrunner)
  - [イベントスケジューラを使ってみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorialss/Tutorial.Eventtask)
  - [データ検証ライブラリCerberusを使ってみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Cerberus/)
  - [GoogleSpreadsheetsでGoogleFinanceのデータを読み出してみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.GoogleFinance/)
@@ -25,3 +26,5 @@
  - [データクラスと名前付きタプルとの比較](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Dataclass)
  - [Pandas逆引きレシピ：よく使うコードのまとめ](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.PandasRecipes)
  - [コンソールに文字をカラー出力してみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Colors)
+ - [PythonでのShellラッパー・ライブラリ](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Shell)
+ - [Pythonの関数をタイムアウトさせるときに便利なライブラリ](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Timeout)
