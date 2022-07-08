@@ -417,7 +417,7 @@ Python には、アプリケーションが設計通りに動作するかどう�
 - Python 公式ドキュメント
   - [doctest - 対話的な実行例をテストする  ](https://docs.python.org/ja/3/library/doctest.html#module-doctest)
   - [unittest - ユニットテストフレームワーク ](https://docs.python.org/ja/3/library/unittest.html)
-- [テスト駆動開発](https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA)
+- [テスト駆動開発 - wikipedia](https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA)
 - [A simple example of Python OOP development (with TDD) - Part 1](https://www.thedigitalcatonline.com/blog/2015/05/13/python-oop-tdd-example-part1/)
 - [A simple example of Python OOP development (with TDD) - Part 2 ](https://www.thedigitalcatonline.com/blog/2015/09/10/python-oop-tdd-example-part2/)
 - [Packaging Python Projects ](https://packaging.python.org/tutorials/packaging-projects/#packaging-python-projects)
