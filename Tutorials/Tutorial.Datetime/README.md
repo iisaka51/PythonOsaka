@@ -22,16 +22,16 @@ python で日時処理を行うためのライブラリには、まず 標準ラ
 
 
 ## Python 標準ライブラリ
-- [DateTimeで日時処理をしてみよう]
+- [DateTimeで日時処理をしてみよう](01_Datetime/README.md)
 
 ## 日時処理専用の拡張ライブラリ
-- [dateutilを使って日時処理をしてみよう](docs/dateutilを使って日時処理をしてみよう.md)
-- [pendulumを使って日時処理をしてみよう](docs/pendulumを使って日時処理をしてみよう.md)
-- [deloreanを使って日時処理をしてみよう](docs/deloreanを使って日時処理をしてみよう.md)
-- [zuluを使って日時処理をしてみよう](docs/zuluを使って日時処理をしてみよう.md)
+- [dateutilを使って日時処理をしてみよう](02_Dateutil/README.md)
+- [pendulumを使って日時処理をしてみよう](03_Pendulum/README.md)
+- [deloreanを使って日時処理をしてみよう](04_Delorean/README.md)
+- [zuluを使って日時処理をしてみよう](05_Zulu/README.md)
 
 ## 日時処理も行える拡張ライブラリ
-- [pandasでの日時処理](docs/pandasでの日時処理.md)
+- [pandasでの日時処理](06_Pandas_Datetime/README.md)
 
-- [演習1：いろいろなライブラリで日時処理をしてみよう](docs/演習1：いろいろなライブラリで日時処理をしてみよう.md)
+- [演習1：いろいろなライブラリで日時処理をしてみよう](Exercise_01/README.md)
 
