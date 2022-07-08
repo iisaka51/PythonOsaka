@@ -417,7 +417,7 @@ Python には、アプリケーションが設計通りに動作するかどう�
 - Python 公式ドキュメント
   - [doctest - 対話的な実行例をテストする  ](https://docs.python.org/ja/3/library/doctest.html#module-doctest)
   - [unittest - ユニットテストフレームワーク ](https://docs.python.org/ja/3/library/unittest.html)
-- [テスト駆動開発](https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA#:~:text=%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%20(%E3%81%A6%E3%81%99%E3%81%A8%E3%81%8F%E3%81%A9%E3%81%86,%E6%B4%97%E7%B7%B4%E3%81%95%E3%81%9B%E3%82%8B%E3%80%81%E3%81%A8%E3%81%84%E3%81%86%E7%9F%AD%E3%81%84%E5%B7%A5%E7%A8%8B)
+- [テスト駆動開発](https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%B9%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA)
 - [A simple example of Python OOP development (with TDD) - Part 1](https://www.thedigitalcatonline.com/blog/2015/05/13/python-oop-tdd-example-part1/)
 - [A simple example of Python OOP development (with TDD) - Part 2 ](https://www.thedigitalcatonline.com/blog/2015/09/10/python-oop-tdd-example-part2/)
 - [Packaging Python Projects ](https://packaging.python.org/tutorials/packaging-projects/#packaging-python-projects)
