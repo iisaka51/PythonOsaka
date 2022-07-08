@@ -1,0 +1,1 @@
+{"indexes": {"beer": {"pk": {"key": "pk", "id": "84112afb36c54ddd8872e4d9cf71e46d"}}, "brewery": {"pk": {"key": "pk", "id": "5dcdf47383a74701a4d2ea9b0710dac9"}}}, "store_class": "transactional", "index_class": "transactional", "index_store_class": "basic", "serializer_class": "json", "autocommit": false, "version": "0.2.12"}
