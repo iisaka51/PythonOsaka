@@ -7,6 +7,7 @@
  - [Pythonチュートリアル：イベントによりタスクを実行しよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Filesystem_Events)
  - [Pythonチュートリアル：デバッギング](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Debugging)
  - [Pythonチュートリアル：ロギングモジュール](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Logging)
+ - [Pythonチュートリアル：Peewee ORM を使ってみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.PeeWee)
  - [イベントスケジューラを使ってみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorialss/Tutorial.Eventtask)
  - [データ検証ライブラリCerberusを使ってみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Cerberus/)
  - [GoogleSpreadsheetsでGoogleFinanceのデータを読み出してみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.GoogleFinance/)
