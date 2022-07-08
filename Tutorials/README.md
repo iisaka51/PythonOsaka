@@ -23,3 +23,4 @@
  - [Pipeを使って効率良くデータを操作してみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Pipe)
  - [SSPipeを使って効率良くデータを操作してみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Sspipe)
  - [データクラスと名前付きタプルとの比較](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Dataclass)
+ - [Pandas逆引きレシピ：よく使うコードのまとめ](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.PandasRecipes)
