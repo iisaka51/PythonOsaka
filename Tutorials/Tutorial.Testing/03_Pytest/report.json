@@ -1,0 +1,29 @@
+{
+  "created": 1636933898.602473,
+  "duration": 0.13885712623596191,
+  "exitcode": 1,
+  "root": "/Users/goichiiisaka/Projects/Python.Osaka/Tutorial.Testing/03_Pytest",
+  "environment": {
+    "Python": "3.9.7",
+    "Platform": "macOS-11.6-x86_64-i386-64bit",
+    "Packages": {
+      "pytest": "6.2.5",
+      "py": "1.10.0",
+      "pluggy": "1.0.0"
+    },
+    "Plugins": {
+      "cov": "2.12.1",
+      "metadata": "1.11.0",
+      "typeguard": "2.12.1",
+      "xdist": "2.4.0",
+      "json-report": "1.4.1",
+      "forked": "1.3.0"
+    }
+  },
+  "summary": {
+    "passed": 2,
+    "failed": 2,
+    "total": 4,
+    "collected": 4
+  }
+}

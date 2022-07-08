@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="4" time="0.141" timestamp="2021-11-15T08:27:52.892199" hostname="GoichiMacBook.local"><testcase classname="test_26_maxfail" name="test_fibonacci[8-34]" time="0.002" /><testcase classname="test_26_maxfail" name="test_fibonacci[9-56]" time="0.003"><failure message="assert 55 == 56&#10;  +55&#10;  -56">n = 9, expect = 56
+
+    @pytest.mark.parametrize("n, expect", test_data)
+    def test_fibonacci(n, expect):
+        result = fibonacci(n)
+&gt;       assert result == expect
+E       assert 55 == 56
+E         +55
+E         -56
+
+test_26_maxfail.py:19: AssertionError</failure></testcase><testcase classname="test_26_maxfail" name="test_fibonacci[10-90]" time="0.002"><failure message="assert 89 == 90&#10;  +89&#10;  -90">n = 10, expect = 90
+
+    @pytest.mark.parametrize("n, expect", test_data)
+    def test_fibonacci(n, expect):
+        result = fibonacci(n)
+&gt;       assert result == expect
+E       assert 89 == 90
+E         +89
+E         -90
+
+test_26_maxfail.py:19: AssertionError</failure></testcase><testcase classname="test_26_maxfail" name="test_fibonacci[11-144]" time="0.001" /></testsuite></testsuites>

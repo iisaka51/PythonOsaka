@@ -1,0 +1,5 @@
+>>> from s01_fibo import fibo
+>>> fibo(8)
+34
+>>> fibo(9)
+55
