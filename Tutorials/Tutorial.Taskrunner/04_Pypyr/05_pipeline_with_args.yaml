@@ -1,0 +1,8 @@
+context_parser: pypyr.parser.keyvaluepairs
+steps:
+  - name: pypyr.steps.echo
+    in:
+      echoMe: this is akey's value {akey}. It came from the cli args.
+  - name: pypyr.steps.cmd
+    in:
+      cmd: echo we can inject {anotherkey} into your cmd

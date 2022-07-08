@@ -1,0 +1,16 @@
+steps:
+  - name: pypyr.steps.contextsetf
+    comment: 任意の変数を設定
+    in:
+      contextSetf:
+        var1: my value
+        var2: 2
+        var3: True
+
+  - name: pypyr.steps.echo
+    comment: 後続のステップで変数を使用
+    run: '{var3}'
+    in:
+      echoMe: |       # YAML で複数行を記述する表記方法
+              var1 is '{var1}'
+              var2 is {var2}

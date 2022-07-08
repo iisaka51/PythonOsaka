@@ -1,0 +1,6 @@
+#!/bin/bash
+
+ENVNAME=${1:-"USER"}
+env | grep ${ENVNAME}=
+
+exit 0

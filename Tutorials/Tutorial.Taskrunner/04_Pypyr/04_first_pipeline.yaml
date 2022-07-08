@@ -1,0 +1,11 @@
+steps:
+  - name: pypyr.steps.echo
+    comment: echoMe の内容を出力
+    in:
+      echoMe: this is step 1
+  - name: pypyr.steps.cmd
+    comment: システム上の任意のプログラムを実際に起動します。
+             プログラムは環境変数PATHで検索できる必要があります。
+             ここでは、簡単なデモとして echo を実行しています。
+    in:
+      cmd: echo this is step 2

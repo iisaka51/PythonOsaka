@@ -1,0 +1,11 @@
+steps:
+  - name: mypackage.anothermodule
+    description: description（説明)はオプション
+                 任意の(エスケープされた)YAMLで記述します。
+                 実行時に通知(NOTIFY)としてコンソールに出力されます。
+    comment: comment(コメント)はオプション
+             パイプラインの開発/保守のするときの捕捉説明となるもの。
+             実行時には何も出力されません。
+    in: # in(入力値）はオプションです
+      parameter1: value1
+      parameter2: value2

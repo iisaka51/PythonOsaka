@@ -1,0 +1,14 @@
+steps:
+  - name: pypyr.steps.envget
+    comment: 環境変数 ARB の値を取得して my_counter にセット
+    in:
+      envGet:
+        env: ARB
+        key: my_counter
+        default: 3
+
+  - name: pypyr.steps.cmd
+    while:
+      max: '{my_counter}'
+    in:
+      cmd: echo mycommand --arg={whileCounter}

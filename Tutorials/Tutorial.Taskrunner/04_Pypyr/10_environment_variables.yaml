@@ -1,0 +1,15 @@
+steps:
+- name: pypyr.steps.envget
+  comment: 環境変数 MACAVITY を取得して
+           それを変数 theHiddenPaw に割り当てる
+           MACVITY が存在しない場合、デフォルト値を使用する
+  in:
+    envGet:
+      env: MACAVITY
+      key: theHiddenPaw
+      default: but macavity wasn't there!
+
+- name: pypyr.steps.echo
+  comment: theHiddenPaw に環境変数 MACAVITY の値をセット
+  in:
+    echoMe: the master criminal {theHiddenPaw}

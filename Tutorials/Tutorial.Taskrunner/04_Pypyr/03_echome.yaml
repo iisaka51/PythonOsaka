@@ -1,0 +1,5 @@
+steps:
+  - name: pypyr.steps.echo
+    comment: output echoMe
+    in:
+      echoMe: I Love Beer.

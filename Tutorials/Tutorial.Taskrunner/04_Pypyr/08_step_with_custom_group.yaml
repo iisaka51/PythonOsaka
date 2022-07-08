@@ -1,0 +1,21 @@
+steps:
+  - name: pypyr.steps.echo
+    in:
+      echoMe: begin
+  - name: pypyr.steps.jump
+    in:
+      jump: my_group
+
+my_group:
+  - name: pypyr.steps.echo
+    in:
+      echoMe: my_group step 1
+  - name: pypyr.steps.echo
+    in:
+      echoMe: my_group step 2
+
+# 全てのステップが終わったあとに on_success が実行されます
+on_success:
+  - name: pypyr.steps.echo
+    in:
+      echoMe: end!

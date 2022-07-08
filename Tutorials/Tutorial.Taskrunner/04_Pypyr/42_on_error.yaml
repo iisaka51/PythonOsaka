@@ -1,0 +1,17 @@
+steps:
+  - name: pypyr.steps.assert
+    comment: カスタム・エラー・オブジェクトで
+             意図的にエラーを発生させる
+    in:
+      assert: False
+    onError:
+      myerr_code: 123
+      myerr_description: "my err description"
+
+on_failure:
+  - name: pypyr.steps.echo
+    comment: カスタムエラーは runErrors にある
+    in:
+      echoMe: |
+        the error code: {runErrors[0][customError][myerr_code]}
+        the error description: {runErrors[0][customError][myerr_description]}

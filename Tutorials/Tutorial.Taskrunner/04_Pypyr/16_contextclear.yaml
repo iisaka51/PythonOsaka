@@ -1,0 +1,7 @@
+steps:
+  - name: pypyr.steps.contextclear
+    description: 2つのコンテキストキーをクリア
+    in:
+      contextClear:
+        - removeMe
+        - removeMeToo

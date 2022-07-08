@@ -1,0 +1,9 @@
+steps:
+  - name: mystep
+    description: この段階ではまだYAMLを読み込んでいない
+  - name: pypyr.steps.fetchyaml
+    description: 指定したパスのYAMLから読み込む
+    in:
+      fetchYaml:
+        path: ./myvars.yaml # 必須：JSONファイルへのパス
+  - pypyr.steps.echo

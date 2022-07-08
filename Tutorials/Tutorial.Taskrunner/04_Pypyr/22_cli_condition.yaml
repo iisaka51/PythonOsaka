@@ -1,0 +1,27 @@
+context_parser: pypyr.parser.keys
+steps:
+  - name: pypyr.steps.default
+    comment: set default values for optional cli inputs
+    in:
+      defaults:
+        lint: False
+        build: False
+
+  - name: pypyr.steps.echo
+    in:
+      echoMe: begin - always runs
+
+  - name: pypyr.steps.cmd
+    run: '{lint}'
+    in:
+      cmd: echo this will only run if you pass lint from cli
+
+  - name: pypyr.steps.cmd
+    run: '{build}'
+    in:
+      cmd: echo this will only run if you pass build from cli
+
+  - name: pypyr.steps.echo
+    in:
+      echoMe: end - always runs
+

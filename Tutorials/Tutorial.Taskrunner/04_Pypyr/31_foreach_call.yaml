@@ -1,0 +1,14 @@
+steps:
+  - name: pypyr.steps.call
+    foreach: ['apple', 'pear', 'banana']
+    in:
+      call: my_step_group
+
+my_step_group:
+  - name: pypyr.steps.echo
+    in:
+      echoMe: processing '{i}'
+
+  - name: pypyr.steps.cmd
+    in:
+      cmd: echo mycommand --arg={i}

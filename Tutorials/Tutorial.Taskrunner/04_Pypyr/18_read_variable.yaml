@@ -1,0 +1,8 @@
+steps:
+  - name: pypyr.steps.echo
+    comment: 静的な文字列と2つの変数を連結します。
+             "pipe down the valleys wild" と出力します。
+    in:
+      A: down the
+      B: valleys
+      echoMe: piping {A} {B} wild

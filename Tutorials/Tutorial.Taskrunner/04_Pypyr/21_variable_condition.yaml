@@ -1,0 +1,27 @@
+steps:
+  - name: pypyr.steps.echo
+    in:
+      echoMe: begin
+
+  - name: pypyr.steps.contextsetf
+    comment: set variables for use in run/skip later
+    in:
+      contextSetf:
+        arbVar1: False
+        arbVar2: arbitrary str
+        # arbVar3 will eval True
+        arbVar3: !py arbVar2 == 'arbitrary str'
+
+  - name: pypyr.steps.cmd
+    run: '{arbVar1}'
+    in:
+      cmd: echo this will not run
+
+  - name: pypyr.steps.cmd
+    skip: '{arbVar3}'
+    in:
+      cmd: echo this will not run
+
+  - name: pypyr.steps.echo
+    in:
+      echoMe: end

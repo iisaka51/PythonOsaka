@@ -1,0 +1,9 @@
+steps:
+  - name: pypyr.steps.py
+    while:
+      stop: !py arb_value > 5
+    in:
+      py: |
+        arb_value = whileCounter * 2
+        print(f'{arb_value=}')
+        save('arb_value')

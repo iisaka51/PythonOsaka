@@ -1,0 +1,9 @@
+steps:
+  - name: pypyr.steps.assert
+    in:
+      assert: False
+  - name: pypyr.steps.echo
+    comment: this step won't ever run because pipeline always
+             fails on previous step.
+    in:
+      echoMe: unreachable

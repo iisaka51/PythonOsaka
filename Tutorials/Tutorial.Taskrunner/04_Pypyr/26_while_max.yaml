@@ -1,0 +1,6 @@
+steps:
+  - name: pypyr.steps.cmd
+    while:
+      max: 3
+    in:
+      cmd: echo mycommand --arg={whileCounter}

@@ -1,0 +1,45 @@
+context_parser: pypyr.parser.keys
+steps:
+  - name: pypyr.steps.default
+    comment: オプションのCLI入力のデフォルト値設定
+    in:
+      defaults:
+        lint: False
+        build: False
+
+  - name: pypyr.steps.echo
+    in:
+      echoMe: begin - always runs
+
+  - name: pypyr.steps.call
+    run: '{lint}'
+    in:
+      call: lint
+
+  - name: pypyr.steps.call
+    run: '{build}'
+    in:
+      call: build
+
+  - name: pypyr.steps.echo
+    in:
+      echoMe: end - always runs
+
+lint:
+  - name: pypyr.steps.cmd
+    in:
+      cmd: echo lint cmd 1 here
+
+  - name: pypyr.steps.cmd
+    in:
+      cmd: echo lint cmd 2 here
+
+build:
+  - name: pypyr.steps.cmd
+    in:
+      cmd: echo build cmd 1 here
+
+  - name: pypyr.steps.cmd
+    in:
+      cmd: echo build cmd 2 here
+

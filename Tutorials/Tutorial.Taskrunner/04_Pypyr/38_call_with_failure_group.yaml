@@ -1,0 +1,28 @@
+steps:
+  - name: pypyr.steps.echo
+    in:
+      echoMe: A
+  - name: pypyr.steps.call
+    in:
+      call:
+        groups: call_me
+        failure: arb_group
+  - name: pypyr.steps.echo
+    in:
+      echoMe: unreachable
+
+call_me:
+  - name: pypyr.steps.echo
+    in:
+      echoMe: B
+  - name: pypyr.steps.assert
+    in:
+      assert: False
+  - name: pypyr.steps.echo
+    in:
+      echoMe: unreachable
+
+arb_group:
+  - name: pypyr.steps.echo
+    in:
+      echoMe: C

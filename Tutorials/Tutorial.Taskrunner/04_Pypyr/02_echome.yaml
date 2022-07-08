@@ -1,0 +1,9 @@
+context_parser: pypyr.parser.string
+steps:
+  - name: pypyr.steps.contextcopy
+    comment: 入力されたargをechoMeに割り当て、
+             echo stepがそれをエコーできるようにします。
+    in:
+      contextCopy:
+        echoMe: argString
+  - pypyr.steps.echo

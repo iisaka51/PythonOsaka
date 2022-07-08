@@ -1,0 +1,11 @@
+steps:
+  - name: pypyr.steps.echo
+    in:
+      echoMe: A
+  - name: pypyr.steps.py
+    swallow: True
+    in:
+      py: raise ValueError('arb')
+  - name: pypyr.steps.echo
+    in:
+      echoMe: You'll see me, you set swallow in previous step

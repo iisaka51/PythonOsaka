@@ -1,0 +1,13 @@
+steps:
+  - name: pypyr.steps.echo
+    in:
+      echoMe: begin
+  - name: pypyr.steps.py
+    in:
+      py: raise ValueError('arb error text here')
+  - name: pypyr.steps.echo
+    comment: this step won't ever run
+             because pipeline always
+             fails on previous step.
+    in:
+      echoMe: unreachable

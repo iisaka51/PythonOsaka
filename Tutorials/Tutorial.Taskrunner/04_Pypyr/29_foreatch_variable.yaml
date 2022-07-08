@@ -1,0 +1,13 @@
+context_parser: pypyr.parser.list
+steps:
+  - name: pypyr.steps.contextsetf
+    comment: set defaults for optional cli args
+    run: !py len(argList) == 0
+    in:
+      contextSetf:
+        argList: ['one', 'two']
+
+  - name: pypyr.steps.cmd
+    foreach: '{argList}'
+    in:
+      cmd: echo mycommand --arg={i}

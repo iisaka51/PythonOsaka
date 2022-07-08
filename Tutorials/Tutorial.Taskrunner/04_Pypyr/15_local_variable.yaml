@@ -1,0 +1,10 @@
+steps:
+  - name: mystep
+    comment: 変数 A、B、C はこのステップでだけ有効
+    in:
+      A: value 1
+      B: 2
+      C: true
+  - name: pypyr.steps.echo
+    in:
+      echoMe: done! A, B & C are NOT available in this step.

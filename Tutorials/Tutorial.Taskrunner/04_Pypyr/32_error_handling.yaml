@@ -1,0 +1,13 @@
+steps:
+  - name: pypyr.steps.echo
+    in:
+      echoMe: A
+  - name: pypyr.steps.py
+    comment: 意図的にエラーを起こす
+    in:
+      py: raise ValueError('arb')
+  - name: pypyr.steps.echo
+    comment: 前のステップが常に失敗する
+             このステップは実行されない
+    in:
+      echoMe: unreachable

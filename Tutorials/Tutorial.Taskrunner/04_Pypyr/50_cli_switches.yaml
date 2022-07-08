@@ -1,0 +1,18 @@
+context_parser: pypyr.parser.keys
+steps:
+  - name: pypyr.steps.default
+    in:
+      defaults:
+        isCI: False
+        isRetry: False
+  - name: pypyr.steps.echo
+    run: '{isRetry}'
+    in:
+      echoMe: you'll only see me if IsRetry is True
+  - name: pypyr.steps.echo
+    run: '{isCI}'
+    in:
+      echoMe: this only runs in the CI environment, not on dev
+  - name: pypyr.steps.echo
+    in:
+      echoMe: done!

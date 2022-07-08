@@ -1,0 +1,22 @@
+context_parser: pypyr.parser.jsonfile
+steps:
+  # echoMeは JSONファイルに設定されている
+  - pypyr.steps.echo
+  - name: pypyr.steps.contextsetf
+    comment: 強制的にint型付けされたintとして使用する
+    in:
+        contextSetf:
+            intResult: !py keyInt * 2
+  - name: pypyr.steps.echo
+    comment: JSONファイルのフォーマット式が動作する
+    in:
+        echoMe: '{key3}'
+  - name: pypyr.steps.echo
+    comment: 整数計算した結果を出力
+    in:
+        echoMe: "strongly typed happens automatically: {intResult}"
+  - name: pypyr.steps.echo
+    comment: 入力がブール値 true のときだけ実行
+    run: '{keyBool}'
+    in:
+        echoMe: you'll only see me if the bool was true

@@ -1,0 +1,4 @@
+Hello World
+Python Osaka
+Think Big!
+EXIT

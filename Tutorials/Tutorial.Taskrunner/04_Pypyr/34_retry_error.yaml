@@ -1,0 +1,12 @@
+steps:
+  - name: pypyr.steps.cmd
+    comment: 与えたURLへのcurlを自動的に再試行します
+             パイプラインは、curlが成功するとすぐに次のステップに進みます
+             リトライの間に0.5秒のスリープを挟み、4回のリトライを行います
+             4回目のリトライでも失敗した場合は、
+             エラーを発生させて失敗を報告します。
+    retry:
+      max: 4
+      sleep: 0.5
+    in:
+      cmd: curl https://arb-unreliable-url-example/

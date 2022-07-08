@@ -1,0 +1,22 @@
+steps:
+  - name: pypyr.steps.echo
+    comment: step1
+    in:
+      echoMe: begin
+
+  - name: pypyr.steps.cmd
+    comment: step2
+    run: False
+    in:
+      cmd: echo this will not run
+
+  - name: pypyr.steps.cmd
+    comment: step3
+    skip: True
+    in:
+      cmd: echo this will not run
+
+  - name: pypyr.steps.echo
+    comment: step4
+    in:
+      echoMe: end

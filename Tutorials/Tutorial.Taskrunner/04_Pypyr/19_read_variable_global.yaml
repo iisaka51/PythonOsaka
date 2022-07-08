@@ -1,0 +1,12 @@
+steps:
+  - name: pypyr.steps.contextsetf
+    in:
+      contextSetf:
+        A: down the
+        B: valleys
+
+  - name: pypyr.steps.echo
+    comment: 静的な文字列と2つの変数を連結します。
+              "pipe down the valleys wild" と出力します。
+    in:
+      echoMe: piping {A} {B} wild

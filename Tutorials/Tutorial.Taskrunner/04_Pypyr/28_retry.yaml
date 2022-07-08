@@ -1,0 +1,10 @@
+steps:
+  - name: pypyr.steps.cmd
+    retry:
+      max: 3
+    in:
+      cmd: mycommand --arg=myvalue
+  - name: pypyr.steps.echo
+    comment: output echoMe
+    in:
+      echoMe: I Love Beer.

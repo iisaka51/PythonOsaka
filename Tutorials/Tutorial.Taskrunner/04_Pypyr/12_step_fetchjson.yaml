@@ -1,0 +1,9 @@
+steps:
+  - name: mystep
+    description: この段階ではまだJSONを読み込んでいない
+  - name: pypyr.steps.fetchjson
+    description: 指定したパスのJSONから読み込む
+    in:
+      fetchJson:
+        path: ./myvars.json # 必須：JSONファイルへのパス
+  - pypyr.steps.echo

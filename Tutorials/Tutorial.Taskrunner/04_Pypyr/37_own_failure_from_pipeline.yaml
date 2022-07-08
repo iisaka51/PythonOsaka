@@ -1,0 +1,6 @@
+steps:
+  - name: pypyr.steps.pype
+    in:
+      pype:
+        name: 36_own_failure_handler
+        failure: arb_group

@@ -1,0 +1,32 @@
+steps:
+  - name: pypyr.steps.echo
+    in:
+      echoMe: begin
+
+  - name: pypyr.steps.contextsetf
+    comment: 任意の変数を設定し、後のステップのラン/スキップ条件に使用
+    in:
+      contextSetf:
+        breakfasts:
+          - fish
+          - bacon
+          - spam
+
+        numbersList:
+          - 3
+          - 4
+
+  - name: pypyr.steps.cmd
+    run: !py "'eggs' in breakfasts"
+    in:
+      cmd: echo this will not run
+
+  - name: pypyr.steps.cmd
+    skip: !py sum(numbersList) < 42
+    in:
+      cmd: echo this will not run
+
+  - name: pypyr.steps.echo
+    in:
+      echoMe: end
+

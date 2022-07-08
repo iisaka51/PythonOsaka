@@ -1,0 +1,6 @@
+steps:
+  - name: pypyr.steps.cmd
+    comment: mycommand を繰り返すループ
+    foreach: ['apple', 'pear', 'banana']
+    in:
+      cmd: echo mycommand --arg={i}

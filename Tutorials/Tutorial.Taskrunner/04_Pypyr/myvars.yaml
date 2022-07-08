@@ -1,0 +1,6 @@
+key1: value1
+key2: value 2
+key3: "value3 and {key1} and {key2}"
+echoMe: "this is a value from a yaml file"
+keyInt: 123
+keyBool: True
