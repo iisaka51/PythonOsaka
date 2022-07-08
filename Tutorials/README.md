@@ -34,3 +34,4 @@
  - [inquirerpy で対話型インタフェースを作成してみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.InquirerPy)
  - [TUIアプリケーションフレームワーク Rich を使ってみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Rich)
  - [prompt-toolkit を使いこなそう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Prompt_toolkit)
+ - [Pythonでの分岐処理のあれこれ](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Branching)
