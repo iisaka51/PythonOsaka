@@ -11,10 +11,10 @@ Pythonチュートリアル：タスクランナー
 - [タスクランナーpypyrを使ってみよう](04_Pypyr)
 
 ## 第２章 タスクランナーとしても使えるライブラリ
-- [shモジュールを使って外部コマンドを呼び出してみよう]
-- [shell モジュールを使って外部コマンドを呼び出してみよう]
-- [bash モジュールを使って外部コマンドを呼び出してみよう]
-- [pshellモジュールを使って外部コマンドを呼び出してみよう]
+- [shell モジュールを使って外部コマンドを呼び出してみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Shell/01_Shell]
+- [shモジュールを使って外部コマンドを呼び出してみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Shell/02_Sh]
+- [bash モジュールを使って外部コマンドを呼び出してみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Shell/03_Bash]
+- [pshellモジュールを使って外部コマンドを呼び出してみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Shell/04_Pshell]
 
 ## 第３章 タスクの分散処理ができるツール
 - [hyper-shellを使ってみよう]

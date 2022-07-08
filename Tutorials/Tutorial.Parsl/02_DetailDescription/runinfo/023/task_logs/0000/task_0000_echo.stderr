@@ -1,0 +1,4 @@
+--> executable follows <--
+"echo Hello World !"; exit 1
+--> end executable <--
+/bin/bash: echo Hello World !: command not found
