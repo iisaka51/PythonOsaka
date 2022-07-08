@@ -9,6 +9,7 @@
  - [Pythonチュートリアル：Python のテストフレームワーク](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Testing)
  - [Python チュートリアル：プロファイリングツール](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Profiling)
  - [Pythonチュートリアル：ロギングモジュール](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Logging)
+ - [Python チュートリアル：データのテーブル出力](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.TableOutput)
  - [Pythonチュートリアル：Peewee ORM を使ってみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.PeeWee)
  - [Pythonチュートリアル：タスクランナー](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Taskrunner)
  - [イベントスケジューラを使ってみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorialss/Tutorial.Eventtask)

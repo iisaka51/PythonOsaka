@@ -1,0 +1,44 @@
+[
+  {
+    "City name": "Adelaide",
+    "Area": 1295,
+    "Population": 1158259,
+    "Annual Rainfall": 600.5
+  },
+  {
+    "City name": "Brisbane",
+    "Area": 5905,
+    "Population": 1857594,
+    "Annual Rainfall": 1146.4
+  },
+  {
+    "City name": "Darwin",
+    "Area": 112,
+    "Population": 120900,
+    "Annual Rainfall": 1714.7
+  },
+  {
+    "City name": "Hobart",
+    "Area": 1357,
+    "Population": 205556,
+    "Annual Rainfall": 619.5
+  },
+  {
+    "City name": "Melbourne",
+    "Area": 1566,
+    "Population": 3806092,
+    "Annual Rainfall": 646.9
+  },
+  {
+    "City name": "Perth",
+    "Area": 5386,
+    "Population": 1554769,
+    "Annual Rainfall": 869.4
+  },
+  {
+    "City name": "Sydney",
+    "Area": 2058,
+    "Population": 4336374,
+    "Annual Rainfall": 1214.8
+  }
+]
