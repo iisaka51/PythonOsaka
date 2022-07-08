@@ -1,0 +1,29 @@
+from openpyxl import Workbook
+
+wb = Workbook()
+ws = wb.active
+
+ws['A1'] = 'Python'
+ws['B1'] = 'Osaka'
+ws['A2'] = 'Hello'
+ws['B2'] = 'World'
+
+def print_cell(sheet):
+    for values in sheet.iter_rows(values_only=True):
+        print(values)
+
+ws1 = wb.copy_worksheet(ws)
+ws.insert_cols(idx=1, amount=2)
+ws2 = wb.copy_worksheet(ws)
+ws.insert_rows(idx=2)
+ws3 = wb.copy_worksheet(ws)
+ws.delete_cols(idx=1)
+ws4 = wb.copy_worksheet(ws)
+ws.delete_rows(idx=2)
+
+# print_cell(ws1)
+# print_cell(ws2)
+# print_cell(ws3)
+# print_cell(ws4)
+# print_cell(ws)
+# print(wb.sheetnames)
