@@ -1,6 +1,6 @@
 データ検証ライブラリCerberusを使ってみよう
 =================
-![](https://gyazo.com/a55cb42dfbe02a0204c2ac8a357155cb.png)
+![](images/cerberus_logo.png)
 ## Cerberus について
 Cerberusは、Pythonで実装されたの軽量で拡張性のあるデータ検証ライブラリです。Cerberusは、パワフルでありながらシンプルで軽量なデータ検証機能を提供しています。また、カスタム検証を可能にする拡張性の高い設計になっています。
 
@@ -16,7 +16,7 @@ Cerberusは、Pythonで実装されたの軽量で拡張性のあるデータ検
 
  Type 'copyright', 'credits' or 'license' for more information
  IPython 7.28.0 -- An enhanced Interactive Python. Type '?' for help.
- 
+
  In [1]:
 ```
 
@@ -58,10 +58,10 @@ cerberus には依存関係のある外部モジュールはありません。
     ...:
     ...: # v
     ...:
- 
+
  In [3]: v
  Out[3]: <cerberus.validator.Validator at 0x10707ee50>
- 
+
 ```
 
  `validate()` メソッドにデータとスキーマを与えて検証することもできます。
@@ -80,9 +80,9 @@ cerberus には依存関係のある外部モジュールはありません。
     ...:
     ...: # v.types
     ...:
- 
+
  In [3]:
- 
+
 ```
 
 
@@ -106,7 +106,7 @@ cerberus には依存関係のある外部モジュールはありません。
   'number',
   'set',
   'string')
- 
+
  In [4]:
 ```
 
@@ -128,7 +128,7 @@ cerberus には依存関係のある外部モジュールはありません。
     ...: assert check == False
     ...: assert v.errors == {'name': ['must be of string type']}
     ...:
- 
+
  In [3]:
 ```
 
@@ -152,9 +152,9 @@ cerberus には依存関係のある外部モジュールはありません。
     ...:
     ...: # v.validation_rules
     ...:
- 
+
  In [3]:
- 
+
 ```
 
 
@@ -202,7 +202,7 @@ cerberus には依存関係のある外部モジュールはありません。
   'valuesrules': {'type': ['dict', 'string'],
    'check_with': 'bulk_schema',
    'forbidden': ['rename', 'rename_handler']}}
- 
+
 ```
 
 
@@ -226,7 +226,7 @@ cerberus には依存関係のある外部モジュールはありません。
     ...:     print(e)
     ...:
  '{'name': 'Little Joe', 'age': 5}' is not a document, must be a dict
- 
+
  In [3]:
 ```
 
@@ -246,9 +246,9 @@ cerberus には依存関係のある外部モジュールはありません。
     ...: c = v(document)
     ...: assert c == True
     ...:
- 
+
  In [3]:
- 
+
 ```
 
 
@@ -273,9 +273,9 @@ cerberus には依存関係のある外部モジュールはありません。
     ...: assert c2[0] == False
     ...: assert c2[1] == {'country': ['unknown field']}
     ...:
- 
+
  In [3]:
- 
+
 ```
 
 
@@ -304,7 +304,7 @@ cerberus には依存関係のある外部モジュールはありません。
     ...: c2 = (v.validate(document), v.errors)
     ...: assert c2[0] == True
     ...:
- 
+
  In [3]:
 ```
 
@@ -331,7 +331,7 @@ cerberus には依存関係のある外部モジュールはありません。
     ...: assert c2[0] == False
     ...: assert c2[1] == {'an_unknown_field': ['must be of string type']}
     ...:
- 
+
  In [3]:
 ```
 
@@ -359,9 +359,9 @@ cerberus には依存関係のある外部モジュールはありません。
     ...: assert c2[0] == False
     ...: assert c2[1] == {'country': ['unknown field']}
     ...:
- 
+
  In [3]:
- 
+
 ```
 
  `allow_unknown` をルールとして設定することで、スキーマルールと照合される入れ子のマッピングのバリデータを設定することもできます。
@@ -397,7 +397,7 @@ cerberus には依存関係のある外部モジュールはありません。
     ...: assert c2[0] == False
     ...: assert c2[1] == {'an_unknown_field': ['unknown field']}
     ...:
- 
+
  In [3]:
 ```
 
@@ -429,7 +429,7 @@ cerberus には依存関係のある外部モジュールはありません。
     ...: assert c2[0] == False
     ...: assert c2[1] == {'age': ['required field']}
     ...:
- 
+
  In [3]:
 ```
 
@@ -462,8 +462,8 @@ cerberus には依存関係のある外部モジュールはありません。
     ...: c2 = (v.validate(document, schema), v.errors)
     ...: assert c2[0] == True
     ...:
- 
- In [3]: 
+
+ In [3]:
 ```
 
 
@@ -483,7 +483,7 @@ cerberus には依存関係のある外部モジュールはありません。
     ...: assert c == True
     ...: assert v.document == document
     ...:
- 
+
  In [3]:
 ```
 
@@ -516,7 +516,7 @@ cerberus には依存関係のある外部モジュールはありません。
     ...: print(valid_docs)
     ...:
  [{'name': 'Anthony', 'age': 29}, {'name': 'Chloe', 'age': 28}]
- 
+
  In [3]:
 ```
 
@@ -538,7 +538,7 @@ cerberus には依存関係のある外部モジュールはありません。
     ...: assert normalized_document == {'model': 'consumerism', 'amount': 1}
     ...: assert type(normalized_document['amount']) == int
     ...:
- 
+
  In [3]:
 ```
 
@@ -582,7 +582,7 @@ cerberus には依存関係のある外部モジュールはありません。
     ...: print(f'Valid_docs: {valid_docs}')
     ...:
  Valid_docs: [{'name': 'Jack Bauer'}]
- 
+
  In [3]:
 ```
 
@@ -628,7 +628,7 @@ cerberus モジュールの名前空間には 2 つのデフォルトレジス�
     ...: c3 = (v.validate(document), v.errors)
     ...: assert c3[0] == True
     ...:
- 
+
  In [3]:
 ```
 
@@ -659,13 +659,13 @@ cerberus モジュールの名前空間には 2 つのデフォルトレジス�
     ...:
     ...: # r
     ...:
- 
+
  In [3]: r
  Out[3]:
  {'type': ['dict', 'string'],
   'check_with': 'bulk_schema',
   'forbidden': ['rename', 'rename_handler']}
- 
+
  In [4]:
 ```
 
@@ -700,7 +700,7 @@ cerberus モジュールの名前空間には 2 つのデフォルトレジス�
     ...:
  1st: {'foo': [{'allowed': ['must be of container type']}]}
  2nd: {'foo': [{'allowed': ['must be of container type']}]}
- 
+
  In [3]:
 ```
 
@@ -729,7 +729,7 @@ cerberus のスキーマは、 `dict` 、 `list` 、 `str` などの純粋なPyt
     ...: assert c[0] == False
     ...: assert c[1] == {'age': ['min value is 10']}
     ...:
- 
+
  In [3]:
 ```
 
@@ -784,7 +784,7 @@ cerberus のスキーマは、 `dict` 、 `list` 、 `str` などの純粋なPyt
     ...: assert c6[0] == False
     ...: assert c6[1] == {'a_restricted_integer': ['unallowed value 2']}
     ...:
- 
+
  In [3]:
 ```
 
@@ -803,7 +803,7 @@ cerberus のスキーマは、 `dict` 、 `list` 、 `str` などの純粋なPyt
  def functionnname(field, value, error):
      if value is invalid:
          error(field, 'error message')
- 
+
 ```
 
 error 引数は、呼び出したバリデータの _error メソッドを指します。エラーを送信する方法については、 「Cerberusの拡張」を参照してください。
@@ -839,7 +839,7 @@ error 引数は、呼び出したバリデータの _error メソッドを指し
     ...: c2 = (v.validate({'amount': 9}), v.errors)
     ...: assert c2[0] == True
     ...:
- 
+
  In [3]:
 ```
 
@@ -850,7 +850,7 @@ error 引数は、呼び出したバリデータの _error メソッドを指し
 
 ```
  schema = {'field': {'check_with': (oddity, 'prime number')}}
- 
+
 ```
 
 ### contains
@@ -883,7 +883,7 @@ error 引数は、呼び出したバリデータの _error メソッドを指し
     ...: assert c4[0] == False
     ...: assert c4[1] == {'states': ["missing members {'respect'}"]}
     ...:
- 
+
  In [3]:
 ```
 
@@ -911,7 +911,7 @@ error 引数は、呼び出したバリデータの _error メソッドを指し
     ...: assert c2 == False
     ...: assert v.errors == {'field2': ["field 'field1' is required"]}
     ...:
- 
+
  In [3]:
 ```
 
@@ -938,7 +938,7 @@ error 引数は、呼び出したバリデータの _error メソッドを指し
     ...: assert c == False
     ...: assert v.errors == {'field3': ["field 'field1' is required"]}
     ...:
- 
+
  In [3]:
 ```
 
@@ -988,7 +988,7 @@ error 引数は、呼び出したバリデータの _error メソッドを指し
     ...:                 ["depends on these values: {'field1': 'one'}"]}
     ...:
     ...:
- 
+
  In [3]:
 ```
 
@@ -1019,7 +1019,7 @@ error 引数は、呼び出したバリデータの _error メソッドを指し
     ...: assert c[0] == False
     ...: assert c[1] == {'test_field': ["field 'a_dict.bar' is required"]}
     ...:
- 
+
  In [3]:
 ```
 
@@ -1049,7 +1049,7 @@ python
     ...: assert c[1] == {'a_dict':
     ...:                 [{'bar': ["field '^test_field' is required"]}]}
     ...:
- 
+
  In [3]:
 ```
 
@@ -1075,7 +1075,7 @@ python
     ...: assert c[0] == False
     ...: assert c[1] == {'name': ['empty values not allowed']}
     ...:
- 
+
  In [3]:
 ```
 
@@ -1111,7 +1111,7 @@ python
     ...: c4 = v.validate({}, schema)
     ...: assert c4 == True
     ...:
- 
+
  In [3]:
 ```
 
@@ -1155,7 +1155,7 @@ python
     ...: assert c4[1] == {'that_field': ['required field'],
     ...:                  'this_field': ['required field']}
     ...:
- 
+
  In [3]:
 ```
 
@@ -1180,8 +1180,8 @@ python
     ...: assert c[1] == {'this_field':
     ...:   ["'that_field', 'bazo_field' must not be present with 'this_field'"]}
     ...:
- 
- In [3]: 
+
+ In [3]:
 ```
 
 ### forbidden
@@ -1204,7 +1204,7 @@ python
     ...: c2 = (v.validate(document), v.errors)
     ...: assert c2[0] == True
     ...:
- 
+
  In [3]:
 ```
 
@@ -1233,7 +1233,7 @@ python
     ...:                  [{0: ['must be of string type'],
     ...:                    1: ['must be of integer type']}]}
     ...:
- 
+
  In [3]:
 ```
 
@@ -1261,7 +1261,7 @@ python
     ...: assert c2[1] == {'a_dict':
     ...:                  [{'KEY': ["value does not match regex '[a-z]+'"]}]}
     ...:
- 
+
  In [3]:
 ```
 
@@ -1272,7 +1272,7 @@ python
 ```
  {'id': {'type': 'string', 'regex': r'[A-M]\d{,6}',
          'meta': {'label': 'Inventory Nr.'}}}
- 
+
 ```
 
 割り当てられたデータの種類は問いません。
@@ -1298,7 +1298,7 @@ python
     ...: assert c2[0] == False
     ...: assert c2[1] == {'weight': ['max value is 10.9']}
     ...:
- 
+
  In [3]:
 ```
 
@@ -1322,7 +1322,7 @@ python
     ...: assert c2[0] == False
     ...: assert c2[1] == {'numbers': ['max length is 3']}
     ...:
- 
+
  In [3]:
 ```
 
@@ -1359,14 +1359,14 @@ python
     ...: assert c4[0] == False
     ...: assert c4[1] == {'an_integer': ['null value not allowed']}
     ...:
- 
+
  In [3]:
 ```
 
 ### *of-rules
 これらのルールでは、検証するための異なるセットを定義することができます。ロジックを表す `all` 、 `any` 、 `one` 、 `none` で始まるルール名です。これらのルールに従ってリスト内のセットに対して検証された場合に有効となります。
 
-of-rules 
+of-rules
 
 | ルール | 説明 |
 |:--|:--|
@@ -1412,7 +1412,7 @@ of-rules
     ...:                  {'anyof definition 0': ['max value is 10'],
     ...:                   'anyof definition 1': ['min value is 100']}]}
     ...:
- 
+
  In [3]:
 ```
 
@@ -1441,7 +1441,7 @@ of-rules
     ...: assert c == False
     ...: assert v.errors == {'prop1': ['min value is 100']}
     ...:
- 
+
  In [3]:
 ```
 
@@ -1502,7 +1502,7 @@ of-ruleをアンダースコアで連結したり、別のルールをルール�
                 'phone': '001022'}},
   {'employee': {'department': 'CTU', 'name': 'Anthony Tony', 'phone': '001023'}},
   {'employee': {'department': 'Heart', 'name': 'Nacy Wilson', 'phone': None}}]
- 
+
  In [3]:
 ```
 
@@ -1543,7 +1543,7 @@ of-ruleをアンダースコアで連結したり、別のルールをルール�
     ...: ["value does not match regex \
     ...: '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$'"]}
     ...:
- 
+
  In [3]:
 ```
 
@@ -1575,7 +1575,7 @@ of-ruleをアンダースコアで連結したり、別のルールをルール�
     ...: c2 = v.validate(document, update=True)
     ...: assert c2 == True
     ...:
- 
+
  In [3]:
 ```
 
@@ -1609,7 +1609,7 @@ schemaルールが定義されているフィールドの値としてマッピ�
     ...: c = v.validate(document)
     ...: assert c == True
     ...:
- 
+
  In [3]:
 ```
 
@@ -1632,7 +1632,7 @@ schema-validationが値として不規則なサイズのシーケンスに遭遇
     ...: c = v.validate(document)
     ...: assert c == True
     ...:
- 
+
   In [3]:
 ```
 
@@ -1656,7 +1656,7 @@ schema-validationが値として不規則なサイズのシーケンスに遭遇
     ...: c = v.validate(document)
     ...: assert c == True
     ...:
- 
+
  In [3]:
 ```
 
@@ -1681,7 +1681,7 @@ Cerberus のタイプはValidatorインスタンスの　types プロパティ�
   'number',
   'set',
   'string')
- 
+
 ```
 
  type
@@ -1733,7 +1733,7 @@ python
     ...: assert c[0] == False
     ...: assert c[1] == {'quotes': [{0: ['must be of string type']}]}
     ...:
- 
+
  In [3]:
 ```
 
@@ -1767,7 +1767,7 @@ python
     ...: assert c[0] == False
     ...: assert c[1] == {'numbers': [{'an integer': ['min value is 10']}]}
     ...:
- 
+
  In [3]:
 ```
 
@@ -1800,7 +1800,7 @@ python
     ...: assert c != document
     ...: assert c == {'bar': 0}
     ...:
- 
+
  In [3]:
 ```
 
@@ -1836,7 +1836,7 @@ callableがフィールドや任意のフィールドの名前を変更できる
     ...: assert c2 != document
     ...: assert c2 == {'01': 'foo'}
     ...:
- 
+
  In [3]:
 ```
 
@@ -1858,7 +1858,7 @@ callableがフィールドや任意のフィールドの名前を変更できる
     ...: c = v.normalized({'foo': 'bar'})
     ...: assert c == {'foo': 'bar'}
     ...:
- 
+
  In [3]:
 ```
 
@@ -1883,7 +1883,7 @@ callableがフィールドや任意のフィールドの名前を変更できる
     ...: c3 = v.normalized({'amount': 1, 'kind': 'other'})
     ...: assert c3 == {'amount': 1, 'kind': 'other'}
     ...:
- 
+
  In [3]:
 ```
 
@@ -1911,7 +1911,7 @@ callableがフィールドや任意のフィールドの名前を変更できる
     ...: assert v.errors == {'a': ["default value for 'a' cannot be set: Circular
     ...:  dependencies of default setters."]}
     ...:
- 
+
   In [3]:
 ```
 
@@ -1942,9 +1942,9 @@ Coercion(強制)は、ドキュメントが検証される前に、 callable（�
     ...: assert c == True
     ...: assert v.document == {'flag': True}
     ...:
- 
+
  In [3]:
- 
+
 ```
 
 
@@ -2006,7 +2006,7 @@ Coercion(強制)は、ドキュメントが検証される前に、 callable（�
     ...: assert error.constraint == 'integer'
     ...: assert error.value == 'two'
     ...:
- 
+
  In [3]:
 ```
 
@@ -2094,11 +2094,11 @@ Coercion(強制)は、ドキュメントが検証される前に、 callable（�
 
 ```
  from cerberus import Validator
- 
+
  class MyValidator(Validator):
      def _validate_is_odd(self, constraint, field, value):
          """ Test the oddity of a value.
- 
+
          The rule's arguments are validated against this schema:
          {'type': 'boolean'}
          """
@@ -2133,7 +2133,7 @@ Cerberus Validator クラスをサブクラス化し、カスタム _validate_<r
     ...: c = v.validate({'amount': 9})
     ...: assert c == True
     ...:
-  
+
  In [3]:
 ```
 
@@ -2147,11 +2147,11 @@ types_mapping で指定した型の名前に TypeDefinition を割り当てる�
 
 ```
  from decimal import Decimal
- 
+
  decimal_type = cerberus.TypeDefinition('decimal', (Decimal,), ())
- 
+
  Validator.types_mapping['decimal'] = decimal_type
- 
+
 ```
 
 > 注意
@@ -2163,13 +2163,13 @@ Validatorのサブクラスに定義することもできます。
 
 ```
  from decimal import Decimal
- 
+
  decimal_type = cerberus.TypeDefinition('decimal', (Decimal,), ())
- 
+
  class MyValidator(Validator):
      types_mapping = Validator.types_mapping.copy()
      types_mapping['decimal'] = decimal_type
-     
+
 ```
 
 ### check_withルールで参照可能なメソッド
@@ -2185,7 +2185,7 @@ Validatorのサブクラスに定義することもできます。
      def _check_with_oddity(self, field, value):
          if not value & 1:
              self._error(field, "Must be an odd number")
- 
+
 ```
 
 使い方は以下のようになります。
@@ -2193,7 +2193,7 @@ Validatorのサブクラスに定義することもできます。
 
 ```
  schema = {'amount': {'type': 'integer', 'check_with': 'oddity'}}
- 
+
 ```
 
 ルールを使用する2つ目の方法は、スタンドアローンの関数を定義し、それを制約条件として渡すことです。この場合、Validatorを拡張する必要がないという利点があります。この実装についての詳細や例を見るには、ルールのドキュメントを参照してください。
@@ -2207,7 +2207,7 @@ Validatorのサブクラスに定義することもできます。
      def __init__(self, multiplier, *args, **kwargs):
          super(MyNormalizer, self).__init__(*args, **kwargs)
          self.multiplier = multiplier
- 
+
      def _normalize_coerce_multiply(self, value):
          return value * self.multiplier
 ```
@@ -2231,7 +2231,7 @@ Validatorのサブクラスに定義することもできます。
     ...: c = MyNormalizer(2).normalized(document, schema)
     ...: assert c == {'foo': 4}
     ...:
- 
+
  In [3]:
 ```
 
@@ -2241,11 +2241,11 @@ Validatorのサブクラスに定義することもできます。
 
 ```
  from datetime import datetime
- 
+
  class MyNormalizer(Validator):
      def _normalize_default_setter_utcnow(self, document):
          return datetime.utcnow()
- 
+
 ```
 
 
@@ -2266,7 +2266,7 @@ Validatorのサブクラスに定義することもできます。
     ...: c = MyNormalizer().normalized({}, schema)
     ...: assert c == {'creation_date': datetime(2020, 10, 2, 0, 0)}
     ...:
- 
+
  In [3]:
 ```
 
@@ -2283,21 +2283,21 @@ Validatorのサブクラスに定義することもできます。
          self.additional_context = kwargs.get('additional_context')
          # すべてのデータをベースクラスに渡す
          super(MyValidator, self).__init__(*args, **kwargs)
- 
+
      # また、ダイナミック・プロパティを定義することで、
      # この例では__init__()が不要になります。
      @property
      def additional_context(self):
          return self._config.get('additional_context', 'bar')
- 
+
      # 状態を扱う場合のオプションのプロパティセッター
      @additional_context.setter
      def additional_context(self, value):
          self._config["additional_context"] = value
- 
+
      def _check_with_foo(self, field, value):
          make_use_of(self.additional_context)
- 
+
 ```
 
 > 警告
@@ -2357,7 +2357,7 @@ Validator のエラー・スタッシュにエラーを提出するために受�
  cerberus_extend.py
 ```
  from cerberus.errors import BasicErrorHandler
- 
+
  class JapaneseErrorHandler(BasicErrorHandler):
      def __init__(self, tree = None):
          super(JapaneseErrorHandler, self).__init__(tree)
@@ -2399,7 +2399,7 @@ Validator のエラー・スタッシュにエラーを提出するために受�
              0x93: "定義されていない検証です",
              0x94: "1つまたは複数の定義が検証されません"
          }
-         
+
 ```
 
 利用するときは `Validator()` の　 `error_handler` 引数にこのクラスを与えます。
@@ -2439,7 +2439,7 @@ Validator のエラー・スタッシュにエラーを提出するために受�
     ...:                  [{0: ['string型でなければなりません'],
     ...:                    1: ['integer型でなければなりません']}]}
     ...:
- 
+
  In [3]:
 ```
 
@@ -2449,7 +2449,7 @@ Validator のエラー・スタッシュにエラーを提出するために受�
 ## 参考
 - [Cerberus ドキュメント ](https://docs.python-cerberus.org/en/stable/index.html)
 - [Cerberus ソースコード ](https://github.com/pyeve/cerberus)
-- [Wikipadia Cerberus ](https://ja.wikipedia.org/wiki/ケルベロス) 
+- [Wikipadia Cerberus ](https://ja.wikipedia.org/wiki/ケルベロス)
 
 #validation
 
