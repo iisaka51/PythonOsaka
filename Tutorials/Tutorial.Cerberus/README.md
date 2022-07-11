@@ -1,7 +1,6 @@
 データ検証ライブラリCerberusを使ってみよう
 =================
-![]([https://gyazo.com/a55cb42dfbe02a0204c2ac8a357155cb.png)
-![](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Cerberus/images/cerberus_logo.png)
+![](https://github.com/iisaka51/PythonOsaka/raw/main/Tutorials/Tutorial.Cerberus/images/cerberus_logo.png)
 ## Cerberus について
 Cerberusは、Pythonで実装されたの軽量で拡張性のあるデータ検証ライブラリです。Cerberusは、パワフルでありながらシンプルで軽量なデータ検証機能を提供しています。また、カスタム検証を可能にする拡張性の高い設計になっています。
 
