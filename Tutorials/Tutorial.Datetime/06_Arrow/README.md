@@ -523,7 +523,8 @@ In [3]:
 
 ## 日付と時刻のヒューマナイズ
 ソーシャルサイトでは、「1時間前」や「5分前」といった用語をよく見かけますが、これは投稿がいつ作成または修正されたかについて、人間に迅速な情報を提供するものです。Arrowには、このような用語を作成するためのヒューマナイズメソッドがあります。
-残念ならが日本語には対応できていません。
+
+`locale='ja'` でロケールを指示するとことができます。
 
 
 
@@ -536,12 +537,20 @@ In [2]: # %load c16_humanized_date_time.py
    ...: d1 = now.shift(minutes=-15).humanize()
    ...: print(d1)
    ...:
+   ...: d1 = now.shift(minutes=-15).humanize(locale='ja')
+   ...: print(d1)
+   ...:
    ...: d2 = now.shift(hours=5).humanize()
+   ...: print(d2)
+   ...:
+   ...: d2 = now.shift(hours=5).humanize(locale='ja')
    ...: print(d2)
    ...:
    ...:
 15 minutes ago
+15分前
 in 5 hours
+5時間後
 
 In [3]:
 ```
