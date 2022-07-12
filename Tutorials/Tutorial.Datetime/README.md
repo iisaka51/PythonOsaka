@@ -7,6 +7,14 @@ Pythonチュートリアル：日時処理
 
 python で日時処理を行うためのライブラリには、まず 標準ライブラリの datetime があります。
 これは、基本中の基本なのですが、使用するにとすぐに気づく煩雑さが問題となります。
+
+ - time、datetime、dateutil、calendar、pytzなど、外部モジュールが多すぎる
+ - datetime、date、time、timedelta、tzinfoなど、多くのデータ型から選択する必要が
+ある
+ - 異なるタイムゾーンを扱う経験が不足しているユーザには難しい
+ - タイムスタンプとタイムゾーン変換の方法が非効率的
+ - ヒューマナイゼーション(例：日付を人間が読める形式に変換)やISO 8601のパースな>どの機能が劣る。
+
 こうしたことから、いろいろなライブラリが公開されています。
 
 - [Dateutil ](https://dateutil.readthedocs.io/en/stable/index.html)：datetimeモジュールの拡張機能を提供します。
@@ -20,18 +28,22 @@ python で日時処理を行うためのライブラリには、まず 標準ラ
 
 これらのライブラリは、日付や時刻の操作を簡単にするという点では共通していますが、それぞれ異なる機能を持っています。時間の操作が得意なものもあれば、解析が得意なものもあります。また、プロジェクトによっては軽量であることやパフォーマンスを重視することもあるでしょう。どれが自分のプロジェクトのニーズに合っているかを判断するのは難しいかもしれません。Mayaの開発者であるKenneth Reitz氏は、「これらのプロジェクトはすべて、お互いに補完し合う仲間です」と語っています。
 
+それとともに、標準ライブラリの datetime は、積極的に他にライブラリに置き換えを
+検討する必要があるということも覚えておくとよいでしょう。
+
 
 ## Python 標準ライブラリ
-- [DateTimeで日時処理をしてみよう](01_Datetime/README.md)
+- [DateTimeで日時処理をしてみよう](01_Datetime/)
 
 ## 日時処理専用の拡張ライブラリ
-- [dateutilを使って日時処理をしてみよう](02_Dateutil/README.md)
-- [pendulumを使って日時処理をしてみよう](03_Pendulum/README.md)
-- [deloreanを使って日時処理をしてみよう](04_Delorean/README.md)
-- [zuluを使って日時処理をしてみよう](05_Zulu/README.md)
+- [dateutilを使って日時処理をしてみよう](02_Dateutil/)
+- [pendulumを使って日時処理をしてみよう](03_Pendulum/)
+- [deloreanを使って日時処理をしてみよう](04_Delorean/)
+- [zuluを使って日時処理をしてみよう](05_Zulu/)
+- [Arrowを使って日時処理をしてみよう](06_Arrow/)
 
 ## 日時処理も行える拡張ライブラリ
-- [pandasでの日時処理](06_Pandas_Datetime/README.md)
+- [pandasでの日時処理](07_Pandas_Datetime/)
 
 - [演習1：いろいろなライブラリで日時処理をしてみよう](Exercise_01/README.md)
 
