@@ -14,7 +14,6 @@ Arrowを使って日時処理をしてみよう
  - ISO 8601標準の日付と時刻の書式を柔軟にサポート
  - pytz、ZoneInfo、dateutilオブジェクトをサポート
  - マイクロ秒から年までの時間枠に対して、下限(floor)、上限(ceiling)、スパン(span)、範囲(range)を生成することが可能
-
  - ユーザー独自のArrow由来のデータ型に拡張することができます。
  - PEP 484スタイルの型ヒントをサポート
 
@@ -81,7 +80,7 @@ Out[10]: 11
 
 ```
 
-属性値として次のものがあります。
+属性値には次のものがあります。
 
  - x.year
  - x.month
@@ -145,7 +144,7 @@ In [3]:
 
 
 ## エポックタイム
-エポックタイム(Epoch Time) はUnix時刻とも呼ばれ、時刻の値をUTC時刻での1970年1月1日0時0分0秒からの秒単位で返します。
+**エポックタイム(Epoch Time)** はUnix時刻とも呼ばれ、時刻の値をUTC時刻での1970年1月1日0時0分0秒からの秒単位で返します。
 
 ```
 In [2]: # %load c04_epoch_time.py
@@ -168,6 +167,7 @@ In [3]:
 ```
 
 エポックタイムは `.format()`メソッドを使って得ることもできます。
+`.format()`メソッドは書式に`X`が与えられるとエポックタイムを返してくれます。
 
 
 ```
@@ -187,7 +187,8 @@ In [2]: # %load c05_epoch_time_by_format.py
 In [3]:
 ```
 
-`.format()`メソッドは書式に`X`が与えられるとエポックタイムを返してくれます。
+## format()
+`format()`メソッドにフォーマットトークンを与えることで日時文字列をパースしてくれます。
 
 
 ```
@@ -216,194 +217,16 @@ Date and time and zone: 2022-07-11 13:09:15 +09:00
 In [3]:
 ```
 
-タイムゾーン
 
-
-```
-In [2]: # %load c07_timezone.py
-   ...: import arrow
-   ...:
-   ...: utc = arrow.utcnow()
-   ...:
-   ...: jst = utc.to('Asia/Tokyo')
-   ...: tokyo = utc.to('Asia/Tokyo').format('HH:mm:ss')
-   ...: newyork = utc.to('America/New_York').format('HH:mm:ss')
-   ...: london = (utc.to('Europe/London').format('HH:mm:ss'))
-   ...:
-   ...: print(jst)
-   ...: print(tokyo)
-   ...: print(newyork)
-   ...: print(london)
-   ...:
-2022-07-11T13:20:21.337932+09:00
-13:20:21
-00:20:21
-05:20:21
-
-In [3]:
-```
-
-
-## 曜日の取得
-
-```
-In [2]: # %load c08_weekday.py
-   ...: import arrow
-   ...:
-   ...: d1 = arrow.get('1962-01-13')
-   ...:
-   ...: weekday_no = d1.weekday()
-   ...: weekday = d1.format('dddd')
-   ...:
-   ...: print(weekday_no)
-   ...: print(weekday)
-   ...:
-5
-Saturday
-
-In [3]: !cal 1 1962
-    January 1962
-Su Mo Tu We Th Fr Sa
-    1  2  3  4  5  6
- 7  8  9 10 11 12 13
-14 15 16 17 18 19 20
-21 22 23 24 25 26 27
-28 29 30 31
-
-
-In [4]:
-```
-
-
-
-## 時刻のシフト
-
-
-```
-In [2]: # %load c09_shift_time.py
-   ...: import arrow
-   ...:
-   ...: now = arrow.now()
-   ...: later_5h = now.shift(hours=5).time()
-   ...: later_5d = now.shift(days=5).date()
-   ...: before_3y = now.shift(years=-3).date()
-   ...:
-   ...: print(later_5h)
-   ...: print(later_5d)
-   ...: print(before_3y)
-   ...:
-18:27:45.891042
-2022-07-16
-2019-07-11
-
-In [3]:
-```
-
-## 夏時間（サマータイム
-日本では運用がないためなじみが薄いですが、サマータイム（DST）とは、夏の間、時計を進めて夕方の日照時間を長くすることです。春先には1時間進め、秋には標準時まで戻します。
-
-
-```
-In [2]: # %load c10_daylightsaving.py
-   ...: import arrow
-   ...:
-   ...: now = arrow.now()
-   ...:
-   ...: date_time = now.format("YYYY-MM-DD HH:mm:ss ZZ")
-   ...: day_light_saving_Tokyo = now.dst()
-   ...: day_light_saving_NY = now.to('America/New_York').dst()
-   ...:
-   ...: print(date_time)
-   ...: print(day_light_saving_Tokyo)
-   ...: print(day_light_saving_NY)
-   ...:
-2022-07-11 13:34:51 +09:00
-0:00:00
-1:00:00
-
-In [3]:
-```
-
-## 日付と時刻のヒューマナイズ
-ソーシャルサイトでは、「1時間前」や「5分前」といった用語をよく見かけますが、これは投稿がいつ作成または修正されたかについて、人間に迅速な情報を提供するものです。Arrowには、このような用語を作成するためのヒューマナイズメソッドがあります。
-残念ならが日本語には対応できていません。
-
-
-
-```
-In [2]: # %load c11_humanized_date_time.py
-   ...: import arrow
-   ...:
-   ...: now = arrow.now()
-   ...:
-   ...: d1 = now.shift(minutes=-15).humanize()
-   ...: print(d1)
-   ...:
-   ...: d2 = now.shift(hours=5).humanize()
-   ...: print(d2)
-   ...:
-   ...:
-15 minutes ago
-in 5 hours
-
-In [3]:
-```
-
-## Arrowによる変換
-Arrowでは、文字列から日付と時刻をパースするのは簡単で、`get()`メソッドを使い、有効な日時文字列を与えるだけです。また、Arrowでは、独自のdatetimeクラスの実装と組み込みのdatetimeオブジェクトの間で簡単に変換することができます。
-
-Arrowで文字列をDatetimeに変換する
-文字列がすでに ISO 8601 形式 (YYYY-MM-DDTHH:MM:SS.mmmmmm) でフォーマットされている場合は、 `get()`メソッドに直接渡すことができます。
-
-```
-In [2]: # %load c12_get.py
-   ...: from datetime import datetime
-   ...: import arrow
-   ...:
-   ...: d1 = arrow.get('2020-05-24 08:20:30')
-   ...: d2 = arrow.get('2020/05/24 08:20:30')
-   ...: d3 = arrow.get(1590308430)
-   ...: d4 = arrow.get(datetime(2022, 5, 24, 8, 20, 30))
-   ...:
-   ...: print(d1)
-   ...: print(d2)
-   ...: print(d3)
-   ...: print(d4)
-   ...:
-2020-05-24T08:20:30+00:00
-2020-05-24T08:20:30+00:00
-2020-05-24T08:20:30+00:00
-2022-05-24T08:20:30+00:00
-
-In [3]:
-```
-
-しかし、実際にはISOの仕様に従った書式の文字列が使われていることは少ないでしょう。
-
-幸いに、正しいArrowフォーマットトークンを使用することで、規則に従わない文字列を解析することができます。これらのトークンはあらかじめ定義されており、文字列を正しくパースするために必要な情報をArrowに与えてくれます。
-
-
-
-```
-In [2]: # %load c13_get_with_format.py
-   ...: import arrow
-   ...:
-   ...: datetime = arrow.get('May 24 2020 08:20:30', 'MMMM DD YYYY HH:mm:ss')
-   ...: print(datetime)
-   ...:
-2020-05-24T08:20:30+00:00
-
-In [3]:
-```
 arrow で使用できるフォーマットトークンには次のものがあります。
 
 | トークン | 意味 | 例 |
 |:--|:--|:--|
 | YYYY | 年(4桁) | 2020 |
-| YY | 年(2桁) | 20 |
-| MMMM | 月名 | January |
-| MMM | 月名(短縮形) | Jan |
-| MM | 月名の数値表記(01-12) | 01 |
+| YY | 年(2桁) | 20, 21 |
+| MMMM | 月名 | January, February |
+| MMM | 月名(短縮形) | Jan, Feb |
+| MM | 月名の数値表記(01-12) | 01, 02 |
 | M | 月名の数値表記(1-12) | 1 |
 | DDDD | ゼロ埋めした10進数で表記した年中の日にち(001-366) | 001 |
 | DDD | 10進数で表記した年中の日にち(1-366) | 1 |
@@ -423,13 +246,11 @@ arrow で使用できるフォーマットトークンには次のものがあ�
 | m | 分(0-59) | 0 |
 | ss | ゼロ埋めした秒(00-59) | 0 |
 | s | 秒(1-59) | 0 |
-| ss | パディングされた秒(01-59) | 02 |
 | S | 10分の1秒単位の分数秒 (0,1,..9) | 0 |
 | a | AM/PM | AM |
 | Z | タイムゾーン(時差の数値表記） | -0900 |
 | ZZ | タイムゾーン(時差の時刻表記) | -09:00 |
 | ZZZ | タイムゾーン(地域表記） | Asia/Tokyo, Europe/London, GMT |
-| z | タイムゾーン(文字列） | Asia/Tokyo |
 | X | タイムスタンプの秒表示 | 1234567890.123 |
 | x | タイムスタンプのマイクロ秒 | 1234567890123 |
 
@@ -438,20 +259,20 @@ arrow で使用できるフォーマットトークンには次のものがあ�
 arrow にはよく使用されるフォーマットがあらかじめ定義されています。
 
 ```
-    FORMAT_ATOM = 'YYYY-MM-DD HH:mm:ssZZ'
-    FORMAT_COOKIE = 'dddd, DD-MMM-YYYY HH:mm:ss ZZZ'
-    FORMAT_RFC1036 = 'ddd, DD MMM YY HH:mm:ss Z'
-    FORMAT_RFC1123 = 'ddd, DD MMM YYYY HH:mm:ss Z'
-    FORMAT_RFC2822 = 'ddd, DD MMM YYYY HH:mm:ss Z'
-    FORMAT_RFC3339 = 'YYYY-MM-DD HH:mm:ssZZ'
-    FORMAT_RFC822 = 'ddd, DD MMM YY HH:mm:ss Z'
-    FORMAT_RFC850 = 'dddd, DD-MMM-YY HH:mm:ss ZZZ'
-    FORMAT_RSS = 'ddd, DD MMM YYYY HH:mm:ss Z'
-    FORMAT_W3C = 'YYYY-MM-DD HH:mm:ssZZ'
+FORMAT_ATOM = 'YYYY-MM-DD HH:mm:ssZZ'
+FORMAT_COOKIE = 'dddd, DD-MMM-YYYY HH:mm:ss ZZZ'
+FORMAT_RFC1036 = 'ddd, DD MMM YY HH:mm:ss Z'
+FORMAT_RFC1123 = 'ddd, DD MMM YYYY HH:mm:ss Z'
+FORMAT_RFC2822 = 'ddd, DD MMM YYYY HH:mm:ss Z'
+FORMAT_RFC3339 = 'YYYY-MM-DD HH:mm:ssZZ'
+FORMAT_RFC822 = 'ddd, DD MMM YY HH:mm:ss Z'
+FORMAT_RFC850 = 'dddd, DD-MMM-YY HH:mm:ss ZZZ'
+FORMAT_RSS = 'ddd, DD MMM YYYY HH:mm:ss Z'
+FORMAT_W3C = 'YYYY-MM-DD HH:mm:ssZZ'
 ```
 
 ```
-In [2]: # %load c14_builtin_formats.py
+In [2]: # %load c07_builtin_formats.py
    ...: import arrow
    ...:
    ...: builtin_formats = {
@@ -491,7 +312,7 @@ In [3]:
 フォーマットトークンは角括弧(`[...]`) でエスケープすることができます。
 
 ```
-In [2]: # %load c15_escape_format_token.py
+In [2]: # %load c08_escape_format_token.py
    ...: import arrow
    ...:
    ...: fmt = "YYYY-MM-DD h[時] m[分]"
@@ -514,7 +335,7 @@ In [3]:
 これは、ログなどのようにトークン間の空白の数が事前にわからない場合に便利です。
 
 ```
-In [2]: # %load c16_regular_expressions.py
+In [2]: # %load c09_regular_expressions.py
    ...: import arrow
    ...:
    ...: format = r"ddd[\s+]MMM[\s+]DD[\s+]HH:mm:ss[\s+]YYYY"
@@ -543,7 +364,7 @@ In [3]:
 ```
 
 ```
-In [2]: # %load c17_punctuation.py
+In [2]: # %load c10_punctuation.py
    ...: import arrow
    ...:
    ...: dt1 = arrow.get("Rainy day: 2022-07-12T06:00:00.",
@@ -570,11 +391,11 @@ In [3]:
 ```
 
 ## 冗長な空白文字
-`arrow.get()` に `normalize_whitespace` フラグを渡すことで、冗長な空白文字（スペース、タブ、改行）を自動的に正規化して処理してくれます。
+`arrow.get()` に `normalize_whitespace=True` を与えると、冗長な空白文字（スペース、タブ、改行）を自動的に正規化して処理してくれます。
 
 
 ```
-In [2]: # %load c18_redundant_whitespace.py
+In [2]: # %load c11_redundant_whitespace.py
    ...: import arrow
    ...:
    ...: dt1 = arrow.get('\t \n  2022-02-02T22:22:22.222222 \t \n',
@@ -592,8 +413,190 @@ In [2]: # %load c18_redundant_whitespace.py
 In [3]:
 ```
 
+## タイムゾーン
+
+
+```
+In [2]: # %load c12_timezone.py
+   ...: import arrow
+   ...:
+   ...: utc = arrow.utcnow()
+   ...:
+   ...: jst = utc.to('Asia/Tokyo')
+   ...: tokyo = utc.to('Asia/Tokyo').format('HH:mm:ss')
+   ...: newyork = utc.to('America/New_York').format('HH:mm:ss')
+   ...: london = (utc.to('Europe/London').format('HH:mm:ss'))
+   ...:
+   ...: print(jst)
+   ...: print(tokyo)
+   ...: print(newyork)
+   ...: print(london)
+   ...:
+2022-07-11T13:20:21.337932+09:00
+13:20:21
+00:20:21
+05:20:21
+
+In [3]:
+```
+
+
+## 曜日の取得
+
+```
+In [2]: # %load c13_weekday.py
+   ...: import arrow
+   ...:
+   ...: d1 = arrow.get('1962-01-13')
+   ...:
+   ...: weekday_no = d1.weekday()
+   ...: weekday = d1.format('dddd')
+   ...:
+   ...: print(weekday_no)
+   ...: print(weekday)
+   ...:
+5
+Saturday
+
+In [3]: !cal 1 1962
+    January 1962
+Su Mo Tu We Th Fr Sa
+    1  2  3  4  5  6
+ 7  8  9 10 11 12 13
+14 15 16 17 18 19 20
+21 22 23 24 25 26 27
+28 29 30 31
+
+
+In [4]:
+```
+
+
+
+## 時刻のシフト
+
+
+```
+In [2]: # %load c14_shift_time.py
+   ...: import arrow
+   ...:
+   ...: now = arrow.now()
+   ...: later_5h = now.shift(hours=5).time()
+   ...: later_5d = now.shift(days=5).date()
+   ...: before_3y = now.shift(years=-3).date()
+   ...:
+   ...: print(later_5h)
+   ...: print(later_5d)
+   ...: print(before_3y)
+   ...:
+18:27:45.891042
+2022-07-16
+2019-07-11
+
+In [3]:
+```
+
+## 夏時間（サマータイム)
+日本では運用がないためなじみが薄いですが、サマータイム（DST: Day Light Saving Time）とは、夏の間、時計を進めて夕方の日照時間を長くすることです。春先には1時間進め、秋には標準時まで戻します。
+
+
+```
+In [2]: # %load c15_daylightsaving.py
+   ...: import arrow
+   ...:
+   ...: now = arrow.now()
+   ...:
+   ...: date_time = now.format("YYYY-MM-DD HH:mm:ss ZZ")
+   ...: day_light_saving_Tokyo = now.dst()
+   ...: day_light_saving_NY = now.to('America/New_York').dst()
+   ...:
+   ...: print(date_time)
+   ...: print(day_light_saving_Tokyo)
+   ...: print(day_light_saving_NY)
+   ...:
+2022-07-11 13:34:51 +09:00
+0:00:00
+1:00:00
+
+In [3]:
+```
+
+## 日付と時刻のヒューマナイズ
+ソーシャルサイトでは、「1時間前」や「5分前」といった用語をよく見かけますが、これは投稿がいつ作成または修正されたかについて、人間に迅速な情報を提供するものです。Arrowには、このような用語を作成するためのヒューマナイズメソッドがあります。
+残念ならが日本語には対応できていません。
+
+
+
+```
+In [2]: # %load c16_humanized_date_time.py
+   ...: import arrow
+   ...:
+   ...: now = arrow.now()
+   ...:
+   ...: d1 = now.shift(minutes=-15).humanize()
+   ...: print(d1)
+   ...:
+   ...: d2 = now.shift(hours=5).humanize()
+   ...: print(d2)
+   ...:
+   ...:
+15 minutes ago
+in 5 hours
+
+In [3]:
+```
+
+## Arrowによる変換
+Arrowでは、文字列から日付と時刻をパースするのは簡単で、`get()`メソッドを使い、有効な日時文字列を与えるだけです。また、Arrowでは、独自のdatetimeクラスの実装と組み込みのdatetimeオブジェクトの間で簡単に変換することができます。
+
+Arrowで文字列をDatetimeに変換する
+文字列がすでに ISO 8601 形式 (YYYY-MM-DDTHH:MM:SS.mmmmmm) でフォーマットされている場合は、 `get()`メソッドに直接渡すことができます。
+
+```
+In [2]: # %load c17_get.py
+   ...: from datetime import datetime
+   ...: import arrow
+   ...:
+   ...: d1 = arrow.get('2020-05-24 08:20:30')
+   ...: d2 = arrow.get('2020/05/24 08:20:30')
+   ...: d3 = arrow.get(1590308430)
+   ...: d4 = arrow.get(datetime(2022, 5, 24, 8, 20, 30))
+   ...:
+   ...: print(d1)
+   ...: print(d2)
+   ...: print(d3)
+   ...: print(d4)
+   ...:
+2020-05-24T08:20:30+00:00
+2020-05-24T08:20:30+00:00
+2020-05-24T08:20:30+00:00
+2022-05-24T08:20:30+00:00
+
+In [3]:
+```
+
+しかし、実際にはISOの仕様に従った書式の文字列が使われていることは少ないでしょう。
+
+幸いに、正しいArrowフォーマットトークンを使用することで、規則に従わない文字列を解析することができます。これらのトークンはあらかじめ定義されており、文字列を正しくパースするために必要な情報をArrowに与えてくれます。
+
+
+
+```
+In [2]: # %load c18_get_with_format.py
+   ...: import arrow
+   ...:
+   ...: datetime = arrow.get('May 24 2020 08:20:30',
+   ...:                      'MMMM DD YYYY HH:mm:ss')
+   ...: print(datetime)
+   ...:
+2020-05-24T08:20:30+00:00
+
+In [3]:
+```
 
 ## replace()
+
+Arrow()オブジェクトを`replace()`メソッドで時刻情報を置換することができます。
 
 ```
 In [2]: # %load c19_replace.py
@@ -612,6 +615,8 @@ In [3]:
 ```
 
 ## range()
+
+与えた開始と終了の日時情報とインターバル間隔でループさせることができます。
 
 ```
 In [2]: # %load c20_range.py
@@ -661,8 +666,10 @@ In [2]: # %load c21_custom_class.py
 In [3]:
 ```
 
-アローを使うメリット
-Arrowを使用する利点は、公式ドキュメントにまとめられています。
+## まとめ
+
+Pythonで日付と時刻を扱うためにArrowライブラリを使用するメリットについていくつか説明しました。
+Arrowを使用する利点は、次のように公式ドキュメントにまとめられています。
 
 > 感性的で人にやさしいアプローチ。
 > 多くの一般的な作成シナリオをサポート。
@@ -679,8 +686,6 @@ Arrowは、datetimeライブラリでの問題が、
  - 便利なヒューマナイゼーション機能
  - 過去や未来へのシフトが簡単にできる
 
-## まとめ
-Pythonで日付と時刻を扱うためにArrowライブラリを使用するメリットについていくつか説明しました。
 特に日時文字列をパースする機能は強力でとても応用が効く便利なものであることがわかりました。
 
 
