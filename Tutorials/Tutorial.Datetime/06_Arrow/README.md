@@ -689,7 +689,3 @@ Pythonで日付と時刻を扱うためにArrowライブラリを使用するメ
    - [Github/Arrow](https://github.com/arrow-py/arrow)
    - [Arrow 公式ドキュメント](https://arrow.readthedocs.io/en/latest/)
  - [Moment.js](https://github.com/moment/moment)
-
-
-## インストール
-Arrow は pip を使って、次のようにインストールします。
