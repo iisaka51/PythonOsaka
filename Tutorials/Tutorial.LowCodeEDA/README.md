@@ -154,6 +154,51 @@ skimpy の使用方法は簡単です。`skim()` にデータフレームを与�
 
 ```
 
+また skimpy ではカラム名の変更なども簡単に行えます。
+
+```
+In [2]: # %load c02_skimpy_cleaning.py
+   ...: from skimpy import clean_columns
+   ...: import pandas as pd
+   ...:
+   ...: data = {
+   ...:     'FirstNom': ['Philip', 'Turanga'],
+   ...:     'lastName': ['Fry', 'Leela'],
+   ...:     'Tel Phone': ['555-234-5678', '(604) 111-2335'],
+   ...:  }
+   ...:
+   ...: df1 = pd.DataFrame(data)
+   ...: df2 = clean_columns(df1, case='camel', replace={'Nom': 'Name'})
+   ...:
+2 column names have been cleaned
+
+In [3]: df1
+Out[3]:
+  FirstNom lastName       Tel Phone
+0   Philip      Fry    555-234-5678
+1  Turanga    Leela  (604) 111-2335
+
+In [4]: df2
+Out[4]:
+  firstName lastName        telPhone
+0    Philip      Fry    555-234-5678
+1   Turanga    Leela  (604) 111-2335
+
+In [5]:
+```
+
+サポートしている変換オプションには次のものがあります。
+
+ - 'snake': 'column_name'
+ - 'kebab': 'column-name'
+ - 'camel': 'columnName'
+ - 'pascal': 'ColumnName'
+ - 'const': 'COLUMN_NAME'
+ - 'sentence': 'Column name'
+ - 'title': 'Column Name'
+ - 'lower': 'column name'
+ - 'upper': 'COLUMN NAME'
+
 
 # snapedautility
 snapedautility はデータセット全体を素早く分析し、視覚化された詳細なレポートを提供します。特徴量の迅速な分析、観測値からの外れ値の検出、その他のデータの特徴づけの作業を支援してくれます。

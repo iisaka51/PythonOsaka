@@ -15,7 +15,21 @@ python で日時処理を行うためのライブラリには、まず 標準ラ
  - タイムスタンプとタイムゾーン変換の方法が非効率的
  - ヒューマナイゼーション(例：日付を人間が読める形式に変換)やISO 8601のパースな>どの機能が劣る。
 
-こうしたことから、いろいろなライブラリが公開されています。
+datetime だけで処理できないことが多く、外部モジュールに依存することが多くなります。
+例えば、datetime 型からエポックタイム(Unix時間）に変換したいときは、次のようなコードになります。
+
+```
+import time
+import datetime
+
+date = datetime.date(2022,2,2)
+unixtime = time.mktime(date.timetuple())
+```
+
+これはコードの一貫性がなくなるためスマートとは言えず、また読みづらくなってしまいます。
+
+
+こうしたことから、日時処理を行うためのライブラリがいろいろ開発されています。
 
 - [Dateutil ](https://dateutil.readthedocs.io/en/stable/index.html)：datetimeモジュールの拡張機能を提供します。
 - [Pendulum ](https://pendulum.eustace.io/)：日時処理やタイムゾーン処理を簡単にするためのライブラリ
@@ -41,9 +55,13 @@ python で日時処理を行うためのライブラリには、まず 標準ラ
 - [deloreanを使って日時処理をしてみよう](04_Delorean/)
 - [zuluを使って日時処理をしてみよう](05_Zulu/)
 - [Arrowを使って日時処理をしてみよう](06_Arrow/)
+- [Mayaを使って日時処理をしてみよう](07_Maya/)
 
 ## 日時処理も行える拡張ライブラリ
-- [pandasでの日時処理](07_Pandas_Datetime/)
+- [pandasでの日時処理](08_Pandas_Datetime/)
+
+## テストで日時処理をうまう処理できるライブラリ
+- [Freezegunでの日時処理](09_Freezegun/)
 
 - [演習1：いろいろなライブラリで日時処理をしてみよう](Exercise_01/README.md)
 
