@@ -482,7 +482,7 @@ CAPTCHA突破サービスには次のようなものがあります。
   - [CaptchaTronix](http://www.captchatronix.com/)
   - [BestCaptchaSolver ](https://bestcaptchasolver.com/)
   - [AZCaptc ](https://azcaptcha.com/)
-  - [ImageTyperz]  http://www.imagetyperz.com/)
+  - [ImageTyperz](http://www.imagetyperz.com/)
   - [AntiCaptcha ](https://anti-captcha.com/)
 
 # ウェブサイトがブロックまたは禁止しているかどうかを調べる
