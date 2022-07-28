@@ -332,7 +332,7 @@ Sweetviz では次の3種類のレポートを作成することができ、そ�
   - `compare()` ー　2つの与えたデータフレームを比較したレポートを作成
   - `compare_intra()` ー　同じデータフレームの2つのサブセットを比較する（例：男性 vs 女性）
 
-- [Sweetvizで探査的データ分析をしてみよう](05_Sweetviz)
+- [Sweetvizで探査的データ分析をしてみよう](04_Sweetviz)
 
 
 # Lux
@@ -340,7 +340,7 @@ Sweetviz では次の3種類のレポートを作成することができ、そ�
 
 [Lux](https://pypi.org/project/lux/) は、データを可視化するためのインテリジェントPython ライブラリです。探索的データ解析の可視化処理を自動化する Jjupyterウィジェットを通して視覚的発見が容易になります。
 
-  - [Luxで探査的データ分析をしてみよう](07_lux)
+  - [Luxで探査的データ分析をしてみよう](05_lux)
 
 
 # DataPrep
@@ -354,7 +354,7 @@ DataPrepは、データを準備(prepare)するために2020年から開発が�
 DataPrepパッケージは、高速にデータ探索を行うことができるように設計されていて、PandasやDaskのDataFrameオブジェクトとうまく連携して動作します。データ探査ではHTMLオブジェクトを返すため、ブラウザやJupyterlab などで分析したり、情報を共有することができます。EDAでの計算処理をDaskで行っているため Pandas-Profileing と比較して5〜10倍高速で、メモリに乗り切らないような大規模データセットについても処理することができます。
 
 - [DAtaPrep での分析サンプル](https://docs.dataprep.ai/_downloads/1a61c6aebb3ecbe9dc9742bd6ca78ddb/titanic_dp.html)
-- [DataPrepで探査的データ分析をしてみよう](04_DataPrep)
+- [DataPrepで探査的データ分析をしてみよう](06_DataPrep)
 
 
 # Pandas_UI
