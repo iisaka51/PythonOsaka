@@ -64,7 +64,7 @@ Webサイトをどのように運営するかはサイト管理者の権限で�
   Allow: /js/
   Disallow: /nonprofits/account/
   Disallow: /fbx
- 
+
   # AdsBot
   User-agent: AdsBot-Google
   Disallow: /maps/api/js/
@@ -72,16 +72,16 @@ Webサイトをどのように運営するかはサイト管理者の権限で�
   Disallow: /maps/api/place/js/
   Disallow: /maps/api/staticmap
   Disallow: /maps/api/streetview
- 
+
   # Crawlers of certain social media sites are allowed to access page markup when google.com/imgres* links are shared. To learn more, please contact images-robots-allowlist@google.com.
   User-agent: Twitterbot
   Allow: /imgres
- 
+
   User-agent: facebookexternalhit
   Allow: /imgres
- 
+
   Sitemap: https://www.google.com/sitemap.xml
-  
+
 ```
 
  `robots.txt` が次のようになっていると、このサイトはスクレイピングされることを拒否していることを意味しています。
@@ -190,9 +190,9 @@ Webサイトをどのように運営するかはサイト管理者の権限で�
               'Host': 'httpbin.org',
               'User-Agent': 'python-requests/2.28.1',
               'X-Amzn-Trace-Id': 'Root=1-62de2fbf-3dfd0f200170ab5a0530e751'}}
- 
+
  In [3]:
- 
+
 ```
 
  `X-Amzn-Trace-Id:` は無視してください。これは、HTTPBinサービスが使用しているAmazon Load Balancer が生成しているものです。
@@ -206,7 +206,7 @@ Webサイトをどのように運営するかはサイト管理者の権限で�
  if ($http_user_agent ~* "java|curl|python") {
      return 403;
  }
- 
+
 ```
 
  nginxの設定　リダイレクト
@@ -224,10 +224,10 @@ Webサイトをどのように運営するかはサイト管理者の権限で�
 物のウェブブラウザは、多くのヘッダを設定しており、注意深いウェブサイトはそのどれかをチェックして、あなたのウェブスクレイパーをブロックすることができます。スクレイパーを本物のブラウザのように見せるには、ブラウザで  `https://httpbin.org/anything` をアクセスて表示されるヘッダ情報をコピーするようにします。これらの情報は、アクセスで使用したブラウザが使っているヘッダになります。
 次の値が設定されていると、リクエストが本物のブラウザから来たように見えるので、スクレイパーがブロックされることがほとんどなくなります。
 
-  -  `"Accept"` 
-  -  `"Accept-Encoding"` 
-  -  `"Accept-Language"` 
-  -  `"Upgrade-Insecure-Requests"` 
+  -  `"Accept"`
+  -  `"Accept-Encoding"`
+  -  `"Accept-Language"`
+  -  `"Upgrade-Insecure-Requests"`
 
 [scrapinghelper ](https://github.com/iisaka51/scrapinghelper) は、収集されたリアルなユーザエージェントを10000エントリ保持していて、これを利用しながらアクセスすることができるようになっています。また、ヘッダ情報も初期化時に自動的に設定してくれます。
 
@@ -250,16 +250,16 @@ Webサイトをどのように運営するかはサイト管理者の権限で�
                             'AppleWebKit/600.1.4 (KHTML, like Gecko) '
                             'Mobile/12B440',
               'X-Amzn-Trace-Id': 'Root=1-62de3626-07daf491262b96356486884d'}}
- 
+
  In [2]: scraper.get_random_user_agent()
  Out[2]: 'Mozilla/5.0 (CrKey armv7l 1.5.16041) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.0 Safari/537.36'
- 
+
  In [3]: scraper.get_random_user_agent()
  Out[3]: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/'
- 
+
  In [4]: scraper.get_random_user_agent()
  Out[4]: 'Mozilla/5.0 (CrKey armv7l 1.5.16041) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.0 Safari/537.36'
- 
+
  In [5]:
 ```
 
@@ -270,7 +270,7 @@ httpリクエストヘッダの `"Referer:"` は、どのサイトから来た�
  HTTPリクエストヘッダ（部分）
 ```
  "Referer": "https://www.google.com/"
- 
+
 ```
 
 [similarweb.com ](https://www.similarweb.com) のようなサービスを使うと、 任意のサイトへの最も一般的なリファラーを調べることもできます。多くの場合、これは Youtube などのソーシャルメディア・サイトになるかもしれません。
@@ -368,9 +368,9 @@ IPアドレスとヘッダをローテーションしながらアクセスする
                                'Gecko) SamsungBrowser/2.1 Chrome/34.0.1847.76 '
                                'Mobile Safari/537.36',
                  'X-Amzn-Trace-Id': 'Root=1-62df43ed-5ce0fab719bbfe0e3d8660da'}}
-    
+
     In [3]:
-    
+
 ```
 
 scrapinghelper を使うともっと簡単に記述することができます。
@@ -435,9 +435,9 @@ scrapinghelper を使うともっと簡単に記述することができます�
                             'like Gecko) Chrome/37.0.2062.117 Mobile '
                             'Safari/537.36 OPR/24.0.1565.82529',
               'X-Amzn-Trace-Id': 'Root=1-62df473a-7cc923f823ecc5e179614909'}}
- 
+
  In [3]:
- 
+
 ```
 
 scrapinghelper の  `request()` メソッドは  `requests.get()` のパラメタも受け取ることができますが、これとは別に `user_agent='random'` を与えると、自動的にランダムにユーザエージェントを置き換えてくれます。また、アクセスのときにデフォルトで2〜10秒間のランダムなスリープを入れながらアクセスをします。
@@ -477,12 +477,12 @@ CAPTCHA突破サービスには次のようなものがあります。
   - [2Captcha ](https://2captcha.com/)
   - [Anticaptcha ](https://anti-captcha.com/)
   - [EndCaptcha ](https://www.endcaptcha.com/)
-  - [BypassCaptch http://bypasscaptcha.com/]
+  - [BypassCaptch ](http://bypasscaptcha.com/)
   - [CaptchaSniper ](https://www.captchasniper.com/)
-  - [CaptchaTronix http://www.captchatronix.com/]
+  - [CaptchaTronix](http://www.captchatronix.com/)
   - [BestCaptchaSolver ](https://bestcaptchasolver.com/)
   - [AZCaptc ](https://azcaptcha.com/)
-  - [ImageTyperz  http://www.imagetyperz.com/]
+  - [ImageTyperz]  http://www.imagetyperz.com/)
   - [AntiCaptcha ](https://anti-captcha.com/)
 
 # ウェブサイトがブロックまたは禁止しているかどうかを調べる
