@@ -13,6 +13,7 @@
  - [Pythonチュートリアル：Peewee ORM を使ってみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.PeeWee)
  - [Pythonチュートリアル：タスクランナー](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Taskrunner)
  - [Pythonチュートリアル：Webスクレイピング](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.WebScraping)
+ - [Pythonチュートリアル：Webスクレイピングでのブロック回避](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.WebScrapingAvoidBlock)
  - [イベントスケジューラを使ってみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorialss/Tutorial.Eventtask)
  - [データ検証ライブラリCerberusを使ってみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.Cerberus/)
  - [GoogleSpreadsheetsでGoogleFinanceのデータを読み出してみよう](https://github.com/iisaka51/PythonOsaka/tree/main/Tutorials/Tutorial.GoogleFinance/)
