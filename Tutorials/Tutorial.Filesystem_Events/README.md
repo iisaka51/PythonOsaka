@@ -1,7 +1,7 @@
 Pythonチュートリアル：イベントによりタスクを実行しよう
 =================
 
-![](https://gyazo.com/d2e4c3c3354e5ee7ff62c27d83fed712.png)
+![](https://github.com/iisaka51/PythonOsaka/blob/main/data/images/Python_Logo.png)
 
 
 ## ファイルやディレクトリを監視してタスクを実行する
@@ -34,7 +34,7 @@ Linux 以外のプラットフォームでは利用できないことに注意�
 この資料を作成している時点で、pypi.org では次のパッケージが公開されています。
 
 - [pyinotify 0.9.6 ](https://pypi.org/project/pyinotify/)
-- [rs-pyinotify 0.9.9  ](https://pypi.org/project/rs-pyinotify/) 
+- [rs-pyinotify 0.9.9  ](https://pypi.org/project/rs-pyinotify/)
 
 rs-pyinotify は、docstrings が変わっているだけで機能は pyinotify と同じものです。
 
@@ -42,8 +42,8 @@ rs-pyinotify は、docstrings が変わっているだけで機能は pyinotify 
 ```
  import pyinotify
  import asyncio
- 
- 
+
+
  def handle_read_callback(notifier):
      """
      Just stop receiving IO read events after the first
@@ -51,8 +51,8 @@ rs-pyinotify は、docstrings が変わっているだけで機能は pyinotify 
      """
      print('handle_read callback')
      notifier.loop.stop()
- 
- 
+
+
  wm = pyinotify.WatchManager()
  loop = asyncio.get_event_loop()
  notifier = pyinotify.AsyncioNotifier(wm, loop,
@@ -69,7 +69,7 @@ pyinotigy より簡単に利用できます。
 
 ```
  from minotaur import Inotify
- 
+
  with Inotify() as n:
          n.add_watch('.', Mask.CREATE | Mask.DELETE | Mask.MOVE)
          for evt in n:
@@ -81,7 +81,7 @@ pyinotigy より簡単に利用できます。
 
 ```
  from minotaur import Inotify
- 
+
  with Inotify(blocking=False) as n:
          n.add_watch('.', Mask.CREATE | Mask.DELETE | Mask.MOVE)
          async for evt in n:
@@ -96,14 +96,14 @@ pyinotigy より簡単に利用できます。
  import time
  from watchdog.observers import Observer
  from watchdog.events import FileSystemEventHandler
- 
+
  class Watcher:
- 
+
      def __init__(self, directory=".", handler=FileSystemEventHandler()):
          self.observer = Observer()
          self.handler = handler
          self.directory = directory
- 
+
      def run(self):
          self.observer.schedule(
              self.handler, self.directory, recursive=True)
@@ -116,12 +116,12 @@ pyinotigy より簡単に利用できます。
              self.observer.stop()
          self.observer.join()
          print("\nWatcher Terminated\n")
-         
+
  class MyHandler(FileSystemEventHandler):
- 
+
      def on_any_event(self, event):
          print(event)   # Your code here
- 
+
  if __name__=="__main__":
      w = Watcher(".", MyHandler())
      w.run()
@@ -139,9 +139,9 @@ pygtail はもともと debien につくまれている [logcheck ](https://gith
 ```
  $ pygtail --help
  Usage: pygtail [options] logfile
- 
+
  Print log file lines that have not been read.
- 
+
  Options:
    -h, --help            show this help message and exit
    -o OFFSET_FILE, --offset-file=OFFSET_FILE
@@ -163,7 +163,7 @@ pygtail はもともと debien につくまれている [logcheck ](https://gith
                          to provide multiple patterns.
    --full_lines          Only log when line ends in a newline (\n)
    --version             Print version and exit.
-   
+
 ```
 
 pygtail ではファイルを監視するための  `Pygtail` クラスが提供されます。
@@ -171,7 +171,7 @@ pygtail ではファイルを監視するための  `Pygtail` クラスが提供
 
 ```
  from pygtail import Pygtail
- 
+
  for line in Pygtail("some.log"):
      sys.stdout.write(line)
 ```

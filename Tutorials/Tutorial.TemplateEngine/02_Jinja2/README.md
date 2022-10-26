@@ -1,6 +1,6 @@
 Jinja2を使ってみよう
 =================
-![](https://gyazo.com/9adfe5855f52e6efdc4957e0598417dc.png)
+![](images/jinja2_logo.png)
 
 ### Jinja2について
 Jinja2はオープンソースで開発されている、人気のあるPythonテンプレートエンジンです。 Django Templateにインスパイアされて開発されましたが、より多用途に適応させることができます。

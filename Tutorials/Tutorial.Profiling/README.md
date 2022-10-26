@@ -618,7 +618,7 @@ pstats モジュールは、このファイルからプロファイルの結果�
 
 ## Py-Spy
 [py-spy ](https://github.com/benfred/py-spy) は、すべての呼び出しを記録しようとするのではなく、プログラムの呼び出しスタックの状態を定期的にサンプリングすることで機能します。 運用中の実行されているコードでも安全に使用することができます。
-![](https://gyazo.com/418b7397af1b8a6994f73b98b3606699.png)
+![](images/py_spy_example.png)
 
 
  bash
@@ -1707,7 +1707,7 @@ Timeitと同様に、 `%time` においても、パーセント記号を２つ�
 大規模なプログラムがある場合、関数が互いにどのように呼び出されるかを確認したい場合があります。 [gprof2dot ](https://github.com/jrfonseca/gprof2dot) を使用すると、プロファイラーの出力からGraphvizのdotグラフを生成します。
 
 
-![](https://gyazo.com/9f20e497994ab69f671aae4f6a0f8a4a.png)
+![](gprof2dot_example.png)
 
 cProfile / profileを含む多くの有名なプロファイラーをサポートしています。
 
@@ -1738,19 +1738,19 @@ profファイルが置かれているディレクトリに移動し、コマン�
 
 デフォルトのブラウザに、.profファイルのデータを表示するインタラクティブなウィンドウが開きます。デフォルトでは、データはサンバーストプロット(sunburst plot:)で表示されます。
 
-![](https://gyazo.com/5d4803a90f27607f99d337bd7081e853.png)
+![](images/snakeviz_example1.png)
 
 コールスタックの深さを調整して、より深い関数を表示することができます。また、特定の関数をクリックすると、選択した関数を中心とした新しいプロットが生成されます。
 
 また、データをつらら状に表示(icicle plot:)することもできます。
 
 
-![](https://gyazo.com/631b7719c695cbc2a84a04b4c03e1a7c.png)
+![](images/snakeviz_example2.png)
 
 
 また、SnakeVizではコールスタックの中で最もコストのかかる関数を降順に並べて表示することもできます。
 
-![](https://gyazo.com/ac31d7e2e09d545aee5cde5444980d53.png)
+![](images/snakeviz_example3.png)
 
 
 
