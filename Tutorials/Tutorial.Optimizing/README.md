@@ -1,7 +1,7 @@
 Pythonチュートリアル：スクリプトの高速化
 =================
 
-![](https://gyazo.com/153a339305d78fc4fa4850753e4b1594.png)
+![](https://github.com/iisaka51/PythonOsaka/blob/main/data/images/Python_Logo.png)
 
 ### ベースのPythonを変更してみる
 Anaconda Python は Intel Math Kernel Library ([oneMKL ](https://www.xlsoft.com/jp/products/intel/perflib/mkl/index.html)) を使ってリンクされているため、特にIntel系のCPUでは最適化された性能を発揮することができます。
@@ -37,7 +37,7 @@ oneAPI がリリースされたときから、MKLライブラリもpip で簡単
 
  bash
 ```
- $ pip install mkl mkl-devel mkl-include 
+ $ pip install mkl mkl-devel mkl-include
 ```
 
 
@@ -52,7 +52,7 @@ pip がどのディレクトリにインストールしたのかを調べます�
  mkl-devel    2021.2.0
  mkl-include  2021.2.0
  tbb          2021.2.0
- 
+
  $ find $HOME/.local | egrep "/libmkl_rt.so|/mkl.h"
  /home/iisaka/.local/include/mkl.h
  /home/iisaka/.local/lib/libmkl_rt.so.1
@@ -63,7 +63,7 @@ mkl 2021.2 では共有ライブラリがうまく作成されていないため
 
  FIX-mkl.sh
 ```
- #!/bin/bash 
+ #!/bin/bash
  cd $HOME/.local/lib
  for F in *.so.[0-9]*
  do
@@ -197,11 +197,11 @@ blas_mkl_info や lapck_mkl_infp が定義されていればOKです。
 
  optimize_local_vs_global1.py
 ```
- import sys 
- import csv 
-   
- with open(sys.argv[1]) as f: 
-     for row in csv.reader(f): 
+ import sys
+ import csv
+
+ with open(sys.argv[1]) as f:
+     for row in csv.reader(f):
          data = ''.join(row)
 ```
 
@@ -211,28 +211,28 @@ Python であまり知られていないことのひとつに、グローバル�
 
 optimize_local_vs_global2.py
 ```
- import sys 
- import csv 
-   
- def main(filename): 
-     with open(filename) as f: 
-         for row in csv.reader(f): 
+ import sys
+ import csv
+
+ def main(filename):
+     with open(filename) as f:
+         for row in csv.reader(f):
              data = ''.join(row)
-   
- main(sys.argv[1]) 
+
+ main(sys.argv[1])
 ```
 
 
  bash
 ```
  $ time python optimize_local_vs_global1.py sample.csv
- 
+
  real    0m0.109s
  user    0m0.047s
  sys 0m0.030s
- 
+
  $ time python optimize_local_vs_global2.py sample.csv
- 
+
  real    0m0.054s
  user    0m0.036s
  sys 0m0.013s
@@ -246,13 +246,13 @@ optimize_local_vs_global2.py
  optimized_attr_reference1.py
 ```
  import math
- 
+
  def compute_roots(nums):
      result = []
      for n in nums:
          result.append(math.sqrt(n))
      return result
- 
+
  nums = range(1000000)
  for n in range(100):
      r = compute_roots(nums)
@@ -262,7 +262,7 @@ optimize_local_vs_global2.py
  optimized_attr_reference2.py
 ```
  from math import sqrt
- 
+
  def compute_roots(nums):
      result = []
      result_append = result.append
@@ -279,7 +279,7 @@ optimize_local_vs_global2.py
  optimize_attr_reference3.py
 ```
  import math
- 
+
  def compute_roots(nums):
      sqrt = math.sqrt
      result = []
@@ -292,41 +292,41 @@ optimize_local_vs_global2.py
  bash
 ```
  $ time python  optimize_attr_reference1.py
- 
+
  real    0m1.904s
  user    0m1.865s
  sys 0m0.023s
- 
+
  $ time python  optimize_attr_reference2.py
- 
+
  real    0m1.217s
  user    0m1.182s
  sys 0m0.019s
- 
+
  $ time python  optimize_attr_reference3.py
- 
+
  real    0m1.122s
  user    0m1.091s
  sys 0m0.021s
 ```
 
-ドット（ `.` )表記でアトリビュートを参照することは、クラス定義でも  `self.value` 
+ドット（ `.` )表記でアトリビュートを参照することは、クラス定義でも  `self.value`
 などのようにインスタンス変数へアクセスするときにも発生していします。
 メソッドの中でループして何度も参照するようなときは、ローカル変数にする方が速くなります。
 
 ```
- class SlowerClass: 
-     # ... 
-     def method(self): 
-         for x in range(1000): 
-             func(self.value) 
-             
- class FasterClass: 
-     # ... 
-     def method(self): 
-         value = self.value 
-         for x in range(1000): 
-             func(value) 
+ class SlowerClass:
+     # ...
+     def method(self):
+         for x in range(1000):
+             func(self.value)
+
+ class FasterClass:
+     # ...
+     def method(self):
+         value = self.value
+         for x in range(1000):
+             func(value)
 ```
 
 ### なるべくループをさせない
@@ -334,57 +334,57 @@ optimize_local_vs_global2.py
 例えば、次のコードは２つのリストから重複しないユニークな要素を取り出すものです。
  IPython
 ```
- In [2]: # %load optimize_using_set.py 
-    ...: a=[1,2,3,4,5,6,7,8,9] 
-    ...: b=[9,8,7,6,5,4,3,2,1] 
-    ...:  
-    ...: def  func1(): 
-    ...:     for x in a: 
-    ...:         for y in b: 
-    ...:             if x == y: 
-    ...:                  yield (x) 
-    ...: %timeit {c for c in func1()} 
-    ...:                                                                           
- 4.34 µs ± 35.6 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each) 
+ In [2]: # %load optimize_using_set.py
+    ...: a=[1,2,3,4,5,6,7,8,9]
+    ...: b=[9,8,7,6,5,4,3,2,1]
+    ...:
+    ...: def  func1():
+    ...:     for x in a:
+    ...:         for y in b:
+    ...:             if x == y:
+    ...:                  yield (x)
+    ...: %timeit {c for c in func1()}
+    ...:
+ 4.34 µs ± 35.6 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 ```
 
 このようなコードはループでなくても、 `set()` を使うことで表現できます。
  IPYthon
 ```
- In [2]: # %load optimize_using_set2.py 
-    ...: a=[1,2,3,4,5,6,7,8,9] 
-    ...: b=[9,8,7,6,5,4,3,2,1] 
-    ...:  
-    ...: def func2(): 
-    ...:     return set(a) & set(b) 
-    ...:  
-    ...: %timeit func2() 
-    ...:                                                                           
+ In [2]: # %load optimize_using_set2.py
+    ...: a=[1,2,3,4,5,6,7,8,9]
+    ...: b=[9,8,7,6,5,4,3,2,1]
+    ...:
+    ...: def func2():
+    ...:     return set(a) & set(b)
+    ...:
+    ...: %timeit func2()
+    ...:
  963 ns ± 37.1 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
- 
+
 ```
 
 ### リスト内包表記を使う
 単純な for 文を使うのではなくて、**リスト内包表記(list comprehension)** を使うと効率よく処理をすることができます。
  IPython
 ```
- In [1]: %%timeit 
-    ...: old_list = [1,2,3,4] 
-    ...: new_list = [] 
-    ...: for item in old_list: 
-    ...:     new_list.append(item + 1) 
-    ...:                                                                           
+ In [1]: %%timeit
+    ...: old_list = [1,2,3,4]
+    ...: new_list = []
+    ...: for item in old_list:
+    ...:     new_list.append(item + 1)
+    ...:
  464 ns ± 29.7 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
 ```
 
 Ipython
 ```
- In [1]: %%timeit 
-    ...: old_list = [1,2,3,4] 
-    ...: new_list = [] 
-    ...: new_list = [item + 1 for item in old_list] 
-    ...:  
-    ...:                                                                           
+ In [1]: %%timeit
+    ...: old_list = [1,2,3,4]
+    ...: new_list = []
+    ...: new_list = [item + 1 for item in old_list]
+    ...:
+    ...:
  424 ns ± 3.2 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
 ```
 
@@ -420,24 +420,24 @@ forループで複数のリストの要素を取得するときなどに使う�
 
  IPython
 ```
- In [1]: %%timeit 
-    ...: animals = ['aardvark', 'bee', 'cat', 'dog'] 
-    ...: flowers = ['allium', 'bellflower', 'crocus', 'dahlia'] 
+ In [1]: %%timeit
+    ...: animals = ['aardvark', 'bee', 'cat', 'dog']
+    ...: flowers = ['allium', 'bellflower', 'crocus', 'dahlia']
     ...: [(animals[i], flowers[i]) for i in range(min(len(animals), len(flowers)))]
-    ...:                                                                           
+    ...:
  1.37 µs ± 296 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
- 
- In [2]: %%timeit 
-    ...: animals = ['aardvark', 'bee', 'cat', 'dog'] 
-    ...: flowers = ['allium', 'bellflower', 'crocus', 'dahlia'] 
-    ...: [(animal, flower) for animal, flower in zip(animals, flowers)] 
-    ...:                                                                           
+
+ In [2]: %%timeit
+    ...: animals = ['aardvark', 'bee', 'cat', 'dog']
+    ...: flowers = ['allium', 'bellflower', 'crocus', 'dahlia']
+    ...: [(animal, flower) for animal, flower in zip(animals, flowers)]
+    ...:
  890 ns ± 66.9 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
 ```
 
 
 ### 配列の先頭への挿入には deque を使う
- `array` 型や `list` 型 では先頭へのオブジェクトの挿入は非常に遅くなります。 
+ `array` 型や `list` 型 では先頭へのオブジェクトの挿入は非常に遅くなります。
 こうした場合は、 `collections` モジュールの  `deque` を使うようにします。
 
 > Pythonのドキュメントから:
@@ -451,24 +451,24 @@ forループで複数のリストの要素を取得するときなどに使う�
  from array import array
  from benchmarker import Benchmarker
  from collections import deque
-  
+
  n = int(sys.argv[1]) if len(sys.argv) > 1 else 1000*1000
- print(n) 
+ print(n)
  with Benchmarker(n, width=20) as bench:
      nay = []
      iay = array('I', [])
      day = deque()
-  
+
      @bench("list")
      def _(bm):
          for i in range(n):
              nay.insert(0, i)
-  
+
      @bench("array")
      def _(bm):
          for i in range(n):
              iay.insert(0, i)
-  
+
      @bench("deque")
      def _(bm):
          for i in bm:
@@ -491,21 +491,21 @@ Python 3の標準ライブラリ  `functools` の `lru_cache` を使うと計算
 
 Ipython
 ```
- In [2]: # %load optimize_using_cache1.py 
-    ...: def fibo(n): 
-    ...:     if n<2: 
-    ...:         return n 
-    ...:     return fibo(n-1)+fibo(n-2) 
-    ...:  
-    ...: from functools import lru_cache as cache 
-    ...: @cache(maxsize=None) 
-    ...: def fibo_cache(n): 
-    ...:     if n<2: 
-    ...:         return n 
-    ...:     return fibo_cache(n-1)+fibo_cache(n-2) 
-    ...:                                                                    
+ In [2]: # %load optimize_using_cache1.py
+    ...: def fibo(n):
+    ...:     if n<2:
+    ...:         return n
+    ...:     return fibo(n-1)+fibo(n-2)
+    ...:
+    ...: from functools import lru_cache as cache
+    ...: @cache(maxsize=None)
+    ...: def fibo_cache(n):
+    ...:     if n<2:
+    ...:         return n
+    ...:     return fibo_cache(n-1)+fibo_cache(n-2)
+    ...:
  In [3]: %timeit fibo(30)                                                   362 ms ± 32.7 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
- 
+
  In [4]: %timeit fibo_cache(30)                                             104 ns ± 1.85 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
 ```
 
@@ -517,21 +517,21 @@ Ipython
 ```
  import math
  import numpy as np
- 
+
  def list_append(x):
      results = []
      for i in range(x):
          results.append(math.sqrt(i))
      return results
- 
+
  def list_comp(x):
      results = [math.sqrt(i) for i in range(x)]
      return results
- 
+
  def list_map(x):
      results = map(math.sqrt, range(x))
      return results
- 
+
  def list_numpy(x):
      results = list(np.sqrt(np.arange(x)))
      return results
@@ -540,61 +540,61 @@ Ipython
 実行性能を比較してみましょう。
  IPython
 ```
- In [3]: x=10000                                                            
- In [4]: %timeit list_append(x)                                             
+ In [3]: x=10000
+ In [4]: %timeit list_append(x)
  1.75 ms ± 18.9 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
- 
- In [5]: %timeit list_comp(x)                                               
+
+ In [5]: %timeit list_comp(x)
  1.33 ms ± 42 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
- 
- In [6]: %timeit list_map(x)                                                
+
+ In [6]: %timeit list_map(x)
  542 ns ± 12.6 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
- 
- In [7]: %timeit list_numpy(x)                                              
+
+ In [7]: %timeit list_numpy(x)
  868 µs ± 24.4 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 ```
 
 
 ### bottleneck を使ってみる
-NumPy が提供している関数の演算処理をさらに高速化した、  `bottleneck` という拡張モジュールがあります。 
+NumPy が提供している関数の演算処理をさらに高速化した、  `bottleneck` という拡張モジュールがあります。
 これを使うだけでも大幅な性能向上が期待できます。
 ただし、欠点としては既存コードを書き換える必要があります。
 
  Ipython
 ```
- In [2]: # %load optimize_using_bottleneck1.py 
-    ...: import numpy as np 
-    ...: a = np.array([1, 2, np.nan, 4, 5]) 
-    ...:  
-    ...: %timeit np.nanmean(a) 
-    ...:                                                                           
+ In [2]: # %load optimize_using_bottleneck1.py
+    ...: import numpy as np
+    ...: a = np.array([1, 2, np.nan, 4, 5])
+    ...:
+    ...: %timeit np.nanmean(a)
+    ...:
  33.7 µs ± 1.12 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 ```
 
  IPython
 ```
- In [4]: # %load optimize_using_bottleneck2.py 
-    ...: import numpy as np 
-    ...: import bottleneck as bn 
-    ...:  
-    ...: a = np.array([1, 2, np.nan, 4, 5]) 
-    ...: %timeit bn.nanmean(a) 
-    ...:                                                                           
- 249 ns ± 24.3 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each) 
+ In [4]: # %load optimize_using_bottleneck2.py
+    ...: import numpy as np
+    ...: import bottleneck as bn
+    ...:
+    ...: a = np.array([1, 2, np.nan, 4, 5])
+    ...: %timeit bn.nanmean(a)
+    ...:
+ 249 ns ± 24.3 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
 ```
 
  `bench()` を呼び出すと（時間は少しかかります）、NumPyと比較して何倍速くなったかを計測してくれます。
  Ipython
 ```
- In [5]: bn.bench()                                                                
+ In [5]: bn.bench()
  Bottleneck performance benchmark
      Bottleneck 1.3.2; Numpy 1.18.1
      Speed is NumPy time divided by Bottleneck time
      NaN means approx one-fifth NaNs; float64 used
- 
-               no NaN     no NaN      NaN       no NaN      NaN    
+
+               no NaN     no NaN      NaN       no NaN      NaN
                 (100,)  (1000,1000)(1000,1000)(1000,1000)(1000,1000)
-                axis=0     axis=0     axis=0     axis=1     axis=1  
+                axis=0     axis=0     axis=0     axis=1     axis=1
  nansum         28.8        0.7        1.9        1.0        2.6
  nanmean       107.6        1.2        1.5        2.8        2.3
  nanstd        171.3        1.4        1.8        2.3        2.6
@@ -624,7 +624,7 @@ NumPy が提供している関数の演算処理をさらに高速化した、  
  move_argmax  2756.2       64.8       77.9       65.3      120.9
  move_median  2089.9      153.6      151.7      236.1      202.3
  move_rank     771.5        1.2        1.5        3.8        1.4
- 
+
 ```
 
 ### Cython を使ってみる
@@ -675,7 +675,7 @@ Cython で使える  `cdef` 文を使って、全ての変数に型指定を行�
  %%cython
  def fibo_all_typed_cython(int n):
      cdef int a,b,i
-     
+
      a, b = 0, 1
      for i in range(n):
          a, b = a + b, a
@@ -685,17 +685,17 @@ Cython で使える  `cdef` 文を使って、全ての変数に型指定を行�
 実行性能を比較してみましょう。
  IPython
 ```
- In [6]: n=5000                                                             
- In [7]: %timeit fibo_python(n)                                             
+ In [6]: n=5000
+ In [7]: %timeit fibo_python(n)
  744 µs ± 37.9 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
- 
- In [8]: %timeit fibo_cython(n)                                             
+
+ In [8]: %timeit fibo_cython(n)
  571 µs ± 36.4 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
- 
- In [9]: %timeit fibo_typed_cython(n)                                       
+
+ In [9]: %timeit fibo_typed_cython(n)
  474 µs ± 22 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
- 
- In [10]: %timeit fibo_all_typed_cython(n)                                  
+
+ In [10]: %timeit fibo_all_typed_cython(n)
  1.69 µs ± 21.7 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
 ```
 
@@ -708,31 +708,31 @@ Cython で使える  `cdef` 文を使って、全ての変数に型指定を行�
 
  IPython
 ```
- In [2]: # %load optimize_using_numba.py 
-    ...: from numba import jit 
-    ...:  
-    ...: def fibo_python(n): 
-    ...:     a, b = 0, 1 
-    ...:     for i in range(n): 
-    ...:         a, b = a + b, a 
-    ...:     return a 
-    ...:  
-    ...: @jit 
-    ...: def fibo_numba(n): 
-    ...:     a, b = 0, 1 
-    ...:     for i in range(n): 
-    ...:         a, b = a + b, a 
-    ...:     return a 
+ In [2]: # %load optimize_using_numba.py
+    ...: from numba import jit
+    ...:
+    ...: def fibo_python(n):
+    ...:     a, b = 0, 1
+    ...:     for i in range(n):
+    ...:         a, b = a + b, a
+    ...:     return a
+    ...:
+    ...: @jit
+    ...: def fibo_numba(n):
+    ...:     a, b = 0, 1
+    ...:     for i in range(n):
+    ...:         a, b = a + b, a
+    ...:     return a
 ```
 
 実行性能を比較してみましょう。
- IPython                                                              
+ IPython
 ```
- In [3]: n=5000                                                             
- In [4]: %timeit fibo_python(n)                                              
+ In [3]: n=5000
+ In [4]: %timeit fibo_python(n)
  676 µs ± 37.7 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
- 
- In [5]: %timeit fibo_numba(n)                                               
+
+ In [5]: %timeit fibo_numba(n)
  2.55 µs ± 1.3 µs per loop (mean ± std. dev. of 7 runs, 1 loop each)
 ```
 

@@ -1,7 +1,7 @@
 Python チュートリアル：プロファイリングツール
 =================
 
-![](https://gyazo.com/153a339305d78fc4fa4850753e4b1594.png)
+![](https://github.com/iisaka51/PythonOsaka/blob/main/data/images/Python_Logo.png)
 
 
 ## プロファイリング
@@ -36,7 +36,7 @@ Python標準ライブラリの time モジュールを使って２点間での�
     ...:     print(a)
     ...:
  8189
- 
+
 ```
 
 これだけではどれだけ時間がかっかたかを定量的に知ることができません。
@@ -63,9 +63,9 @@ Python標準ライブラリの time モジュールを使って２点間での�
     ...:     print(f'{a}: {calc_time:.2f}sec')
     ...:
  8189: 17.90sec
- 
+
  In [3]:
- 
+
 ```
 
 時間計測したい処理を  `time.time()` で挟んで、その時間差を調べるわけです。
@@ -73,13 +73,13 @@ Python標準ライブラリの time モジュールを使って２点間での�
  `time.time()` の代わりに　`次の関数も使用することもできます。
 
 
--  `time()` ：エポック からの秒数を浮動小数点数で返します。 
+-  `time()` ：エポック からの秒数を浮動小数点数で返します。
 -  `time_ns()` ： `time()` に似ていますが、ナノ秒単位の時刻を返します。
 -  `perf_counter()` ：パフォーマンスカウンターの値 (小数点以下がミリ秒) を返します。クロックは短期間の計測が行えるよう、可能な限り高い分解能をもちます。これにはスリープ中の経過時間も含まれます。
 -  `perf_counte_ns()` ： `perf_counter()` に似ていますが、ナノ秒単位の時刻を返します。
 -  `process_time()` ：現在のプロセスのシステムおよびユーザー CPU 時間の合計値 (小数点以下はミリ秒) を返します。プロセスごとに定義され、スリープ中の経過時間は含まれません。
 -  `process_time_ns()` ： `process_time()` に似ていますが、ナノ秒単位の時刻を返します。
--  `thread_time()` ：現在のスレッドのシステムおよびユーザーの CPU 時間の合計値 (小数点以下ありの秒数) を返します。 スリープ中の経過時間は含まれません。 
+-  `thread_time()` ：現在のスレッドのシステムおよびユーザーの CPU 時間の合計値 (小数点以下ありの秒数) を返します。 スリープ中の経過時間は含まれません。
 -  `thread_time_ns()` ： `thread_time()` に似ていますが、ナノ秒単位の時刻を返します。
 
 
@@ -103,9 +103,9 @@ Python標準ライブラリの time モジュールを使って２点間での�
     ...:     print(f'{a}: {calc_time:.2f}sec')
     ...:
  8189: 18.50sec
- 
+
  In [3]:
- 
+
 ```
 
 性能評価をしたい２点にコードを挿入することになりますが、
@@ -115,14 +115,14 @@ Python標準ライブラリの time モジュールを使って２点間での�
 ```
  import time
  from contextlib import contextmanager
- 
+
  @contextmanager
  def perftest():
      t = time.perf_counter()
      yield None
      perf_time = time.perf_counter() - t
      print(f'Elapsed: {perf_time:.4f}sec')
-     
+
 ```
 
 
@@ -146,7 +146,7 @@ Python標準ライブラリの time モジュールを使って２点間での�
     ...:
  8189
  Elapsed: 24.9091sec
- 
+
  In [3]:
 ```
 
@@ -167,7 +167,7 @@ Python 標準ライブラリの timeit モジュールは、Python コードを�
     ...: print(f'{test}')
     ...:
  0.03832157200000008
- 
+
  In [3]:
 ```
 
@@ -196,7 +196,7 @@ Python 標準ライブラリの timeit モジュールは、Python コードを�
     ...:     print(f'Elapsed: {t}sec')
     ...:
  Elapsed: 19.784244177sec
- 
+
  In [3]:
 ```
 
@@ -223,9 +223,9 @@ Python 標準ライブラリの timeit モジュールは、Python コードを�
     ...:     print(f'Elapsed: {t}sec')
     ...:
  Elapsed: 18.961754934sec
- 
+
  In [3]:
- 
+
 ```
 
 timeiut は次のようにコマンドラインツールとしても理療することができます。
@@ -234,13 +234,13 @@ timeiut は次のようにコマンドラインツールとしても理療する
 ```
  $ python3 -m timeit '"-".join(str(n) for n in range(100))'
  10000 loops, best of 5: 31.7 usec per loop
- 
+
  $ python3 -m timeit '"-".join([str(n) for n in range(100)])'
  10000 loops, best of 5: 35.2 usec per loop
- 
+
  $ python3 -m timeit '"-".join(map(str, range(100)))'
  10000 loops, best of 5: 26.9 usec per loop
- 
+
 ```
 
 ## cProfile
@@ -259,9 +259,9 @@ timeiut は次のようにコマンドラインツールとしても理療する
     ...: cProfile.run('re.compile("foo|bar")')
     ...:
           216 function calls (209 primitive calls) in 0.000 seconds
- 
+
     Ordered by: standard name
- 
+
     ncalls  tottime  percall  cumtime  percall filename:lineno(function)
          1    0.000    0.000    0.000    0.000 <string>:1(<module>)
          2    0.000    0.000    0.000    0.000 enum.py:358(__call__)
@@ -308,18 +308,18 @@ timeiut は次のようにコマンドラインツールとしても理療する
          1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
          5    0.000    0.000    0.000    0.000 {method 'find' of 'bytearray' objects}
          1    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
- 
- 
- 
+
+
+
  In [3]:
- 
+
 ```
 
 最初の行は 216回の呼び出しを測定したことを示しています。その中で 209回は プリミティブ です。すなわち再帰呼び出しではないことを表しています。次の行の  `Ordered by: standard name` は一番右の列の文字列が出力のソートに用いられたことを示します。
 フィールドの見出しは以下を含みます:
 
 - **ncalls**: 呼び出し回数
-- **tottime**:与えられた関数に消費された合計時間 
+- **tottime**:与えられた関数に消費された合計時間
   - sub-function の呼び出しで消費された時間は除外されている
 - **percall**: tottime を ncalls で割った値
 - **cumtime**: この関数と全ての subfunction に消費された累積時間 (起動から終了まで)。
@@ -339,16 +339,16 @@ timeiut は次のようにコマンドラインツールとしても理療する
     ...:
     ...: cProfile.run('re.compile("foo|bar")', filename='re_test.log')
     ...:
- 
+
  In [3]: !file re_test.log
  re_test.log: data
- 
+
  In [4]:
 ```
 
 pstats モジュールは、このファイルからプロファイルの結果を読み込んで様々な書式に整えることができます。
 
-ファイルcProfileおよびprofileは、別のスクリプトをプロファイルするためのスクリプトとして呼び出すこともできます。 
+ファイルcProfileおよびprofileは、別のスクリプトをプロファイルするためのスクリプトとして呼び出すこともできます。
 
 
  bash
@@ -364,9 +364,9 @@ pstats モジュールは、このファイルからプロファイルの結果�
 ```
  % python -m cProfile -m re 02_save_to_file.py
           821 function calls (818 primitive calls) in 0.001 seconds
- 
+
     Ordered by: standard name
- 
+
     ncalls  tottime  percall  cumtime  percall filename:lineno(function)
          2    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:231(_verbose_message)
          1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:385(cached)
@@ -394,18 +394,18 @@ pstats モジュールは、このファイルからプロファイルの結果�
     ...: t = p.strip_dirs().sort_stats(-1).print_stats()
     ...:
  Mon Oct 18 09:55:36 2021    re_test.log
- 
+
           3 function calls in 0.000 seconds
- 
+
     Ordered by: standard name
- 
+
     ncalls  tottime  percall  cumtime  percall filename:lineno(function)
          1    0.000    0.000    0.000    0.000 <string>:1(<module>)
          1    0.000    0.000    0.000    0.000 {built-in method builtins.exec}
          1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
- 
- 
- 
+
+
+
  In [3]:
 ```
 
@@ -422,20 +422,20 @@ pstats モジュールは、このファイルからプロファイルの結果�
     ...: t2 = p.print_stats()
     ...:
  Mon Oct 18 09:55:36 2021    re_test.log
- 
+
           3 function calls in 0.000 seconds
- 
+
     Ordered by: function name
- 
+
     ncalls  tottime  percall  cumtime  percall filename:lineno(function)
          1    0.000    0.000    0.000    0.000 {built-in method builtins.exec}
          1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
          1    0.000    0.000    0.000    0.000 <string>:1(<module>)
- 
- 
- 
+
+
+
  In [3]:
- 
+
 ```
 
 最初の行ではリストを関数名でソートしています。2行目で情報を出力しています。
@@ -450,20 +450,20 @@ pstats モジュールは、このファイルからプロファイルの結果�
     ...: t1 = p.sort_stats(SortKey.CUMULATIVE).print_stats(10)
     ...:
  Mon Oct 18 09:55:36 2021    re_test.log
- 
+
           3 function calls in 0.000 seconds
- 
+
     Ordered by: cumulative time
- 
+
     ncalls  tottime  percall  cumtime  percall filename:lineno(function)
          1    0.000    0.000    0.000    0.000 {built-in method builtins.exec}
          1    0.000    0.000    0.000    0.000 <string>:1(<module>)
          1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
- 
- 
- 
+
+
+
  In [3]:
- 
+
 ```
 
 このようにすると、関数が消費した累計時間でソートして、さらにその上位10件だけを表示します。どのアルゴリズムが時間を多く消費しているのか知りたいときは、この方法が役に立つはずです。
@@ -480,20 +480,20 @@ pstats モジュールは、このファイルからプロファイルの結果�
     ...: t1 = p.sort_stats(SortKey.TIME).print_stats(10)
     ...:
  Mon Oct 18 09:55:36 2021    re_test.log
- 
+
           3 function calls in 0.000 seconds
- 
+
     Ordered by: internal time
- 
+
     ncalls  tottime  percall  cumtime  percall filename:lineno(function)
          1    0.000    0.000    0.000    0.000 {built-in method builtins.exec}
          1    0.000    0.000    0.000    0.000 <string>:1(<module>)
          1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
- 
- 
- 
+
+
+
  In [3]:
- 
+
 ```
 
 上記はそれぞれの関数で消費された時間でソートして、上位10件の関数の情報が表示されます。
@@ -508,12 +508,12 @@ pstats モジュールは、このファイルからプロファイルの結果�
     ...: t1 = p.sort_stats(SortKey.FILENAME).print_stats('__init__')
     ...:
  Mon Oct 18 09:55:36 2021    re_test.log
- 
+
           3 function calls in 0.000 seconds
- 
- 
+
+
  In [3]:
- 
+
 ```
 
 これは、ファイル名でソートされ、そのうちクラスの初期化メソッド (メソッド名 __init__) に関する統計情報だけが表示されます:
@@ -529,12 +529,12 @@ pstats モジュールは、このファイルからプロファイルの結果�
     ...:         .print_stats(.5, 'init'))
     ...:
  Mon Oct 18 09:55:36 2021    re_test.log
- 
+
           3 function calls in 0.000 seconds
- 
- 
+
+
  In [3]:
- 
+
 ```
 
 上記は時間 (time) をプライマリキー、累計時間 (cumulative time) をセカンダリキーにしてソートした後でさらに条件を絞って統計情報を出力します。 .5 は上位 50% だけを選択することを意味し、さらにその中から文字列 init を含むものだけが表示されます。
@@ -551,18 +551,18 @@ pstats モジュールは、このファイルからプロファイルの結果�
     ...: t1 = p.print_callers(.5, 'init').print_stats(10)
     ...:
  Mon Oct 18 09:55:36 2021    re_test.log
- 
+
           3 function calls in 0.000 seconds
- 
+
     Random listing order was used
- 
+
     ncalls  tottime  percall  cumtime  percall filename:lineno(function)
          1    0.000    0.000    0.000    0.000 {built-in method builtins.exec}
          1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
          1    0.000    0.000    0.000    0.000 <string>:1(<module>)
- 
- 
- 
+
+
+
  In [3]:
 ```
 
@@ -612,11 +612,11 @@ pstats モジュールは、このファイルからプロファイルの結果�
     ...:     print(a)
     ...:
  8189
- 
+
  In [3]:
 ```
 
-## Py-Spy 
+## Py-Spy
 [py-spy ](https://github.com/benfred/py-spy) は、すべての呼び出しを記録しようとするのではなく、プログラムの呼び出しスタックの状態を定期的にサンプリングすることで機能します。 運用中の実行されているコードでも安全に使用することができます。
 ![](https://gyazo.com/418b7397af1b8a6994f73b98b3606699.png)
 
@@ -635,21 +635,21 @@ pstats モジュールは、このファイルからプロファイルの結果�
  % py-spy --help
  py-spy 0.3.10
  Sampling profiler for Python programs
- 
+
  USAGE:
      py-spy <SUBCOMMAND>
- 
+
  OPTIONS:
      -h, --help       Prints help information
      -V, --version    Prints version information
- 
+
  SUBCOMMANDS:
      record    Records stack trace information to a flamegraph, speedscope or
                raw file
      top       Displays a top like view of functions consuming CPU
      dump      Dumps stack traces for a target program to stdout
      help      Prints this message or the help of the given subcommand(s)
-     
+
 ```
 
 record サブコマンドで実行状況を記録します。
@@ -659,10 +659,10 @@ record サブコマンドで実行状況を記録します。
  % py-spy record --help
  py-spy-record
  Records stack trace information to a flamegraph, speedscope or raw file
- 
+
  USAGE:
      py-spy record [OPTIONS] --pid <pid> [python_program]...
- 
+
  OPTIONS:
      -p, --pid <pid>              PID of a running python program to spy on
          --full-filenames
@@ -674,10 +674,10 @@ record サブコマンドで実行状況を記録します。
              flamegraph, raw, speedscope]
      -d, --duration <duration>
              The number of seconds to sample for [default: unlimited]
- 
+
      -r, --rate <rate>
              The number of samples to collect per second [default: 100]
- 
+
      -s, --subprocesses           Profile subprocesses of the original process
      -F, --function
              Aggregate samples by function's first line number, instead of
@@ -686,7 +686,7 @@ record サブコマンドで実行状況を記録します。
      -t, --threads                Show thread ids in the output
      -g, --gil
              Only include traces that are holding on to the GIL
- 
+
      -i, --idle                   Include stack traces for idle threads
          --nonblocking
              Don't pause the python process when collecting samples. Setting this
@@ -694,7 +694,7 @@ record サブコマンドで実行状況を記録します。
              to inaccurate results
      -h, --help                   Prints help information
      -V, --version                Prints version information
- 
+
  ARGS:
      <python_program>...    commandline of a python program to run
 ```
@@ -746,7 +746,7 @@ Pyinstrumentには、cProfileで使用できる便利な機能も多数サポー
 ```
   pyinstrument
  Usage: pyinstrument [options] scriptfile [arg] ...
- 
+
  Options:
    --version             show program's version number and exit
    -h, --help            show this help message and exit
@@ -801,7 +801,7 @@ numpyのようなライブラリーを使用すると、関数呼び出しのな
 
 このようなコードには明示的な関数呼び出しがないため、cProfileによって解析されることのないホットスポットです。
 
-LineProfilerにはプロファイルする関数を指定でき、それらの関数内の**個々の行の実行時間**を計測します。 
+LineProfilerにはプロファイルする関数を指定でき、それらの関数内の**個々の行の実行時間**を計測します。
 
 #### インストール
 line_profile は拡張モジュールなので、利用するためにはインストールする必要があります。
@@ -845,11 +845,11 @@ kernprofのデフォルトの動作は、結果をバイナリファイル `scri
  This machine benchmarks at 77143.8 pystones/second
  Wrote profile results to pystone.py.lprof
  Timer unit: 1e-06 s
- 
+
  Total time: 0.154174 s
  File: pystone.py
  Function: Proc2 at line 153
- 
+
  Line #      Hits         Time  Per Hit   % Time  Line Contents
  ==============================================================
     153                                           @profile
@@ -881,7 +881,7 @@ kernprofのデフォルトの動作は、結果をバイナリファイル `scri
 - **Line Contents**: その行の内容
 
 ### IPython での利用
-IPythonを使用している場合は、プロファイルする関数と実行するステートメントを指定できる `％lprun` マジックコマンドが使用できます。 
+IPythonを使用している場合は、プロファイルする関数と実行するステートメントを指定できる `％lprun` マジックコマンドが使用できます。
 
 IPython 0.11以降の場合、IPython構成ファイル `~/.ipython/profile_default/ipython_config.py` を編集して、 `line_profiler` を拡張機能リストに追加することでインストールすることができます。
 
@@ -933,32 +933,32 @@ IPython 0.11以降の場合、IPython構成ファイル `~/.ipython/profile_defa
  def a():
      for _ in range(10000000):
          pass
- 
- 
+
+
  if __name__ == '__main__':
      import yappi
- 
+
      yappi.set_clock_type("cpu")
      yappi.start()
      a()
      yappi.get_func_stats().print_all()
      yappi.get_thread_stats().print_all()
-     
+
 ```
 
  bash
 ```
  $ python c01_package_a.py
- 
+
  Clock type: CPU
  Ordered by: totaltime, desc
- 
+
  name                                  ncall  tsub      ttot      tavg
  ..ling/07_Yappi/c01_package_a.py:1 a  1      0.337101  0.337101  0.337101
- 
+
  name           id     tid              ttot      scnt
  _MainThread    0      4663713280       0.338377  1
- 
+
 ```
 
  `yappi.set_clock_type()` に与えることができるクロックタイプは次のものどす。
@@ -998,27 +998,27 @@ IPython 0.11以降の場合、IPython構成ファイル `~/.ipython/profile_defa
  import yappi
  import time
  import threading
- 
+
  _NTHREAD = 3
- 
+
  def _work(n):
      time.sleep(n * 0.1)
- 
+
  yappi.start()
- 
+
  threads = []
  # スレッドを生成
  for i in range(_NTHREAD):
      t = threading.Thread(target=_work, args=(i + 1, ))
      t.start()
      threads.append(t)
- 
+
  # スレッドが終了するのを待つ
  for t in threads:
      t.join()
- 
+
  yappi.stop()
- 
+
  # スレッドIDによるスレッド統計情報の取得
  threads = yappi.get_thread_stats()
  for thread in threads:
@@ -1026,7 +1026,7 @@ IPython 0.11以降の場合、IPython構成ファイル `~/.ipython/profile_defa
          "Function stats for (%s) (%d)" % (thread.name, thread.id)
      )
      yappi.get_func_stats(ctx_id=thread.id).print_all()
-     
+
 ```
 
 
@@ -1034,10 +1034,10 @@ IPython 0.11以降の場合、IPython構成ファイル `~/.ipython/profile_defa
 ```
  $ python  c02_multi_thread.py
  Function stats for (_MainThread) (0)
- 
+
  Clock type: CPU
  Ordered by: totaltime, desc
- 
+
  name                                  ncall  tsub      ttot      tavg
  ..n3.9/threading.py:873 Thread.start  3      0.000092  0.000914  0.000305
  ..n3.9/threading.py:1021 Thread.join  3      0.000081  0.000828  0.000276
@@ -1064,30 +1064,30 @@ IPython 0.11以降の場合、IPython構成ファイル `~/.ipython/profile_defa
  ..ython3.9/threading.py:750 _newname  3      0.000019  0.000019  0.000006
  ..ng.py:1209 _make_invoke_excepthook  3      0.000018  0.000018  0.000006
  Function stats for (Thread) (1)
- 
+
  Clock type: CPU
  Ordered by: totaltime, desc
- 
+
  name                                  ncall  tsub      ttot      tavg
  ..hon3.9/threading.py:899 Thread.run  1      0.000029  0.000144  0.000144
  ..7_Yappi/c02_multi_thread.py:7 _work 1      0.000033  0.000115  0.000115
  Function stats for (Thread) (3)
- 
+
  Clock type: CPU
  Ordered by: totaltime, desc
- 
+
  name                                  ncall  tsub      ttot      tavg
  ..hon3.9/threading.py:899 Thread.run  1      0.000043  0.000110  0.000110
  ..7_Yappi/c02_multi_thread.py:7 _work 1      0.000028  0.000067  0.000067
  Function stats for (Thread) (2)
- 
+
  Clock type: CPU
  Ordered by: totaltime, desc
- 
+
  name                                  ncall  tsub      ttot      tavg
  ..hon3.9/threading.py:899 Thread.run  1      0.000032  0.000096  0.000096
  ..7_Yappi/c02_multi_thread.py:7 _work 1      0.000025  0.000064  0.000064
- 
+
 ```
 
 
@@ -1099,39 +1099,39 @@ IPython 0.11以降の場合、IPython構成ファイル `~/.ipython/profile_defa
  import pc01_ackage_a as package_a
  import yappi
  import sys
- 
+
  def a():
      pass
- 
+
  def b():
      pass
- 
+
  yappi.start()
  a()
  b()
  package_a.a()
  yappi.stop()
- 
+
  # モジュールでフィルタリング：外部モジュールは除外
  current_module = sys.modules[__name__]
  stats = yappi.get_func_stats(
      filter_callback=lambda x: yappi.module_matches(x, [current_module])
  )  # x is a yappi.YFuncStat object
  stats.sort("name", "desc").print_all()
- 
+
 ```
 
  bash
 ```
  $ python c03_module_filtering.py
- 
+
  Clock type: CPU
  Ordered by: name, desc
- 
+
  name                                  ncall  tsub      ttot      tavg
  .._Yappi/c03_module_filtering.py:8 b  1      0.000003  0.000003  0.000003
  .._Yappi/c03_module_filtering.py:5 a  1      0.000004  0.000004  0.000004
- 
+
 ```
 
 
@@ -1142,39 +1142,39 @@ IPython 0.11以降の場合、IPython構成ファイル `~/.ipython/profile_defa
  import c01_package_a as package_a
  import yappi
  import sys
- 
+
  def a():
      pass
- 
+
  def b():
      pass
- 
+
  yappi.start()
  a()
  b()
  package_a.a()
  yappi.stop()
- 
+
  # 関数でフィルタリング：関数 a(), b() だけ
  current_module = sys.modules[__name__]
  stats = yappi.get_func_stats(
      filter_callback=lambda x: yappi.func_matches(x, [a, b])
  )
  stats.print_all()
- 
+
 ```
 
  bash
 ```
  $ python c04_function_filtering.py
- 
+
  Clock type: CPU
  Ordered by: totaltime, desc
- 
+
  name                                  ncall  tsub      ttot      tavg
  ..appi/c04_function_filtering.py:5 a  1      0.000003  0.000003  0.000003
  ..appi/c04_function_filtering.py:8 b  1      0.000003  0.000003  0.000003
- 
+
 ```
 
 
@@ -1183,19 +1183,19 @@ IPython 0.11以降の場合、IPython構成ファイル `~/.ipython/profile_defa
  import c01_package_a as package_a
  import yappi
  import sys
- 
+
  def a():
      pass
- 
+
  def b():
      pass
- 
+
  yappi.start()
  a()
  b()
  package_a.a()
  yappi.stop()
- 
+
  # モジュール名でフィルタリング：package_a モジュールのものだけ
  current_module = sys.modules[__name__]
  stats = yappi.get_func_stats(
@@ -1208,13 +1208,13 @@ IPython 0.11以降の場合、IPython構成ファイル `~/.ipython/profile_defa
  bash
 ```
  $ python  c05_module_name_filtering.py
- 
+
  Clock type: CPU
  Ordered by: totaltime, desc
- 
+
  name                                  ncall  tsub      ttot      tavg
  ..ling/07_Yappi/c01_package_a.py:1 a  1      0.311336  0.311336  0.311336
- 
+
 ```
 
 
@@ -1224,39 +1224,39 @@ IPython 0.11以降の場合、IPython構成ファイル `~/.ipython/profile_defa
  import c01_package_a as package_a
  import yappi
  import sys
- 
+
  def a():
      pass
- 
+
  def b():
      pass
- 
+
  yappi.start()
  a()
  b()
  package_a.a()
  yappi.stop()
- 
+
  # 関数名でフィルタリング： 関数名が a() のものだけ
  current_module = sys.modules[__name__]
  stats = yappi.get_func_stats(
      filter_callback=lambda x: 'a' in x.name
  )
  stats.print_all()
- 
+
 ```
 
  bash
 ```
  $ python c06_function_name_filtering.py
- 
+
  Clock type: CPU
  Ordered by: totaltime, desc
- 
+
  name                                  ncall  tsub      ttot      tavg
  ..ling/07_Yappi/c01_package_a.py:1 a  1      0.318673  0.318673  0.318673
  ..c06_function_name_filtering.py:5 a  1      0.000006  0.000006  0.000006
- 
+
 ```
 
 
@@ -1269,34 +1269,34 @@ IPython 0.11以降の場合、IPython構成ファイル `~/.ipython/profile_defa
 ```
  import asyncio
  import yappi
- 
+
  async def foo():
      await asyncio.sleep(1.0)
      await baz()
      await asyncio.sleep(0.5)
- 
+
  async def bar():
      await asyncio.sleep(2.0)
- 
+
  async def baz():
      await asyncio.sleep(1.0)
- 
+
  yappi.set_clock_type("WALL")
  with yappi.run():
      asyncio.run(foo())
      asyncio.run(bar())
- 
+
  yappi.get_func_stats().print_all()
- 
+
 ```
 
  bash
 ```
  % python c07_asyncio.py
- 
+
  Clock type: WALL
  Ordered by: totaltime, desc
- 
+
  name                                  ncall  tsub      ttot      tavg
  ..python3.9/asyncio/runners.py:8 run  2      0.000084  4.518389  2.259194
  ..lectorEventLoop.run_until_complete  6      0.000111  4.516125  0.752687
@@ -1324,36 +1324,36 @@ IPython 0.11以降の場合、IPython構成ファイル `~/.ipython/profile_defa
  import yappi
  from greenlet import greenlet
  import time
- 
+
  class GreenletA(greenlet):
      def run(self):
          time.sleep(1)
- 
+
  yappi.set_context_backend("greenlet")
  yappi.set_clock_type("wall")
- 
+
  yappi.start(builtins=True)
  a = GreenletA()
  a.switch()
  yappi.stop()
- 
+
  yappi.get_func_stats().print_all()
- 
+
 ```
 
 
  bash
 ```
  % python c08_gevent.py
- 
+
  Clock type: WALL
  Ordered by: totaltime, desc
- 
+
  name                                  ncall  tsub      ttot      tavg
  ..h' of 'greenlet.greenlet' objects>  1      1.003298  1.003298  1.003298
  ..appi/c08_gevent.py:6 GreenletA.run  1      0.000006  1.003263  1.003263
  time.sleep                            1      1.003257  1.003257  1.003257
- 
+
 ```
 
 
@@ -1378,7 +1378,7 @@ IPythonはには、コードのタイミングやプロファイリングのた�
     ...: %timeit sum(range(100))
     ...:
  1.53 µs ± 140 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
- 
+
 ```
 
 この例のように短い処理の場合では、 `%timeit` は自動的に多くの繰り返しを行うことに注意してください。逆に遅い処理の場合は、 `%timeit` が自動的に調整して、少ない回数の繰り返しで計測します。
@@ -1386,7 +1386,7 @@ IPythonはには、コードのタイミングやプロファイリングのた�
 
 ```
  In [1]: %load 02_timeit_cell.py
- 
+
  In [2]: %%timeit
     ...: total = 0
     ...: for i in range(1000):
@@ -1395,7 +1395,7 @@ IPythonはには、コードのタイミングやプロファイリングのた�
     ...:
     ...:
  543 ms ± 30.2 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
- 
+
  In [3]:
 ```
 
@@ -1413,10 +1413,10 @@ IPythonはには、コードのタイミングやプロファイリングのた�
     ...:
     ...: # %timeit L.sort()
     ...:
- 
+
  In [3]: %timeit L.sort()
  2.85 ms ± 53.7 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
- 
+
  In [4]:
 ```
 
@@ -1432,17 +1432,17 @@ IPythonはには、コードのタイミングやプロファイリングのた�
     ...: # %time L.sort() # unsorted list
     ...: # %time L.sort() # sorted list
     ...:
- 
+
  In [3]: %time L.sort()
  CPU times: user 33 ms, sys: 818 µs, total: 33.8 ms
  Wall time: 36.1 ms
- 
+
  In [4]: %time L.sort()
  CPU times: user 3.09 ms, sys: 152 µs, total: 3.24 ms
  Wall time: 4.68 ms
- 
+
  In [5]:
- 
+
 ```
 
 しかし、ソートされたリストであっても、 `%time` と  `%timeit` では、タイミングがどれだけ長くかかるかにも注目してください。これは、 `%timeit` が、システムコールがタイミングに干渉するのを防ぐために、フードの下でいくつかの巧妙なことを行っているという事実の結果です。例えば、他の方法でタイミングに影響を与える可能性のある、使用されていないPythonオブジェクトのクリーンアップ（ガベージコレクションとして知られています）を防ぎます。このような理由から、 `%timeit` の結果は、通常、 `%time ` の結果よりも明らかに速くなります。
@@ -1452,7 +1452,7 @@ Timeitと同様に、 `%time` においても、パーセント記号を２つ�
 
 ```
  In [1]: %load 05_time_cell.py
- 
+
  In [2]: %%time
     ...: total = 0
     ...: for i in range(1000):
@@ -1462,9 +1462,9 @@ Timeitと同様に、 `%time` においても、パーセント記号を２つ�
     ...:
  CPU times: user 558 ms, sys: 11 ms, total: 569 ms
  Wall time: 605 ms
- 
+
  In [3]:
- 
+
 ```
 
 
@@ -1487,12 +1487,12 @@ Timeitと同様に、 `%time` においても、パーセント記号を２つ�
     ...:
     ...: # %prun sum_of_lists(1000000)
     ...:
- 
+
  In [3]: %prun sum_of_lists(1000000)
           14 function calls in 1.023 seconds
- 
+
     Ordered by: internal time
- 
+
     ncalls  tottime  percall  cumtime  percall filename:lineno(function)
          5    0.909    0.182    0.909    0.182 <ipython-input-2-5bb76001f08a>:5(<listcomp>)
          5    0.051    0.010    0.051    0.010 {built-in method builtins.sum}
@@ -1500,9 +1500,9 @@ Timeitと同様に、 `%time` においても、パーセント記号を２つ�
          1    0.016    0.016    1.023    1.023 <string>:1(<module>)
          1    0.000    0.000    1.023    1.023 {built-in method builtins.exec}
          1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
- 
+
  In [4]:
- 
+
 ```
 
 
@@ -1515,26 +1515,26 @@ Timeitと同様に、 `%time` においても、パーセント記号を２つ�
 ```
  Docstring:
  Run a statement through the python code profiler.
- 
+
  Usage, in line mode:
    %prun [options] statement
- 
+
  Usage, in cell mode:
    %%prun [options] [statement]
    code...
    code...
- 
+
  In cell mode, the additional code lines are appended to the (possibly
  empty) statement in the first line.  Cell mode allows you to easily
  profile multiline blocks without having to put them in a separate
  function.
- 
+
  The given statement (which doesn't require quote marks) is run via the
 
  Namespaces are internally managed to work correctly; profile.run
  cannot be used in IPython because it makes certain assumptions about
  namespaces which do not hold under IPython.
- 
+
  Options:
  (以下略)
 ```
@@ -1570,16 +1570,16 @@ Timeitと同様に、 `%time` においても、パーセント記号を２つ�
     ...: # %load_ext line_profiler
     ...: # %lprun -f sum_of_lists sum_of_lists(5000)
     ...:
- 
+
  In [3]: %load_ext line_profiler
- 
+
  In [4]: %lprun -f sum_of_lists sum_of_lists(5000)
  Timer unit: 1e-06 s
- 
+
  Total time: 0.01216 s
  File: <ipython-input-2-e305294cbc33>
  Function: sum_of_lists at line 2
- 
+
  Line #      Hits         Time  Per Hit   % Time  Line Contents
  ==============================================================
       2                                           def sum_of_lists(N):
@@ -1588,9 +1588,9 @@ Timeitと同様に、 `%time` においても、パーセント記号を２つ�
       5         5      11880.0   2376.0     97.7          L = [j ^ (j >> i) for j in range(N)]
       6         5        261.0     52.2      2.1          total += sum(L)
       7         1          1.0      1.0      0.0      return total
- 
+
  In [5]:
- 
+
 ```
 
 時間はマイクロ秒単位で表示され、プログラムが最も時間を費やしている場所がわかります。この時点で、この情報を使ってスクリプトの一部を変更し、より良いパフォーマンスを実現できるかもしれません。
@@ -1627,14 +1627,14 @@ Timeitと同様に、 `%time` においても、パーセント記号を２つ�
     ...: # %load_ext memory_profiler
     ...: # %memit sum_of_lists(1000000)
     ...:
- 
+
  In [3]: %load_ext memory_profiler
- 
+
  In [4]: %memit sum_of_lists(1000000)
  peak memory: 164.61 MiB, increment: 100.33 MiB
- 
+
  In [5]:
- 
+
 ```
 
 この例では、関数が　164MBのメモリを使用していることがわかります。
@@ -1650,7 +1650,7 @@ Timeitと同様に、 `%time` においても、パーセント記号を２つ�
          total += sum(L)
          del L # remove reference to L
      return total
- 
+
 ```
 
 
@@ -1662,12 +1662,12 @@ Timeitと同様に、 `%time` においても、パーセント記号を２つ�
     ...: # %load_ext memory_profiler
     ...: # %mprun -f sum_of_lists sum_of_lists(100000)
     ...:
- 
+
  In [3]: %load_ext memory_profiler
- 
+
  In [4]: %mprun -f sum_of_lists sum_of_lists(100000)
  Filename: /Users/goichiiisaka/Projects/Python.Osaka/Tutorial.Profiling/08_IPython/mprun_demo.py
- 
+
  Line #    Mem usage    Increment  Occurences   Line Contents
  ============================================================
       1     65.3 MiB     65.3 MiB           1   def sum_of_lists(N):
@@ -1677,8 +1677,8 @@ Timeitと同様に、 `%time` においても、パーセント記号を２つ�
       5     72.3 MiB      0.0 MiB           5           total += sum(L)
       6     69.6 MiB    -11.0 MiB           5           del L
       7     69.6 MiB      0.0 MiB           1       return total
- 
- 
+
+
  In [5]:
 ```
 
@@ -1775,7 +1775,7 @@ profファイルが置かれているディレクトリに移動し、コマン�
 
 #### その他のプロファイラー
 - [profiling ](https://github.com/what-studio/profiling) threadやgreenlet単位で計測できる
-- [vmprof-python ](https://github.com/vmprof/vmprof-python): 
+- [vmprof-python ](https://github.com/vmprof/vmprof-python):
 
 
 

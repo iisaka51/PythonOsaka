@@ -1,6 +1,6 @@
 Pythonチュートリアル：Webスクレイピング
 =================
-![](https://gyazo.com/153a339305d78fc4fa4850753e4b1594.png)
+![](https://github.com/iisaka51/PythonOsaka/blob/main/data/images/Python_Logo.png)
 
 # はじめに
 ビッグデータやデータ分析などデータを扱う処理を行う場合では、大量のデータを取得する工程も重要になります。単純にCSV形式やEXCELファイルで配布されている情報であれば簡単なのですが、場合によってはWebページからデータを収集する必要があり、Webスクレイピングのテクニックが使われるようになりました。

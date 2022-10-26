@@ -1,7 +1,7 @@
 Python チュートリアル：データのテーブル出力
 =================
 
-![](https://gyazo.com/153a339305d78fc4fa4850753e4b1594.png)
+![](https://github.com/iisaka51/PythonOsaka/blob/main/data/images/Python_Logo.png)
 
 
 ## はじめに
@@ -53,12 +53,12 @@ Python だけで表出力を記述した例です。
      print(" ".join(['{:>{length}s}'.format(t, length = str_l) for t in [" "] + teams_list]))
      for t, row in zip(teams_list, data):
          print(" ".join(['{:>{length}s}'.format(str(x), length = str_l) for x in [t] + row]))
- 
+
  teams_list = ["Dallas", "Chicago", "Los Angeles"]
  data = [[1, 2, 1],
          [0, 1, 0],
          [2, 4, 1]]
- 
+
  print_results_table(data, teams_list)
 ```
 
@@ -79,12 +79,12 @@ jupyter notebook では美しく整形されて出力されます。端末での
 ```
  import numpy as np
  import pandas as pd
- 
+
  teams_list = ["Dallas", "Chicago", "Los Angeles"]
  data = np.array([[1, 2, 1],
                   [0, 1, 0],
                   [2, 4, 1]])
- 
+
  df = pd.DataFrame(data, teams_list, teams_list)
  print(df)
 ```
@@ -103,7 +103,7 @@ jupyter notebook では美しく整形されて出力されます。端末での
 ```
  import numpy as np
  import pandas as pd
- 
+
  df = pd.read_csv('TOYOTA.csv')
  print(df)
 ```
@@ -123,7 +123,7 @@ jupyter notebook では美しく整形されて出力されます。端末での
  1288  2020-03-11  6830.0  6512.0  6630.0  6535.0   8273900.0  6535.000000
  1289  2020-03-12  6449.0  6229.0  6400.0  6309.0   9598800.0  6309.000000
  1290  2020-03-13  6343.0  5771.0  5926.0  6084.0  15841000.0  6084.000000
- 
+
  [1291 rows x 7 columns]
 ```
 
@@ -148,10 +148,10 @@ pandas を利用すると同じことができるので、このモジュール�
 ```
  import termtables as tt
  import numpy
- 
+
  numpy.random.seed(0)
  data = numpy.random.rand(5, 2)
- 
+
  tt.print(data)
 ```
 
@@ -164,12 +164,12 @@ pandas を利用すると同じことができるので、このモジュール�
  termtables_demo2.py
 ```
  import termtables as tt
- 
+
  header = ["a", "bb", "ccc"]
  data = [
      [1, 2, 3], [613.23236243236, 613.23236243236, 613.23236243236]
  ]
- 
+
  tt.print(
      data,
      header=header,
@@ -223,12 +223,12 @@ tabulate は拡張モジュールなので次のようにインストールし�
 ```
  import numpy as np
  from tabulate import tabulate
- 
+
  teams_list = ["Dallas", "Chicago", "Los Angelos"]
  data = np.array([[1, 2, 1],
                   [0, 1, 0],
                   [2, 4, 1]])
- 
+
  table = tabulate(data, headers=teams_list)
  print(table)
 ```
@@ -249,8 +249,8 @@ tabulateがサポートする表形式は、tabulate_formats プロパティー�
  IPython
 ```
  In [6]: import tabulate
- In [7]: tabulate.tabulate_formats                                          
- Out[7]: 
+ In [7]: tabulate.tabulate_formats
+ Out[7]:
  ['fancy_grid',
   'github',
   'grid',
@@ -281,7 +281,7 @@ Scapboxでは tsv を指定すると表の記述が楽になります。
  import numpy as np
  import pandas as pd
  from tabulate import tabulate
- 
+
  df = pd.read_csv('TOYOTA.csv')
  print(tabulate(df[:10],df.columns, tablefmt='github', showindex=False))
 ```
@@ -318,16 +318,16 @@ Scapboxでは tsv を指定すると表の記述が楽になります。
 ```
  import numpy as np
  from prettytable import PrettyTable
- 
+
  teams_list = ["Dallas", "Chicago", "Los Angeles"]
  data = np.array([[1, 2, 1],
                   [0, 1, 0],
                   [2, 4, 1]])
- 
+
  table = PrettyTable(field_names = teams_list)
  for row in data:
      table.add_row(row)
- 
+
  print(table)
 ```
 
@@ -360,10 +360,10 @@ zsh
  prettytable_csv.py
 ```
  from prettytable import from_csv
- 
+
  with open("CITY.csv") as fp:
      table = from_csv(fp)
- 
+
  print(table)
 ```
 
@@ -404,17 +404,17 @@ zsh
 ```
  import numpy as np
  from beautifultable import BeautifulTable
- 
+
  teams_list = ["Dallas", "Chicago", "Los Angeles"]
  data = np.array([[1, 2, 1],
                   [0, 1, 0],
                   [2, 4, 1]])
- 
+
  table = BeautifulTable()
  table.columns.header = teams_list
  for r in range(len(data)):
      table.rows.append(data[r])
- 
+
  print(table)
 ```
 
@@ -437,20 +437,20 @@ Pandas のデータフレームのようにカラム、行を抜き出すこと�
 ```
  import numpy as np
  from beautifultable import BeautifulTable
- 
+
  teams_list = ["Dallas", "Chicago", "Los Angeles"]
  data = np.array([[1, 2, 1],
                   [0, 1, 0],
                   [2, 4, 1]])
- 
+
  table = BeautifulTable()
  table.columns.header = teams_list
  for r in range(len(data)):
      table.rows.append(data[r])
- 
+
  new_table = table.rows[:2]
  print(new_table)
- 
+
  new_table = table.columns[:2]
  print(new_table)
 ```
@@ -521,23 +521,23 @@ Pandas のデータフレームのようにカラム、行を抜き出すこと�
 ### スタイル
 beautifultable では次のスタイルで出力することができます。
 デフォルトのスタイルは `STYLE_DEFAULT` は `STYLE_MYSQL` を指定したときと同じです。これは、MySQLでのテーブル出力フォーマットで表示します
-　 `STYLE_DEFAULT` /  `STYLE_MYSQL` 
--  `STYLE_NONE` 
--  `STYLE_DOTED` 
--  `STYLE_SEPARATED` 
--  `STYLE_COMPACT` 
--  `STYLE_MARKDOWN` 
--  `STYLE_RST` 
--  `STYLE_BOX` 
--  `STYLE_DOUBLED` 
--  `SYTLE_BOX_ROUNDED` 
--  `STYLE_GRID` 
+　 `STYLE_DEFAULT` /  `STYLE_MYSQL`
+-  `STYLE_NONE`
+-  `STYLE_DOTED`
+-  `STYLE_SEPARATED`
+-  `STYLE_COMPACT`
+-  `STYLE_MARKDOWN`
+-  `STYLE_RST`
+-  `STYLE_BOX`
+-  `STYLE_DOUBLED`
+-  `SYTLE_BOX_ROUNDED`
+-  `STYLE_GRID`
 
 ### 色表示
 
 ```
  from termcolor import colored
- 
+
  table.rows.append([
      colored("Dallas", "blue"),
      colored("Chicago", "cyan"),
@@ -548,7 +548,7 @@ beautifultable では次のスタイルで出力することができます。
  using_beautiuletable_paragraph.py
 ```
  rom beautifultable import BeautifulTable
- 
+
  table = BeautifulTable(maxwidth=40)
  table.columns.header = ["Heading 1", "Heading 2"]
  table.rows.append(["first Line\nsecond Line", "single line"])
@@ -556,7 +556,7 @@ beautifultable では次のスタイルで出力することができます。
                     "first Line\nsecond Line"])
  table.rows.append(["UTF8エンコーディングをサポートしています",
                     "日本語の表示と折返しもOKです"])
- 
+
  print(table)
 ```
 

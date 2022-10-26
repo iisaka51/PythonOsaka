@@ -1,7 +1,7 @@
 Pythonチュートリアル：タスクランナー
 =================
 
-![](https://gyazo.com/153a339305d78fc4fa4850753e4b1594.png)
+![](https://github.com/iisaka51/PythonOsaka/blob/main/data/images/Python_Logo.png)
 
 ## 第１章 タスクランナー
 - [タスクランナーの選定](00_Choice_Taskrunner.md)

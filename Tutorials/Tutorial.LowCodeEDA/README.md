@@ -1,6 +1,6 @@
 Pythonチュートリアル：Pythonによる探査的データ分析
 =================
-![](https://gyazo.com/153a339305d78fc4fa4850753e4b1594.png)
+![](https://github.com/iisaka51/PythonOsaka/blob/main/data/images/Python_Logo.png)
 
 # はじめに
 この資料は、Python で探索的データ分析を行うときに便利に使用できる支援ツールにつ>いてまとめたものです。

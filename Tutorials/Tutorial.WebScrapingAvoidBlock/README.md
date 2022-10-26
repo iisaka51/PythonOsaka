@@ -1,6 +1,6 @@
 Pythonチュートリアル：Webスクレイピングでのブロック回避
 =================
-![](https://gyazo.com/153a339305d78fc4fa4850753e4b1594.png)
+![](https://github.com/iisaka51/PythonOsaka/blob/main/data/images/Python_Logo.png)
 
 # はじめに
 この資料は、なぜWebスクレイピングでブロックされないための方法について説明しています。
