@@ -12,10 +12,10 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
  import pandas as pd
  from pathlib import Path
  from urllib.error import HTTPError
- 
+
  class DatasetError(BaseException):
      pass
- 
+
  class DataSet(object):
      baseurl = 'https://raw.githubusercontent.com/adamerose/datasets/master/'
      dataset_names = [
@@ -66,21 +66,21 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
               raise DatasetError('dataset not available') from None
           except HTTPError as err:
               raise DatasetError(err)
-  
+
       def get_dataset_names(self):
           return self.dataset_names
   dataset = DataSet()
   load_dataset = dataset.load_dataset
   get_dataset_names = dataset.get_dataset_names
-  
-  
+
+
   if __name__ == '__main__':
       import sys
       if len(sys.argv)<=1:
           from pprint import pprint
           pprint(get_dataset_names())
       else:
-          _= load_dataset(sys.argv[1], save=True)       
+          _= load_dataset(sys.argv[1], save=True)
 ```
 
  bash
@@ -94,7 +94,7 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
  from datetime import datetime
  import pandas as pd
  import pandas_datareader as pdr
- 
+
  def load_data(ticker="^GSPC", start=None, end=None, filename=None):
     try:
         start = datetime.fromisoformat(start)
@@ -104,14 +104,14 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
         end = datetime.fromisoformat(end)
     except:
         end = datetime.today()
- 
+
     df = pdr.DataReader(ticker, 'yahoo', start, end)
     _ = filename and df.to_csv(filename)
     return df
- 
+
  if __name__ == '__main__':
      from argparse import ArgumentParser
- 
+
      parser = ArgumentParser(description ='stock data reader')
      parser.add_argument(dest='ticker', metavar='ticker',
                          action='store', nargs=1,
@@ -125,10 +125,10 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
      parser.add_argument('-E', '--end', metavar='YYYY-MM-DD',
                          dest='end', action='store',
                          help='date of end. default is today')
- 
+
      args = parser.parse_args()
      load_data(args.ticker[0], args.start, args.end, args.filename)
-     
+
 ```
 
  bash
@@ -160,9 +160,9 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
     ...: _ = [pd.reset_option(x) for x in config.keys()]          # リセっっと
     ...:
  {'display.max_rows': 60, 'display.max_columns': 0, 'display.max_colwidth': 50}
- 
+
  In [3]:
- 
+
 ```
 
 # データを読み込む
@@ -172,7 +172,7 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
 ```
  df = pd.read_csv('csv_file')
  df = pd.read_json('json_file')
- df = pd.read_excel('excel_file') 
+ df = pd.read_excel('excel_file')
 ```
 
 
@@ -192,7 +192,7 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
     ...:
     ...: df = pd.read_csv("stockdata.csv", usecols=["Date", "stock", "value"])
     ...:
- 
+
  In [3]: df
  Out[3]:
              Date stock        value
@@ -207,11 +207,11 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
  11522  2/29/2016  SBUX    58.209999
  11523  2/29/2016  AAPL    96.690002
  11524  2/29/2016  GSPC  1932.229980
- 
+
  [11525 rows x 3 columns]
- 
+
  In [4]:
- 
+
 ```
 
 
@@ -229,7 +229,7 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
     ...: import pandas as pd
     ...:
     ...: df = pd.read_csv("stockdata.csv", parse_dates=["Date"])
- 
+
  In [4]: df
  Out[4]:
         Unnamed: 0       Date stock        value    change
@@ -244,9 +244,9 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
  11522       11522 2016-02-29  SBUX    58.209999  3.143793
  11523       11523 2016-02-29  AAPL    96.690002  3.971452
  11524       11524 2016-02-29  GSPC  1932.229980  2.386879
- 
+
  [11525 rows x 5 columns]
- 
+
  In [5]: df.info()
  <class 'pandas.core.frame.DataFrame'>
  RangeIndex: 11525 entries, 0 to 11524
@@ -260,9 +260,9 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
   4   change      11525 non-null  float64
  dtypes: datetime64[ns](1), float64(2), int64(1), object(1)
  memory usage: 450.3+ KB
- 
+
  In [6]:
- 
+
 ```
 
 ## データ型を指定して読み込む
@@ -282,7 +282,7 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
     ...: df1 = pd.read_csv('stockdata.csv')
     ...: df2 = pd.read_csv('stockdata.csv', dtype={"stock": "category"})
     ...:
- 
+
  In [3]: df1.info()
  <class 'pandas.core.frame.DataFrame'>
  RangeIndex: 11525 entries, 0 to 11524
@@ -296,7 +296,7 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
   4   change      11525 non-null  float64
  dtypes: float64(2), int64(1), object(2)
  memory usage: 450.3+ KB
- 
+
  In [4]: df2.info()
  <class 'pandas.core.frame.DataFrame'>
  RangeIndex: 11525 entries, 0 to 11524
@@ -310,9 +310,9 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
   4   change      11525 non-null  float64
  dtypes: category(1), float64(2), int64(1), object(1)
  memory usage: 371.7+ KB
- 
+
  In [5]:
- 
+
 ```
 
 ## インデックスを設定して読み込む
@@ -332,7 +332,7 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
     ...: df = pd.read_csv('stockdata.csv',
     ...:                  index_col="Date", parse_dates=["Date"])
     ...:
- 
+
  In [3]: df
  Out[3]:
              Unnamed: 0 stock        value    change
@@ -348,9 +348,9 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
  2016-02-29       11522  SBUX    58.209999  3.143793
  2016-02-29       11523  AAPL    96.690002  3.971452
  2016-02-29       11524  GSPC  1932.229980  2.386879
- 
+
  [11525 rows x 4 columns]
- 
+
  In [4]: df.info()
  <class 'pandas.core.frame.DataFrame'>
  DatetimeIndex: 11525 entries, 2007-01-03 to 2016-02-29
@@ -363,9 +363,9 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
   3   change      11525 non-null  float64
  dtypes: float64(2), int64(1), object(1)
  memory usage: 450.2+ KB
- 
+
  In [5]:
- 
+
 ```
 
 
@@ -384,7 +384,7 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
     ...:
     ...: df = pd.read_csv("stockdata.csv", nrows=10)
     ...:
- 
+
  In [3]: df
  Out[3]:
     Unnamed: 0      Date stock        value    change
@@ -398,9 +398,9 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
  7           7  1/4/2007  SBUX    16.167992 -0.425056
  8           8  1/4/2007  AAPL    11.332687 -0.712126
  9           9  1/4/2007  GSPC  1418.339966 -0.608458
- 
+
  In [4]:
- 
+
 ```
 
 ## スキップする行を指定して読み込む
@@ -409,9 +409,9 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
 
 ```
  df = pd.read_csv("stockdata.csv", skiprows=[1, 5])  # 1〜5行をスキップ
- 
+
  df = pd.read_csv("stockdata.csv", skiprows=10)     # 先頭から10行をスキップ
- 
+
  skip=lambda x: x > 0 and np.random.rand() > 0.1
  df = pd.read_csv("data.csv", skiprows=skip)         # 全体の90%をランダムにスキップ
 ```
@@ -430,19 +430,19 @@ Pandasはデータ分析のための汎用的で強力なライブラリです�
     ...: skip=lambda x: x > 0 and np.random.rand() > 0.1
     ...: df3 = pd.read_csv("stockdata.csv", skiprows=skip)
     ...:
- 
+
  In [3]: len(df0)
  Out[3]: 11525
- 
+
  In [4]: len(df1)
  Out[4]: 11523
- 
+
  In [5]: len(df2)
  Out[5]: 11515
- 
+
  In [6]: len(df3)
  Out[6]: 1166
- 
+
  In [7]:
 ```
 
@@ -467,7 +467,7 @@ PythonのPandasはデータ中のNAや空白の値をすべてNaN値として識
     ...: missing_values = ["n/a", "na", " _ _"]
     ...: df = pd.read_csv('titanic.csv', na_values=missing_values)
     ...:
- 
+
  In [3]: df['age']
  Out[3]:
  0     22.000
@@ -482,9 +482,9 @@ PythonのPandasはデータ中のNAや空白の値をすべてNaN値として識
  889   26.000
  890   32.000
  Name: age, dtype: float64
- 
+
  In [4]:
- 
+
 ```
 
 
@@ -503,7 +503,7 @@ PythonのPandasはデータ中のNAや空白の値をすべてNaN値として識
     ...: # df1['sex'].head()
     ...: # df2['sex'].head()
     ...:
- 
+
  In [3]: df1['sex'].head()
  Out[3]:
  0      male
@@ -512,7 +512,7 @@ PythonのPandasはデータ中のNAや空白の値をすべてNaN値として識
  3    female
  4      male
  Name: sex, dtype: object
- 
+
  In [4]: df2['sex'].head()
  Out[4]:
  0    False
@@ -521,9 +521,9 @@ PythonのPandasはデータ中のNAや空白の値をすべてNaN値として識
  3     True
  4    False
  Name: sex, dtype: bool
- 
+
  In [5]:
- 
+
 ```
 
 
@@ -545,14 +545,14 @@ PythonのPandasはデータ中のNAや空白の値をすべてNaN値として識
     3000 stockdata_ac.csv
     2526 stockdata_ad.csv
    11526 total
-   
+
 ```
 
 
 ```
  import glob
  import os
- 
+
  files = glob.glob("stockdata_*.csv")
  df = pd.concat([pd.read_csv(f) for f in files], ignore_index=True)
 ```
@@ -568,7 +568,7 @@ PythonのPandasはデータ中のNAや空白の値をすべてNaN値として識
     ...: files = glob.glob("stockdata_*.csv")
     ...: df = pd.concat([pd.read_csv(f) for f in files], ignore_index=True)
     ...:
- 
+
  In [3]: df.info()
  <class 'pandas.core.frame.DataFrame'>
  RangeIndex: 11524 entries, 0 to 11523
@@ -587,9 +587,39 @@ PythonのPandasはデータ中のNAや空白の値をすべてNaN値として識
   9   0.453568901  1525 non-null   float64
  dtypes: float64(6), object(4)
  memory usage: 900.4+ KB
- 
+
  In [4]:
- 
+
+```
+
+## データフレームからランダムに行を抽出
+
+`sample()`メソッドを呼び出すと指定した数の行をランダムに抽出します。
+
+```
+In [2]: # %load c11_sampling.py
+   ...: import pandas as pd
+   ...:
+   ...: df = pd.read_csv('stockdata.csv')
+   ...: df.sample(3)
+   ...: df.sample(2)
+   ...: df.sample(1)
+   ...:
+Out[2]:
+      Unnamed: 0        Date stock     value  change
+5561        5561    6/2/2011   IBM  148.7063 -0.6262
+8401        8401    9/5/2013   IBM  171.4186 -0.6082
+7421        7421  11/23/2012   IBM  177.6332 -0.3153
+Out[2]:
+      Unnamed: 0       Date stock      value  change
+9649        9649   9/2/2014  GSPC  2002.2800 -0.0779
+2425        2425  12/4/2008  MSFT    15.8231  3.9770
+Out[2]:
+      Unnamed: 0        Date stock     value  change
+4781        4781  10/19/2010   IBM  122.0056  0.7535
+
+In [3]:
+
 ```
 
 ## データフレームへのコピー＆ペースト
@@ -639,7 +669,7 @@ Pandasで定義されている [データ型 ](https://pandas.pydata.org/pandas-
     ...: df2 = df.select_dtypes(include=["category", "int64"])
     ...: df3 = df.select_dtypes(exclude="int64")
     ...:
- 
+
  In [3]: df1
  Out[3]:
                    value    change
@@ -655,9 +685,9 @@ Pandasで定義されている [データ型 ](https://pandas.pydata.org/pandas-
  2016-02-29    58.209999  3.143793
  2016-02-29    96.690002  3.971452
  2016-02-29  1932.229980  2.386879
- 
+
  [11525 rows x 2 columns]
- 
+
  In [4]: df2
  Out[4]:
              Unnamed: 0 stock
@@ -673,9 +703,9 @@ Pandasで定義されている [データ型 ](https://pandas.pydata.org/pandas-
  2016-02-29       11522  SBUX
  2016-02-29       11523  AAPL
  2016-02-29       11524  GSPC
- 
+
  [11525 rows x 2 columns]
- 
+
  In [5]: df3
  Out[5]:
             stock        value    change
@@ -691,11 +721,11 @@ Pandasで定義されている [データ型 ](https://pandas.pydata.org/pandas-
  2016-02-29  SBUX    58.209999  3.143793
  2016-02-29  AAPL    96.690002  3.971452
  2016-02-29  GSPC  1932.229980  2.386879
- 
+
  [11525 rows x 3 columns]
- 
+
  In [6]:
- 
+
 ```
 
 ## ダウンキャスト
@@ -706,7 +736,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  df1['Unnamed: 0'] = pd.to_numeric(df1['Unnamed: 0'], downcast="integer")
  df1['value'] = pd.to_numeric(df1['value'], downcast="float")
  df1['change'] = pd.to_numeric(df1['change'], downcast="float")
- 
+
 ```
 
 
@@ -724,7 +754,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...: df1['change'] = pd.to_numeric(df1['change'], downcast="float")
     ...:
     ...:
- 
+
  In [3]: df.info()
  <class 'pandas.core.frame.DataFrame'>
  RangeIndex: 11525 entries, 0 to 11524
@@ -738,7 +768,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
   4   change      11525 non-null  float64
  dtypes: float64(2), int64(1), object(2)
  memory usage: 450.3+ KB
- 
+
  In [4]: df1.info()
  <class 'pandas.core.frame.DataFrame'>
  RangeIndex: 11525 entries, 0 to 11524
@@ -752,9 +782,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
   4   change      11525 non-null  float32
  dtypes: float32(2), int16(1), object(2)
  memory usage: 292.8+ KB
- 
+
  In [5]:
- 
+
 ```
 
 ## 手動変換
@@ -763,11 +793,11 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
 
 ```
  df1 = df1.apply(pd.to_numeric, errors="coerce")
- 
+
  df2 = df.copy()
  # 指定した列を変換
  df2.age = pd.to_numeric(df2.age, errors="coerce")
- 
+
  df3 = df.copy()
  # 欠損値をゼロ(0)で埋める
  df3.age = pd.to_numeric(df3.age, errors="coerce").fillna(0)
@@ -797,7 +827,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...: # df2.age
     ...: # df3.age
     ...:
- 
+
  In [3]: df1
  Out[3]:
       Unnamed: 0  survived  pclass  sex  ...  deck  embark_town  alive  alone
@@ -812,9 +842,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  888         888         0       3  NaN  ...   NaN          NaN    NaN  False
  889         889         1       1  NaN  ...   NaN          NaN    NaN   True
  890         890         0       3  NaN  ...   NaN          NaN    NaN   True
- 
+
  [891 rows x 16 columns]
- 
+
  In [4]: df2.age
  Out[4]:
  0      22.0
@@ -829,7 +859,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  889    26.0
  890    32.0
  Name: age, Length: 891, dtype: float64
- 
+
  In [5]: df3.age
  Out[5]:
  0      22.0
@@ -844,9 +874,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  889    26.0
  890    32.0
  Name: age, Length: 891, dtype: float64
- 
+
  In [6]:
- 
+
 ```
 
 ## データ型を一括で変換
@@ -861,7 +891,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
          "change": "float",
      }
  )
- 
+
 ```
 
 
@@ -881,7 +911,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...:     }
     ...: )
     ...:
- 
+
  In [3]: df
  Out[3]:
         Unnamed: 0       Date stock        value    change
@@ -896,9 +926,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  11522       11522 2016-02-29  SBUX    58.209999  3.143793
  11523       11523 2016-02-29  AAPL    96.690002  3.971452
  11524       11524 2016-02-29  GSPC  1932.229980  2.386879
- 
+
  [11525 rows x 5 columns]
- 
+
  In [4]: df.info()
  <class 'pandas.core.frame.DataFrame'>
  RangeIndex: 11525 entries, 0 to 11524
@@ -912,9 +942,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
   4   change      11525 non-null  float64
  dtypes: category(1), datetime64[ns](1), float64(2), int64(1)
  memory usage: 371.7 KB
- 
+
  In [5]:
- 
+
 ```
 
 
@@ -937,7 +967,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...:
     ...: df = df.rename({"value": "price", "Date": "date"}, axis=1)
     ...:
- 
+
  In [3]: df.info()
  <class 'pandas.core.frame.DataFrame'>
  RangeIndex: 11525 entries, 0 to 11524
@@ -951,9 +981,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
   4   change      11525 non-null  float64
  dtypes: float64(2), int64(1), object(2)
  memory usage: 450.3+ KB
- 
+
  In [4]:
- 
+
 ```
 
 ## 列名の変更 文字列操作
@@ -963,7 +993,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
 ```
  df.columns = df.columns.str.upper()   # 大文字へ変換
  df.columns = df.columns.str.replace('alive', 'Alive')
- 
+
 ```
 
 
@@ -979,28 +1009,28 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...:
     ...: df.columns = v2
     ...:
- 
+
  In [3]: v1
  Out[3]:
  Index(['Unnamed: 0', 'survived', 'pclass', 'sex', 'age', 'sibsp', 'parch',
         'fare', 'embarked', 'class', 'who', 'adult_male', 'deck', 'embark_town',
         'alive', 'alone'],
        dtype='object')
- 
+
  In [4]: v2
  Out[4]:
  Index(['UNNAMED: 0', 'SURVIVED', 'PCLASS', 'SEX', 'AGE', 'SIBSP', 'PARCH',
         'FARE', 'EMBARKED', 'CLASS', 'WHO', 'ADULT_MALE', 'DECK', 'EMBARK_TOWN',
         'ALIVE', 'ALONE'],
        dtype='object')
- 
+
  In [5]: v3
  Out[5]:
  Index(['Unnamed: 0', 'SURVIVED', 'pclass', 'sex', 'age', 'sibsp', 'parch',
         'fare', 'embarked', 'class', 'who', 'adult_male', 'deck', 'embark_town',
         'alive', 'alone'],
        dtype='object')
- 
+
  In [6]: df.info()
  <class 'pandas.core.frame.DataFrame'>
  RangeIndex: 891 entries, 0 to 890
@@ -1025,9 +1055,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
   15  ALONE        891 non-null    bool
  dtypes: bool(2), float64(2), int64(5), object(7)
  memory usage: 99.3+ KB
- 
+
  In [7]:
- 
+
 ```
 
 ## 列名にprefix や suffix を追加
@@ -1049,7 +1079,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...: df = df.add_prefix('PRE_')
     ...: df = df.add_suffix('_SUF')
     ...:
- 
+
  In [3]: df.info()
  <class 'pandas.core.frame.DataFrame'>
  RangeIndex: 11525 entries, 0 to 11524
@@ -1063,9 +1093,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
   4   PRE_change_SUF      11525 non-null  float64
  dtypes: float64(2), int64(1), object(2)
  memory usage: 450.3+ KB
- 
+
  In [4]:
- 
+
 ```
 
 
@@ -1107,7 +1137,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...: df.loc[df['sex'] == 'female', 'sex_flag'] = 'True'
     ...: df.loc[df['sex'] == 'male', 'sex_flag'] = 'False'
     ...:
- 
+
  In [3]: df.info()
  <class 'pandas.core.frame.DataFrame'>
  RangeIndex: 891 entries, 0 to 890
@@ -1133,7 +1163,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
   16  sex_flag     891 non-null    object
  dtypes: bool(2), float64(2), int64(5), object(8)
  memory usage: 106.3+ KB
- 
+
  In [4]: df['sex_flag']
  Out[4]:
  0      False
@@ -1148,9 +1178,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  889    False
  890    False
  Name: sex_flag, Length: 891, dtype: object
- 
+
  In [5]:
- 
+
 ```
 
 
@@ -1172,7 +1202,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...: is_female = lambda x: 'True' if x == 'female' else 'False'
     ...: df['sex_flag'] = df['sex'].apply(is_female)
     ...:
- 
+
  In [3]: df.info()
  <class 'pandas.core.frame.DataFrame'>
  RangeIndex: 891 entries, 0 to 890
@@ -1198,7 +1228,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
   16  sex_flag     891 non-null    object
  dtypes: bool(2), float64(2), int64(5), object(8)
  memory usage: 106.3+ KB
- 
+
  In [4]: df['sex_flag']
  Out[4]:
  0      False
@@ -1213,9 +1243,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  889    False
  890    False
  Name: sex_flag, Length: 891, dtype: object
- 
+
  In [5]:
- 
+
 ```
 
 ## lambda式を列に適用した結果を追加する assign()
@@ -1244,7 +1274,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...:
     ...: df['sex_flag'] = np.where(df['sex'] == 'female', 'True', 'False')
     ...:
- 
+
  In [3]: df.info()
  <class 'pandas.core.frame.DataFrame'>
  RangeIndex: 891 entries, 0 to 890
@@ -1270,7 +1300,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
   16  sex_flag     891 non-null    object
  dtypes: bool(2), float64(2), int64(5), object(8)
  memory usage: 106.3+ KB
- 
+
  In [4]: df['sex_flag']
  Out[4]:
  0      False
@@ -1285,9 +1315,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  889    False
  890    False
  Name: sex_flag, Length: 891, dtype: object
- 
+
  In [5]:
- 
+
 ```
 
 ## 指定した位置に列を挿入
@@ -1296,7 +1326,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
 
 ```
  random_col = np.random.randint(10, size=len(df))
- df.insert(3, 'random_col', random_col) 
+ df.insert(3, 'random_col', random_col)
 ```
 
 
@@ -1310,7 +1340,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...: random_col = np.random.randint(10, size=len(df))
     ...: df.insert(3, 'random_col', random_col)
     ...:
- 
+
  In [3]: df.info()
  <class 'pandas.core.frame.DataFrame'>
  RangeIndex: 11525 entries, 0 to 11524
@@ -1325,9 +1355,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
   5   change      11525 non-null  float64
  dtypes: float64(2), int64(2), object(2)
  memory usage: 540.4+ KB
- 
+
  In [4]:
- 
+
 ```
 
 
@@ -1352,7 +1382,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...:
     ...: df1 = df.drop(['Unnamed: 0', 'who', 'embark_town'], axis=1)
     ...:
- 
+
  In [3]: df.info()
  <class 'pandas.core.frame.DataFrame'>
  RangeIndex: 891 entries, 0 to 890
@@ -1377,7 +1407,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
   15  alone        891 non-null    bool
  dtypes: bool(2), float64(2), int64(5), object(7)
  memory usage: 99.3+ KB
- 
+
  In [4]: df1.info()
  <class 'pandas.core.frame.DataFrame'>
  RangeIndex: 891 entries, 0 to 890
@@ -1399,9 +1429,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
   12  alone       891 non-null    bool
  dtypes: bool(2), float64(2), int64(4), object(5)
  memory usage: 78.4+ KB
- 
+
  In [5]:
- 
+
 ```
 
 ### データフレームから列を削除する
@@ -1421,7 +1451,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...:
     ...: df.drop(['Unnamed: 0', 'who', 'embark_town'], axis=1, inplace=True)
     ...:
- 
+
  In [3]: df.info()
  <class 'pandas.core.frame.DataFrame'>
  RangeIndex: 891 entries, 0 to 890
@@ -1443,9 +1473,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
   12  alone       891 non-null    bool
  dtypes: bool(2), float64(2), int64(4), object(5)
  memory usage: 78.4+ KB
- 
+
  In [4]:
- 
+
 ```
 
 # 値の検索
@@ -1455,7 +1485,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
 
 ```
  df['name'].str.contains("Freddie")
- df['phone_num'].str.contains('...-...-....', regex=True) 
+ df['phone_num'].str.contains('...-...-....', regex=True)
 ```
 
 
@@ -1469,7 +1499,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...: v2 = df['embark_town'].str.contains('town')
     ...: v3 = df['embark_town'].str.contains('^Q.*', regex=True)
     ...:
- 
+
  In [3]: v1
  Out[3]:
  0      Southampton
@@ -1484,7 +1514,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  889      Cherbourg
  890     Queenstown
  Name: embark_town, Length: 891, dtype: object
- 
+
  In [4]: v2
  Out[4]:
  0      False
@@ -1499,7 +1529,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  889    False
  890     True
  Name: embark_town, Length: 891, dtype: object
- 
+
  In [5]: v3
  Out[5]:
  0      False
@@ -1514,9 +1544,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  889    False
  890     True
  Name: embark_town, Length: 891, dtype: object
- 
+
  In [6]:
- 
+
 ```
 
 ## 文字列操作として検索 findall()
@@ -1539,7 +1569,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...: regexp = '^Q.*'
     ...: v1 = df['embark_town'].str.findall(regexp, flags=re.IGNORECASE)
     ...:
- 
+
  In [3]: v1
  Out[3]:
  0                []
@@ -1554,9 +1584,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  889              []
  890    [Queenstown]
  Name: embark_town, Length: 891, dtype: object
- 
+
  In [4]:
- 
+
 ```
 
 
@@ -1576,7 +1606,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
 
 
 ```
- 
+
  In [2]: # %load c40_missing_val_isnull.py
     ...: import pandas as pd
     ...:
@@ -1587,7 +1617,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...: v3 = df['age'].isnull().values[:10]
     ...: v4 = df['age'].isnull().values.any()
     ...:
- 
+
  In [3]: v1
  Out[3]:
       Unnamed: 0  survived  pclass    sex  ...   deck  embark_town  alive  alone
@@ -1602,9 +1632,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  888       False     False   False  False  ...   True        False  False  False
  889       False     False   False  False  ...  False        False  False  False
  890       False     False   False  False  ...   True        False  False  False
- 
+
  [891 rows x 16 columns]
- 
+
  In [4]: v2
  Out[4]:
  0      False
@@ -1619,17 +1649,17 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  889    False
  890    False
  Name: age, Length: 891, dtype: bool
- 
+
  In [5]: v3
  Out[5]:
  array([False, False, False, False, False,  True, False, False, False,
         False])
- 
+
  In [6]: v4
  Out[6]: True
- 
+
  In [7]:
- 
+
 ```
 
 
@@ -1654,7 +1684,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...: v2 = df.isnull().sum().sum()
     ...: v3 = df['age'].isnull().sum()
     ...:
- 
+
  In [3]: v1
  Out[3]:
  Unnamed: 0       0
@@ -1674,15 +1704,15 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  alive            0
  alone            0
  dtype: int64
- 
+
  In [4]: v2
  Out[4]: 869
- 
+
  In [5]: v3
  Out[5]: 177
- 
+
  In [6]:
- 
+
 ```
 
 ## 欠損値を調整する
@@ -1711,7 +1741,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...: df2 = df.dropna(axis=1)
     ...: v3 = df2.isnull().sum()
     ...:
- 
+
  In [3]: v1
  Out[3]:
  Unnamed: 0       0
@@ -1731,7 +1761,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  alive            0
  alone            0
  dtype: int64
- 
+
  In [4]: v2
  Out[4]:
  Unnamed: 0     0
@@ -1751,7 +1781,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  alive          0
  alone          0
  dtype: int64
- 
+
  In [5]: v3
  Out[5]:
  Unnamed: 0    0
@@ -1767,9 +1797,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  alive         0
  alone         0
  dtype: int64
- 
+
  In [6]:
- 
+
 ```
 
 この方法は、欠損値のあるデータを完全に削除することで、ロバストで精度の高いモデルになります。しかし、情報やデータの損失を伴うことに注意してください。データセット全体と比較して、欠損値の割合が高い場合（例えば30％）では、分析に悪影響を与える可能性が’高くなります。
@@ -1789,15 +1819,15 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
 
 ```
  df.fillna(0)
- 
+
  df.fillna(method="ffill")
  df.fillna(method='bfill')
-  
+
  sr_age = df['age']
  df['age'].fillna(sr_age.mean())
  df['age'].fillna(sr_age.median())
  df['age'].fillna(sr_age.mode().to_list()[0])
- 
+
 ```
 
 
@@ -1817,7 +1847,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...: v_median = df['age'].fillna(v1.median())
     ...: v_mode = df['age'].fillna(v1.mode().to_list()[0])
     ...:
- 
+
  In [3]: v1
  Out[3]:
  0     22.000
@@ -1832,7 +1862,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  889   26.000
  890   32.000
  Name: age, dtype: float64
- 
+
  In [4]: v2
  Out[4]:
  0     22.000
@@ -1847,7 +1877,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  889   26.000
  890   32.000
  Name: age, dtype: float64
- 
+
  In [5]: v3
  Out[5]:
  0     22.000
@@ -1862,7 +1892,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  889   26.000
  890   32.000
  Name: age, dtype: float64
- 
+
  In [6]: v4
  Out[6]:
  0     22.000
@@ -1877,18 +1907,18 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  889   26.000
  890   32.000
  Name: age, dtype: float64
- 
+
  In [7]: v_avg[888]
  Out[7]: 29.69911764705882
- 
+
  In [8]: v_median[888]
  Out[8]: 28.0
- 
+
  In [9]: v_mode[888]
  Out[9]: 24.0
- 
+
  In [10]:
- 
+
 ```
 
  `fillna()` は `dropna()` と違い行や列が削除されるようなデータ損失を防ぐことができることから、データサイズが小さい場合、この方法が適していると言えます。しかし、平均値、中央値、歳頻値などと置き換えるために、分散にバイアスがかかってしまうことに注意してください。
@@ -1916,7 +1946,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...: v1 = df['age']
     ...: v2 = df['age'].interpolate(method='linear')
     ...: v3 = df['age'].interpolate(option='spline')
- 
+
  In [2]: v1[880:]
  Out[2]:
  880   25.000
@@ -1931,7 +1961,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  889   26.000
  890   32.000
  Name: age, dtype: float64
- 
+
  In [3]: v2[880:]
  Out[3]:
  880   25.000
@@ -1946,7 +1976,7 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  889   26.000
  890   32.000
  Name: age, dtype: float64
- 
+
  In [4]: v3[880:]
  Out[4]:
  880   25.000
@@ -1961,9 +1991,9 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
  889   26.000
  890   32.000
  Name: age, dtype: float64
- 
+
  In [5]:
- 
+
 ```
 
 ## 欠損値の割合を知る
@@ -1993,12 +2023,12 @@ Pandasの `to_numeric()` には、型をダウンキャストする機能があ�
     ...: missing_rate(df)
     ...:
  Total of 4 variables with missing values
- 
+
  deck                 => 77.217%
  age                  => 19.865%
  embarked             => 0.224%
  embark_town          => 0.224%
- 
+
  In [3]:
 ```
 
@@ -2012,7 +2042,7 @@ Pandas では時系列処理ができることもあり、日時処理をする�
 
 ```
  from datetime import datetime, date
- 
+
  date.today() + datetime.timedelta(hours30)   # 30時間後
  date.today() + datetime.timedelta(days=30)   # 30日後
  date.today() + datetime.timedelta(weeks=30)  # 50週後
@@ -2037,7 +2067,7 @@ Pandas では時系列処理ができることもあり、日時処理をする�
     ...:
     ...: df1 = df[(df["Date"] > "2012-01-01") & (df["Date"] < "2013-06-01")]
     ...:
- 
+
  In [3]: df1.info()
  <class 'pandas.core.frame.DataFrame'>
  Int64Index: 1770 entries, 6300 to 8069
@@ -2051,7 +2081,7 @@ Pandas では時系列処理ができることもあり、日時処理をする�
   4   change      1770 non-null   float64
  dtypes: datetime64[ns](1), float64(2), int64(1), object(1)
  memory usage: 83.0+ KB
- 
+
  In [4]: df1
  Out[4]:
        Unnamed: 0       Date stock        value    change
@@ -2066,11 +2096,11 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  8067        8067 2013-05-31  SBUX    30.421491  0.506809
  8068        8068 2013-05-31  AAPL    60.776444  0.220128
  8069        8069 2013-05-31  GSPC  1630.739990  0.593599
- 
+
  [1770 rows x 5 columns]
- 
+
  In [5]:
- 
+
 ```
 
 
@@ -2094,7 +2124,7 @@ Pandas では時系列処理ができることもあり、日時処理をする�
     ...: df2 = df[df["Date"].dt.strftime("%m") == "12"]
     ...: df3 = df[df["Date"].dt.strftime("%Y") == "2012"]
     ...:
- 
+
  In [3]: df1
  Out[3]:
     Unnamed: 0       Date stock        value    change
@@ -2103,7 +2133,7 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  2           2 2007-01-03  SBUX    16.149666  0.113476
  3           3 2007-01-03  AAPL    11.086612  2.219569
  4           4 2007-01-03  GSPC  1416.599976  0.122829
- 
+
  In [4]: df2
  Out[4]:
         Unnamed: 0       Date stock        value    change
@@ -2118,9 +2148,9 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  11327       11327 2015-12-31  SBUX    59.834461 -2.948527
  11328       11328 2015-12-31  AAPL   104.691918  0.085499
  11329       11329 2015-12-31  GSPC  2043.939941 -1.530373
- 
+
  [960 rows x 5 columns]
- 
+
  In [5]: df3
  Out[5]:
        Unnamed: 0       Date stock        value    change
@@ -2135,11 +2165,11 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  7547        7547 2012-12-31  SBUX    25.656212  2.554535
  7548        7548 2012-12-31  AAPL    71.030509  3.168158
  7549        7549 2012-12-31  GSPC  1426.189941  2.540342
- 
+
  [1250 rows x 5 columns]
- 
+
  In [6]:
- 
+
 ```
 
 
@@ -2166,13 +2196,13 @@ Pandas では時系列処理ができることもあり、日時処理をする�
     ...: # df.iloc[v1]
     ...: # df.iloc[v2]
     ...:
- 
+
  In [3]: v1
  Out[3]: 8
- 
+
  In [4]: v2
  Out[4]: 2477
- 
+
  In [5]: df.iloc[v1]
  Out[5]:
  Date         2012-01-13 00:00:00
@@ -2183,7 +2213,7 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  Volume                27502000.0
  Adj Close                  4.558
  Name: 8, dtype: object
- 
+
  In [6]: df.iloc[v2]
  Out[6]:
  Date         2021-11-04 00:00:00
@@ -2194,7 +2224,7 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  Volume                25397400.0
  Adj Close            1229.910034
  Name: 2477, dtype: object
- 
+
  In [7]: df.iloc[-1]
  Out[7]:
  Date         2022-05-16 00:00:00
@@ -2205,9 +2235,9 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  Volume                28699513.0
  Adj Close             724.369995
  Name: 2609, dtype: object
- 
+
  In [8]:
- 
+
 ```
 
 
@@ -2227,7 +2257,7 @@ Pandas では時系列処理ができることもあり、日時処理をする�
     ...: df = pd.read_csv('titanic.csv')
     ...: df1 = df.applymap(lambda x: 'True' if x == 'female' else 'False')
     ...:
- 
+
  In [3]: df['sex']
  Out[3]:
  0        male
@@ -2242,7 +2272,7 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  889      male
  890      male
  Name: sex, Length: 891, dtype: object
- 
+
  In [4]: df1['sex']
  Out[4]:
  0      False
@@ -2257,9 +2287,9 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  889    False
  890    False
  Name: sex, Length: 891, dtype: object
- 
+
  In [5]:
- 
+
 ```
 
 
@@ -2279,7 +2309,7 @@ Pandas では時系列処理ができることもあり、日時処理をする�
     ...: df = pd.read_csv('TSLA.csv', parse_dates=["Date"])
     ...: df['Change'] = df['Adj Close'].pct_change()
     ...:
- 
+
  In [3]: df.info()
  <class 'pandas.core.frame.DataFrame'>
  RangeIndex: 2610 entries, 0 to 2609
@@ -2296,7 +2326,7 @@ Pandas では時系列処理ができることもあり、日時処理をする�
   7   Change     2609 non-null   float64
  dtypes: datetime64[ns](1), float64(7)
  memory usage: 163.2 KB
- 
+
  In [4]: df[-5:-1]
  Out[4]:
             Date        High         Low  ...      Volume   Adj Close    Change
@@ -2304,17 +2334,17 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  2606 2022-05-11  809.770020  727.200012  ...  32408200.0  734.000000 -0.082546
  2607 2022-05-12  759.659973  680.000000  ...  46771000.0  728.000000 -0.008174
  2608 2022-05-13  787.349976  751.570007  ...  30651800.0  769.590027  0.057129
- 
+
  [4 rows x 8 columns]
- 
+
  In [3]: 728/734
  Out[3]: 0.9918256130790191
- 
+
  In [4]: 1-728/734
  Out[4]: 0.008174386920980936
- 
+
  In [5]:
- 
+
 ```
 
 ## 出現データの頻度の10位を知る
@@ -2337,10 +2367,10 @@ Pandas では時系列処理ができることもあり、日時処理をする�
     ...: fare_new = fare_orig.where(fare_orig.isin(top_10), other="Other")
     ...: v1 = fare_new.value_counts()
     ...:
- 
+
  In [3]: top_10
  Out[3]: Float64Index([8.05, 13.0, 7.8958, 7.75, 26.0, 10.5, 7.925, 7.775, 7.2292, 0.0], dtype='float64')
- 
+
  In [4]: fare_new
  Out[4]:
  0      Other
@@ -2355,7 +2385,7 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  889    Other
  890     7.75
  Name: fare, Length: 891, dtype: object
- 
+
  In [5]: v1
  Out[5]:
  Other     615
@@ -2370,9 +2400,9 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  7.2292     15
  0.0        15
  Name: fare, dtype: int64
- 
+
  In [6]:
- 
+
 ```
 
 
@@ -2392,7 +2422,7 @@ Pandas では時系列処理ができることもあり、日時処理をする�
     ...:
     ...: v1 = df.groupby(['sex', 'survived'])['survived'].sum()
     ...:
- 
+
  In [3]: v1
  Out[3]:
  sex     survived
@@ -2401,9 +2431,9 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  male    0             0
          1           109
  Name: survived, dtype: int64
- 
+
  In [4]:
- 
+
 ```
 
 ## 列データの展開
@@ -2423,14 +2453,14 @@ Pandas では時系列処理ができることもあり、日時処理をする�
     ...:
     ...: v1 = df.explode('day4').reset_index(drop=True)
     ...:
- 
+
  In [3]: df
  Out[3]:
    name  day1  day2  day3                  day4  day5
  0    A    21    31    41                    51    61
  1    B    22    32    42                    52    61
  2    C    23    33    43  [53, 54, 55, 56, 57]    62
- 
+
  In [4]: v1
  Out[4]:
    name  day1  day2  day3 day4  day5
@@ -2441,9 +2471,9 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  4    C    23    33    43   55    62
  5    C    23    33    43   56    62
  6    C    23    33    43   57    62
- 
+
  In [5]:
- 
+
 ```
 
 
@@ -2453,9 +2483,9 @@ Pandas では時系列処理ができることもあり、日時処理をする�
 
 ```
  df.resample('W').agg(
-     {'High': 'max', 'Low': 'min', 'Open': 'first', 
+     {'High': 'max', 'Low': 'min', 'Open': 'first',
       'Close': 'last', 'Volume': 'sum', 'Adj Close': 'last' }
-     
+
 ```
 
 
@@ -2470,7 +2500,7 @@ Pandas では時系列処理ができることもあり、日時処理をする�
     ...:                   {'High': 'max', 'Low': 'min', 'Open': 'first',
     ...:                   'Close': 'last', 'Volume': 'sum', 'Adj Close': 'last' })
     ...:
- 
+
  In [3]: df.head()
  Out[3]:
               High    Low   Open  Close     Volume  Adj Close
@@ -2480,7 +2510,7 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  2012-01-05  5.586  5.370  5.552  5.424  5027500.0      5.424
  2012-01-06  5.558  5.282  5.440  5.382  4931500.0      5.382
  2012-01-09  5.498  5.224  5.400  5.450  4485000.0      5.450
- 
+
  In [4]: df_w.head()
  Out[4]:
               High    Low   Open  Close      Volume  Adj Close
@@ -2490,9 +2520,9 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  2012-01-22  5.548  5.250  5.324  5.320  3.9102e+07      5.320
  2012-01-29  5.944  5.288  5.362  5.866  2.0416e+07      5.866
  2012-02-05  6.266  5.706  5.898  6.230  1.8894e+07      6.230
- 
+
  In [5]:
- 
+
 ```
 
 ## 指数平滑移動平均を求める
@@ -2523,7 +2553,7 @@ Pandas では時系列処理ができることもあり、日時処理をする�
     ...: v1 = df.memory_usage()
     ...: v2 = df.memory_usage().sum()
     ...:
- 
+
  In [3]: v1
  Out[3]:
  Index          128
@@ -2535,12 +2565,12 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  Volume       20880
  Adj Close    20880
  dtype: int64
- 
+
  In [4]: v2
  Out[4]: 146288
- 
+
  In [5]:
- 
+
 ```
 
 # スタイリング
@@ -2567,7 +2597,7 @@ Pandas では時系列処理ができることもあり、日時処理をする�
     ...: # pd.options.display.float_format = '{:,.0f}'.format
     ...: # df
     ...:
- 
+
  In [3]: df
  Out[3]:
             Date        High         Low  ...       Close      Volume   Adj Close
@@ -2582,11 +2612,11 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  2607 2022-05-12  759.659973  680.000000  ...  728.000000  46771000.0  728.000000
  2608 2022-05-13  787.349976  751.570007  ...  769.590027  30651800.0  769.590027
  2609 2022-05-16  769.760010  719.088501  ...  724.369995  28699513.0  724.369995
- 
+
  [2610 rows x 7 columns]
- 
+
  In [4]: pd.set_option('display.float_format', lambda x: '%.3f' % x)
- 
+
  In [5]: df
  Out[5]:
             Date    High     Low    Open   Close       Volume  Adj Close
@@ -2601,11 +2631,11 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  2607 2022-05-12 759.660 680.000 701.000 728.000 46771000.000    728.000
  2608 2022-05-13 787.350 751.570 773.480 769.590 30651800.000    769.590
  2609 2022-05-16 769.760 719.089 767.160 724.370 28699513.000    724.370
- 
+
  [2610 rows x 7 columns]
- 
+
  In [6]: pd.options.display.float_format = '{:,.0f}'.format
- 
+
  In [7]: df
  Out[7]:
             Date  High  Low  Open  Close     Volume  Adj Close
@@ -2620,11 +2650,11 @@ Pandas では時系列処理ができることもあり、日時処理をする�
  2607 2022-05-12   760  680   701    728 46,771,000        728
  2608 2022-05-13   787  752   773    770 30,651,800        770
  2609 2022-05-16   770  719   767    724 28,699,513        724
- 
+
  [2610 rows x 7 columns]
- 
+
  In [8]:
- 
+
 ```
 
 
@@ -2634,9 +2664,9 @@ Pandas を Jupyterlab/notebok から使用している場合は、書式を指�
 
 ```
  import pandas as pd
- 
+
  df = pd.read_csv('TSLA.csv', parse_dates=["Date"])
- 
+
  format_dict = {
      "Date": "{:%d/%m/%y}",
      "Open": "${:.2f}",
@@ -2646,7 +2676,7 @@ Pandas を Jupyterlab/notebok から使用している場合は、書式を指�
      "Ajd Close": "${:.2f}",
      "Volume": "{:,}",
  }
- 
+
  df.style.format(format_dict)
 ```
 
@@ -2666,7 +2696,7 @@ Pandas を Jupyterlab/notebok から使用している場合は、色を指定�
      .set_caption('Tesla Stock Prices in 2018')
      .hide()
  )
- 
+
 ```
 
 ![](https://gyazo.com/b5c182bb902f2f26f99e66712702a599.png)
@@ -2679,9 +2709,9 @@ Pandas を Jupyterlab/notebok から使用している場合は、色を指定�
  pandas_config.py
 ```
  import pandas as pd
- 
+
  def start():
- 
+
      def dict_merge(a, b):
          for key in b:
              if isinstance(a.get(key), dict) or isinstance(b.get(key), dict):
@@ -2689,7 +2719,7 @@ Pandas を Jupyterlab/notebok から使用している場合は、色を指定�
              else:
                  a[key] = b[key]
          return a
- 
+
      default_options ={
          'display': {
              'max_columns': None,
@@ -2704,7 +2734,7 @@ Pandas を Jupyterlab/notebok から使用している場合は、色を指定�
              'chained_assignment': None
          }
      }
- 
+
      import sys,os
      sys.path.append(os.getcwd())
      try:
@@ -2716,17 +2746,17 @@ Pandas を Jupyterlab/notebok から使用している場合は、色を指定�
      for category, option in options.items():
          for op, value in option.items():
              pd.set_option(f'{category}.{op}', value)
- 
+
  if __name__ == '__main__':
      import os
      flag = os.environ.get('PANDAS_SKIP_STARTUP', default=None)
      _ = not flag and start()
      del start
      del flag
-         
+
 ```
 
-環境変数で  `export PANDAS_SKIP_STARTUP=1` などのようにしてから起動すると、この処理をスキップされます。 `PYTHON_PATH` で設定されているパスか、カレントディレクトリに  `pandas_config.py` があれば、そこから辞書  `options` をインポートしてデフォルト設定を上書きします。プロジェクトごとに pandas の設定を変えたいようなときに使えます。 
+環境変数で  `export PANDAS_SKIP_STARTUP=1` などのようにしてから起動すると、この処理をスキップされます。 `PYTHON_PATH` で設定されているパスか、カレントディレクトリに  `pandas_config.py` があれば、そこから辞書  `options` をインポートしてデフォルト設定を上書きします。プロジェクトごとに pandas の設定を変えたいようなときに使えます。
 例えば、 `pandas_config.py` を以下のように記述すると、小数点以下3桁の書式となります。
 
  pandas_config.py
@@ -2736,7 +2766,7 @@ Pandas を Jupyterlab/notebok から使用している場合は、色を指定�
          'float_format': lambda x: '%.3f' % x,
      },
  }
- 
+
 ```
 
 # 参考
