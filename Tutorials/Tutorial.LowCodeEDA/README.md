@@ -1,6 +1,6 @@
 Pythonチュートリアル：Pythonによる探査的データ分析
 =================
-![](https://github.com/iisaka51/PythonOsaka/blob/main/data/images/Python_Logo.png)
+![]images/Python_Logo.png)
 
 # はじめに
 この資料は、Python で探索的データ分析を行うときに便利に使用できる支援ツールにつ>いてまとめたものです。
@@ -279,7 +279,9 @@ Jupyterlab の環境では次の拡張機能を有効にしておきます。
  In [3]:
 
 ```
-![](https://gyazo.com/d0c24c5841ebe561f7deb78a8d756366.png)
+![](images/plot_corr.png)
+
+
 ## detect_outliers で外れ値を調べる
 
  python
@@ -309,10 +311,10 @@ Jupyterlab の環境では次の拡張機能を有効にしておきます。
 ```
 
 
-![](https://gyazo.com/414711a4766d4a3f391eaf9af26ddb7f.png)
+![](images/detect_outliers.png)
 
 # Pandas-Profiling
-![](https://gyazo.com/a522e368c83e3fe54da7c08d5a67f866.png)
+![](images/pandas_profiling_logo.png)
 
 Pandas Profiling は、2016年から開発されているオープンソースのPythonモジュールで、わずか数行のコードで探索的データ分析を迅速に行うことができます。また、こ生成するレポートは、プログラミングを知らない人にも見せることができるインタラクティブなWeb形式のものです。pandas-profiling が出力するのはHTMLオブジェクトひとつだけです。ただし、そこには、より具体的で個別のデータ探索を行う前に知っておくべき情報がほとんど含まれていて、広範囲に構造化されたHTMLファイルで、JupyterlabやWebページに簡単に取り込むことができ共有も簡単です。
 
@@ -322,7 +324,7 @@ Pandas Profiling は、2016年から開発されているオープンソース�
 
 
 # Sweetviz
-![](https://gyazo.com/26524c0d359a737bea8b61ee34c21e46.png)
+![](images/sweetviz_logo.png)
 Sweetvizは、たった2行のコードで探索的データ分析(EDA）を始めるための美しく高密度な可視化レポートを作成するオープンソースのPythonライブラリです。出力は、完全に自己完結したHTMLアプリケーションになっています。
 レポートは、目標値を素早く視覚化し、データセットを比較することもできます。ターゲットの特性、トレーニングデータとテストデータの比較、その他のデータ特性評価タスクの迅速な分析に役立つものとなっています。
 
@@ -336,7 +338,7 @@ Sweetviz では次の3種類のレポートを作成することができ、そ�
 
 
 # Lux
-![](https://gyazo.com/6e41ac8eba279abb964e928c53275688.png)
+![](images/lux_logo.png)
 
 [Lux](https://pypi.org/project/lux/) は、データを可視化するためのインテリジェントPython ライブラリです。探索的データ解析の可視化処理を自動化する Jjupyterウィジェットを通して視覚的発見が容易になります。
 
@@ -344,7 +346,7 @@ Sweetviz では次の3種類のレポートを作成することができ、そ�
 
 
 # DataPrep
-![](https://gyazo.com/d7a8e07643b2b549cea8c9f36f726680.png)
+![](images/dataprep_logo.png)
 DataPrepは、データを準備(prepare)するために2020年から開発が始まった　Pythonパッケージです。このパッケージには、主に以下の3つのAPIが含まれています。
 
   - データ探索( dataprep.eda )
@@ -411,17 +413,14 @@ PandasGUIには既にいくつかのサンプルデータセットが付属し�
 
 PandasGUIのアプリケーションが起動して、初めの画面ではデータフレームの内容が表示されます。
 
-![](https://gyazo.com/779246b609f1d3b3decd6bd0d0f92531.png)
-
-
-![](https://gyazo.com/579faa30f3ef2c3264bef3d1ede0ef86.png)
-
+![](images/pandasGUI_example1.png)
+![](images/pandasGUI_example2.png)
 
     - [PandasGUIで探査的データ分析をしてみよう](09_Pandas_GUI)
 
 
 ## AutoViz
-![](https://gyazo.com/169d1fc3235b9c3bde269e8aa9dc6d48.png)
+![](images/autoviz_logo.png)
 
 小さなデータセットの可視化は簡単でそれほど問題になることはありませんが、数百の変数を持つ大規模なデータセットでは、データセットから強調すべき最良の特徴量を決定することはほぼ不可能です。データ分析を行う環境によっては、標準的でない可視化ライブラリを使用しなければならず、洞察を得るための最適な可視化を行うにはかなりのコーディングが必要となることが多いものです。
 [Autoviz](https://pypi.org/project/autoviz/) は、データ可視化のための作業を行うときに発生する、こうしたさまざまな課題の多くに対処することができます。AutoViz は、pandasのDataFrameオブジェクトや、CSVファイルのいずれかを与える、たった1行のコードで実現することができます。
@@ -429,7 +428,7 @@ PandasGUIのアプリケーションが起動して、初めの画面ではデ�
   - [AutoVizで探査的データ分析をしてみよう](10_AutoViz)
 
 # D-Tale
-![](https://gyazo.com/2fd4c1042c129e327d96fd9125a511d7.png)
+![](images/dtale_logo.png)
 
 Python自体の学習コストは低いものの、こうしたライブラリの学習は難しく、初心者にとっては使い方を覚えるのに時間がかかることがあります。経験豊かなPythonユーザーであっても、いくつかの作業は繰り返し行われることがあり、時間を浪費してしまうことになりがちです。こんなときに役立つのが [D-Tale](https://github.com/man-group/dtale)です。
 D-Taleは探索的データ分析やデータクリーニングといったタスクの最適化を支援してくれます。時間を節約することで、コードの洗練や機械学習モデルのチューニングなど、より重要なタスクに集中することができます。
@@ -455,7 +454,7 @@ bamboolib の主な利点には次のものがあります。
 
 
 # Visidata
-![](https://gyazo.com/078c880aa72f2511d84c186b22d0d34f.png)
+![](images/visidata_logo.png)
 
 [Visidata](https://pypi.org/project/visidata/) は、コンピュータの端末でデータセットを素早く開き、探索し、要約し、分析することができる、無料のオープンソースツールです。VisiDataは、CSV/JSON/YAML/XMLファイル、Excelスプレッドシート、SQLデータベース、その他多くのデータソースをサポートしています。 Windows では [WSL（Windows Subsystem for Linux） https://docs.microsoft.com/en-us/windows/wsl/] の環境が必要になります。
 
@@ -474,7 +473,7 @@ vd コマンドが使用できるようになるので、引数にデータセ�
  $ vd titanic.csv
 ```
 
-![](https://gyazo.com/e72005a1f9d571223bb9203c6a737728.png)
+![](images/visidata_example.png)
 
 そうです、visidata はグラフィカルな環境ではなくあえてターミナル上でのデータ分析を目指しています。補助的なツールといえばそれまでですが、多くの機能をもっているため慣れるとコードを書く手間を省くことができます。
 visidata のカーソルを移動するには、キーボードの `h`/`j`/`k`/`l` で左/下/上/右に移動させることができます。もちろんキーボードのカーソルキーでもOKです。
@@ -486,7 +485,7 @@ visidata のカーソルを移動するには、キーボードの `h`/`j`/`k`/`
 
 
 # Mito
-![](https://gyazo.com/52c5b4817376a77c63383cd7264b6925.png)
+![](images/mito_logo.png)
 
 [Mito](https://www.trymito.io/) は Jupyterlab をベースにしたPythonの拡張モジュールです。次のような機能を提供しています。
 
@@ -553,7 +552,7 @@ scattertext は次のようにインストールします。
 
 ```
 
-![](https://gyazo.com/9cdbeb6aec8996986c0da88acdc22dad.png)
+![](images/scattertext_example.png)
 
 
 最も政党に関連する2,000のユニグラム（Unigram: 任意の文字列が1文字だけ続いた文字列）が散布図に点として表示されます。X軸とY軸は、それぞれ共和党と民主党のスピーカーによって使用された頻度を表しています。
@@ -562,7 +561,7 @@ scattertext は次のようにインストールします。
 
 
 # Holoviz
-![](https://gyazo.com/40a323195cca6965ca69c95f34425440.png)
+![](images/holoviz_logo.png)
 
 [HoloViz](https://holoviz.org/) は、EDAのためのツールというわけではないのですが、可視化をより簡単に、より正確に、より強力にすることができます。 EDAで得た知見や洞察をプレゼンテーションするときに役立ちます。
 HoloViz は次のPythonパッケージで構成されています。
@@ -574,7 +573,7 @@ HoloViz は次のPythonパッケージで構成されています。
   - Datashader  ー　最大のデータセットもレンダリングする
   - Param ー　宣言型のユーザ設定可能オブジェクトを作る
   - Colorcet ー 知覚的に均一なコロマップを作る
-![](https://gyazo.com/2f09d7ead2e7b53f45efed6e9cf3ac1a.png)
+![](images/holoviz_libs.png)
 
   - [HoloViewsを使ってみよう](15_HoloViz)
 
