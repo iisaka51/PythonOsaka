@@ -1,7 +1,7 @@
 Pythonチュートリアル：日時処理
 =================
 
-![](https://github.com/iisaka51/PythonOsaka/blob/main/data/images/Python_Logo.png)
+![](images/Python_Logo.png)
 
 ## 日時処理について
 

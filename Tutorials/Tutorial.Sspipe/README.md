@@ -1,6 +1,6 @@
 SSPipeを使って効率良くデータを操作してみよう
 =================
-![](https://gyazo.com/d794b29a2a0ac143a4b1e533edf41485.png)
+![](images/sspipe_logo.png)
 # はじめに
 
 ## SSPipeについて

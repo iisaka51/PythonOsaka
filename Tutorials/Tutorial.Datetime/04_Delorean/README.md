@@ -1,6 +1,6 @@
 deloreanを使って日時処理をしてみよう
 =================
-![](https://gyazo.com/7af78e53fb0f159f8f9287a855bfeb2d.png)
+![](images/delorean_logo.png)
 
 
 ## delorean について
