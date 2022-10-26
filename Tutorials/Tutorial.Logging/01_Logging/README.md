@@ -48,7 +48,7 @@ Python標準ライブラリloggingでのロギング
     ...: logging.log(30,'warning message')
     ...:
  WARNING:root:warning message
- 
+
 ```
 
 はじめに  `logging` をインポートして、 `log()` 関数でログ出力をしています。この関数は第１引数にログレベル、第２引数にログメッセージを与えます。
@@ -68,7 +68,7 @@ Python標準ライブラリloggingでのロギング
     ...: logging.warning('warningo message')
     ...:
  WARNING:root:warningo message
- 
+
 ```
 
 ここでも、先の例と同様にログレベルが INFO ではログ出力がないことがわかります。
@@ -90,7 +90,7 @@ Python標準ライブラリloggingでのロギング
     ...: logger.debug('This is simple test')
     ...:
  This is simple test
- 
+
 ```
 
 デフォルトでは、標準エラー出力にログが送られます。
@@ -99,10 +99,10 @@ Python標準ライブラリloggingでのロギング
 ```
  % python 03_streamhandler.py
  This is simple test
- 
+
  # 標準エラー出力を破棄すると何も出力されない
  % python 03_streamhandler.py 2>/dev/null
- 
+
 ```
 
 
@@ -122,10 +122,10 @@ Python標準ライブラリloggingでのロギング
     ...:
     ...: # !cat sample.log
     ...:
- 
+
  In [3]: !cat sample.log
  This is simple test
- 
+
 ```
 
 ロギングでは次のハンドラーを利用することができます。（一例です...)
@@ -158,10 +158,10 @@ Python標準ライブラリloggingでのロギング
     ...:
     ...: # !cat test.log
     ...:
- 
+
  In [3]: !cat test.log
  DEBUG:2021-09-27 18:51:58,077:12:root:This is sample.
- 
+
 ```
 
 
@@ -211,7 +211,7 @@ Python標準ライブラリloggingでのロギング
     ...: logger.debug('This is simple test')
     ...:
  2021-09-27 18:54:20,054 root         DEBUG    This is simple test
- 
+
 ```
 
 logging で設定するものには、次のようなものがあります。
@@ -268,7 +268,7 @@ Pythonのロギングライブラリはいくつかのハンドラを含んで�
     ...: log.debug('This is simple test')
     ...:
  2021-09-27 19:57:40,543 demo         DEBUG    This is simple test
- 
+
 ```
 
 辞書で設定する場合、どうしてもタイプ数が増えるためコンソールアプリケーションなどでは利用しづらくなります。
@@ -281,23 +281,23 @@ Pythonのロギングライブラリはいくつかのハンドラを含んで�
 ```
  [loggers]
  keys=root
- 
+
  [handlers]
  keys=stream_handler
- 
+
  [formatters]
  keys=formatter
- 
+
  [logger_root]
  level=DEBUG
  handlers=stream_handler
- 
+
  [handler_stream_handler]
  class=StreamHandler
  level=DEBUG
  formatter=formatter
  args=(sys.stderr,)
- 
+
  [formatter_formatter]
  format=%(asctime)s %(name)-12s %(levelname)-8s %(message)s
 ```
@@ -315,7 +315,7 @@ Pythonのロギングライブラリはいくつかのハンドラを含んで�
     ...: logger.debug('This is simple test')
     ...:
  2021-09-27 18:56:11,102 root         DEBUG    This is simple test
- 
+
 ```
 
  `fileConig()` に  `disable_existing_loggers=False` を与えないと、それまでの設定を破棄することになるので注意してください。
@@ -344,7 +344,7 @@ Pythonのロギングライブラリはいくつかのハンドラを含んで�
    File "<ipython-input-2-3a66a9366021>", line 10, in <module>
      1 / 0
  ZeroDivisionError: division by zero
- 
+
 ```
 
 ## IPythonでのロギング
@@ -362,7 +362,7 @@ Pythonアプリケーションは、おそらく多くのモジュールから�
 ```
  import logging
  log = logging.getLogger(__name__)
- 
+
 ```
 
  `__name__` は現在のモジュールのファイル名を含んでいるので、どのモジュールでもうまく動作します。
@@ -373,7 +373,7 @@ Pythonアプリケーションは、おそらく多くのモジュールから�
 ```
  def do_something():
      log.debug("Doing something!")
-     
+
 ```
 
 ## basicConfig()
@@ -383,11 +383,11 @@ logging では基本的な設定を行えるヘルパー関数  `basicConfig()` 
 
 ```
  import logging
- 
+
  logging.basicConfig(filename = 'sample_a.log')
  log = logging.getLogger('sample')
  log.error('Some error')
- 
+
 ```
 
 フォーマットを指定した使用例：
@@ -395,8 +395,8 @@ logging では基本的な設定を行えるヘルパー関数  `basicConfig()` 
 ```
  import logging
  # DEBUG, INFO, WARNING, ERROR, CRITICAL
- log_level = logging.INFO 
- logging.basicConfig(filename = 'sample_b.log', 
+ log_level = logging.INFO
+ logging.basicConfig(filename = 'sample_b.log',
      level=log_level,
      filemode='w', # or 'a'
      format='%(asctime)s %(levelname)s: %(message)s',
@@ -404,14 +404,14 @@ logging では基本的な設定を行えるヘルパー関数  `basicConfig()` 
  log = logging.getLogger()
  log.info('Some info log')
  log.debug("Won't print at INFO level")
- 
+
 ```
 
 複数ファイルにログ出力する使用例：
 
 ```
  import logging
- 
+
  log_level = logging.INFO
  def create_logger(filename, logname=''):
      handler = logging.FileHandler(filename)
@@ -423,7 +423,7 @@ logging では基本的な設定を行えるヘルパー関数  `basicConfig()` 
      log.setLevel(log_level)
      log.addHandler(handler)
      return log
-     
+
  # 1st log file
  log1 = create_logger('sample_a.log', 'app1')
  log1.info('app1 info')
@@ -438,14 +438,14 @@ logging では基本的な設定を行えるヘルパー関数  `basicConfig()` 
 > SONYのゲーム機 PlayStation1 に背面にあるコネクタに接続する Pro Action Replay
 > これは動作中のPlayStation1 のメモリをダンプしたり、ダイナミックパッチを当てることができるというものでした。
 >
-> ![](https://gyazo.com/69e3126d56fdd85d61a4a66a715bcac3.png)
-> 
+> ![](images/pro_action_replay.png)
+>
 > この背面には RS-232C シリアルポート・コネクタが出ていて、
 > これをコンピュータに接続することもできました。
 > PlayStation1 には通常はOFFになっている標準出力（シリアルコンソール）が
 > あるのですが、これをONにすると、ゲームの実行中にいろいろなログを見ることができました。
-> 
-> ![](https://gyazo.com/8c2137c377b9ac3f687fa3da1aea94f8.png)
+>
+> ![](images/pro_action_replay_board.png)
 
 
 

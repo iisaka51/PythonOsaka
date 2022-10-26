@@ -1,6 +1,6 @@
 structlogを使ってロギングをしてみよう
 =================
-![](https://gyazo.com/3197c6eca5d53979adc5c56086e6b454.png)
+![](images/structlog_logo.png)
 
 ## structlog について
 
@@ -8,7 +8,7 @@ structlogは、ログエントリを構造化することで、Pythonでのロ�
 
 structlog は非常に柔軟に設計されているため、ログエントリの出力をstructlogに任せるか、標準ライブラリのloggingモジュールのような既存のログシステムに転送するかということも自由になります。
 
-![](https://gyazo.com/74fbea1f4a7d390d5c40c17f8ce98bf2.png)
+![](images/structlog_example.png)
 
 
 ## インストール
@@ -17,7 +17,7 @@ structlog は pip でインストールすることができます。
  bash
 ```
  $ pip install structlog
- 
+
 ```
 
 ## structlog の使用方法
@@ -32,7 +32,7 @@ structlogは、できるだけドキュメントを読まなくても利用で�
     ...: log.msg("greeted", whom="world", more_than_a_string=[1, 2, 3])
     ...:
  2021-09-23 20:25.11 [info     ] greeted                        more_than_a_string=[1, 2, 3] whom=world
- 
+
 ```
 
 この例では、structlogの便利なデフォルト設定を最大限に活用しています。
@@ -69,7 +69,7 @@ structlogは、できるだけドキュメントを読まなくても利用で�
     ...: log.msg("greeted", whom="world", more_than_a_string=[1, 2, 3])
     ...:
  1632396684.671951 [info     ] greeted                        more_than_a_string=[1, 2, 3] whom=world
- 
+
 ```
 
 そうです、これは構造化されたロギングです。しかし、これはstructlog だけの機能というわけではありません。なんといっても、標準ライブラリには構造化ロギングの[レシピ ](https://docs.python.org/ja/3/howto/logging-cookbook.html?highlight=logging%20cookbook) もあります。
@@ -80,9 +80,9 @@ structlogは、できるだけドキュメントを読まなくても利用で�
 
 ```
  from structlog import get_logger
- 
+
  log = get_logger()
- 
+
  def view(request):
      user_agent = request.get("HTTP_USER_AGENT", "UNKNOWN")
      peer_ip = request.client_addr
@@ -95,7 +95,7 @@ structlogは、できるだけドキュメントを読まなくても利用で�
      else:
          log.msg("else", user_agent=user_agent, peer_ip=peer_ip)
          return "else"
- 
+
 ```
 
 呼び出し自体は要点を押さえていて良いのですが、あちこちで同じことを繰り返しコードしています。
@@ -120,9 +120,9 @@ structlogは、できるだけドキュメントを読まなくても利用で�
 
 ```
  from structlog import get_logger
- 
+
  logger = get_logger()
- 
+
  def view(request):
      log = logger.bind(
          user_agent=request.get("HTTP_USER_AGENT", "UNKNOWN"),
@@ -140,7 +140,7 @@ structlogは、できるだけドキュメントを読まなくても利用で�
      else:
          log.msg("else")
          return "else"
-         
+
 ```
 
 この方法では、ロガーがクロージャーとして機能します。
@@ -170,7 +170,7 @@ Python はデフォルトでは、辞書をキーで並べておきます。
  def timestamper(_, __, event_dict):
      event_dict["time"] = datetime.datetime.now().isoformat()
      return event_dict
-     
+
 ```
 
 素朴なPython、素朴な辞書。さて、あなたは structlog を設定することで、あなたのプロセッサについて教えなければなりません。
@@ -198,7 +198,7 @@ Python はデフォルトでは、辞書をキーで並べておきます。
 ```
 
 ## structlogと標準ライブラリのロギング
-structlogの主な用途は印刷ではありません。代わりに、既存のロガーをラップして、構造と増分的なコンテキスト構築を追加することを目的としています。そのため、structlogは基礎となるロガーを完全に無視することができ、好きなロガーと一緒に使用することができます。 
+structlogの主な用途は印刷ではありません。代わりに、既存のロガーをラップして、構造と増分的なコンテキスト構築を追加することを目的としています。そのため、structlogは基礎となるロガーを完全に無視することができ、好きなロガーと一緒に使用することができます。
 
 このような「既存のロガー」の最も顕著な例は、間違いなく標準ライブラリのロギングモジュールです。この一般的なケースをできるだけ簡単にするために、structlogにはいくつかのツールが付属しています。
 
@@ -206,12 +206,12 @@ structlogの主な用途は印刷ではありません。代わりに、既存�
 ```
  import logging
  logging.basicConfig()
- 
+
  from structlog.stdlib import LoggerFactory
  structlog.configure(logger_factory=LoggerFactory())
  log = structlog.get_logger()
  log.warning("it works!", difficulty="easy")
- 
+
 ```
 
 つまり、標準ライブラリのロガー・ファクトリを使いたいことをstructlogに伝え、これまでのように  `get_logger()` を呼び出します。
@@ -221,7 +221,7 @@ structlogは主に標準ライブラリの logging と一緒に使われるた�
 ## BoundLogger
 structlogの中心は、ログラッパーであるBoundLogger です。
 
-![](https://gyazo.com/7e73a1575c2d97172443623b2f07a1da.png)
+![](images/boundlogger.png)
 
 BoundLogger が行っている処理を説明すると、次のようになります。
 
@@ -234,7 +234,7 @@ BoundLogger が行っている処理を説明すると、次のようになり�
 コンテキスト辞書を操作するために、次のことを提供します。
 
 - (オプションの)追加のコンテキストデータを用いて自分自身を再生成する:  `bind()` および  `new()` .
-- 少ないコンテキストデータで再生成する:  `unbind().` 
+- 少ないコンテキストデータで再生成する:  `unbind().`
 
 いずれにしても、元のバインドされたロガーやそのコンテキストが変更されることはありません。
 次に、BoundLoggerで他のメソッドを呼び出すと、以下のようになります。
@@ -279,29 +279,29 @@ BoundLogger が行っている処理を説明すると、次のようになり�
     ...: # log == log3
     ...: # log3.msg("nothing bound anymore", foo="Python")
     ...:
- 
+
  In [3]: log2 = log.bind(x=42)
- 
+
  In [4]: log == log2
  Out[4]: False
- 
+
  In [5]: log.msg("hello world")
  I got called with {'event': 'hello world'}
  {'event': 'hello world'}
- 
+
  In [6]: log2.msg("hello world")
  I got called with {'x': 42, 'event': 'hello world'}
  {'x': 42, 'event': 'hello world'}
- 
+
  In [7]: log3 = log2.unbind("x")
- 
+
  In [8]: log == log3
  Out[8]: True
- 
+
  In [9]: log3.msg("nothing bound anymore", foo="Python")
  I got called with {'foo': 'Python', 'event': 'nothing bound anymore'}
  {'foo': 'Python', 'event': 'nothing bound anymore'}
- 
+
 ```
 
 
@@ -359,7 +359,7 @@ BoundLoggerの代わりにラッピングに使うクラスです。これは、
     ...:
  I got called with {'event': 'hello world'}
  {'event': 'hello world'}
- 
+
 ```
 
 変更箇所に注目すると次のとおりです。
@@ -369,20 +369,20 @@ BoundLoggerの代わりにラッピングに使うクラスです。これは、
  class CustomPrintLogger:
      def msg(self, message):
          print(message)
- # ...        
+ # ...
  log = structlog.wrap_logger(
      CustomPrintLogger(),
      wrapper_class=structlog.BoundLogger,
      processors=[proc],
  )
- 
+
 ```
 
 
 ```
  structlog.configure(processors=[proc], context_class=dict)
  log = structlog.get_logger()
- 
+
 ```
 
 これは、PrintLoggerがデフォルトのLoggerFactoryであることを利用しています。
@@ -439,16 +439,16 @@ structlogがどのように構成されているかは、いつでも確認す�
     ...: # pprint(cfg)
     ...: # print(v4)
     ...:
- 
+
  In [3]: print(v1)
  False
- 
+
  In [4]: print(v2)
  None
- 
+
  In [5]: print(v3)
  True
- 
+
  In [6]: pprint(cfg)
  {'cache_logger_on_first_use': False,
   'context_class': <class '__main__.MyDict'>,
@@ -460,10 +460,10 @@ structlogがどのように構成されているかは、いつでも確認す�
                  <structlog.processors.TimeStamper object at 0x7fac391c3f80>,
                  <structlog.dev.ConsoleRenderer object at 0x7fac3918a400>],
   'wrapper_class': <class 'structlog._log_levels.BoundLoggerFilteringAtNotset'>}
- 
+
  In [7]: print(v4)
  <class '__main__.MyDict'>
- 
+
 ```
 
 ### LoggerFactory
@@ -479,8 +479,8 @@ structlogがどのように構成されているかは、いつでも確認す�
 
 標準ライブラリの logging とTwistedのロギングという一般的なケースのために、structlogには2つのファクトリーが組み込まれています。
 
--  `structlog.stdlib.LoggerFactory` 
--  `structlog.twisted.LoggerFactory` 
+-  `structlog.stdlib.LoggerFactory`
+-  `structlog.twisted.LoggerFactory`
 
 > twisted ライブラリ
 > 標準ライブラリのsocketモジュールの代わりに使用できるネットワーククライアントを作成するためのライブラリ。
@@ -500,7 +500,7 @@ structlogがどのように構成されているかは、いつでも確認す�
     ...: log.critical("this is too easy!")
     ...:
  2021-09-24 12:22.55 [critical ] this is too easy!
- 
+
 ```
 
  `structlogのstructlog.stdlib.LoggerFactory` を使用することで、関数名や行番号などの変数がログ形式で正しく展開されることも保証されています。
@@ -556,18 +556,18 @@ structlogは通常どおり使用します。ロガーはいつものように�
     ...: # clear_threadlocal()
     ...: # log.msg("hi there")
     ...:
- 
+
  In [3]: log.msg("hi")
  a=1 event='hi'
- 
+
  In [4]: log.msg("Python Osaka")
  a=1 event='Python Osaka'
- 
+
  In [5]: clear_threadlocal()
- 
+
  In [6]: log.msg("hi there")
  event='hi there'
- 
+
 ```
 
 ### スレッドローカルなコンテキスト
@@ -600,19 +600,19 @@ structlogはまた、スレッドローカルなコンテキストをFlaskのよ
     ...: # print(v3)
     ...: # print(d3)
     ...:
- 
+
  In [3]: print(v1)
  3
- 
+
  In [4]: print(v2)
  False
- 
+
  In [5]: print(v3)
  True
- 
+
  In [6]: print(d3)
  <WrappedDict-87379c9f-1a74-495c-99d3-1d51762172e6({'a': 1, 'b': 2, 'c': 3})>
- 
+
 ```
 
  `structlog.threadlocal.wrap_dict()` は、常に完全に新しいラップされたクラスを返します。
@@ -633,16 +633,16 @@ structlogはまた、スレッドローカルなコンテキストをFlaskのよ
     ...: # print(v2)
     ...: # print(v3)
     ...:
- 
+
  In [3]: print(v1)
  True
- 
+
  In [4]: print(v2)
  WrappedDict-82c157fc-5ec4-4583-8cc8-8c711c7beda4
- 
+
  In [5]: print(v3)
  WrappedDict-f8de11ae-bf44-4db4-ab94-391eef822732
- 
+
 ```
 
 ロガーに値を一時的にバインドするために、 structlog.threadlocal には  `structlog.threadlocal.tmp_bind()` というコンテキストマネージャーがあります。
@@ -667,7 +667,7 @@ structlogはまた、スレッドローカルなコンテキストをFlaskのよ
  2021-09-24 13:13.48 [info     ] event!
  2021-09-24 13:13.48 [info     ] another event!                 x=23 y=foo
  2021-09-24 13:13.48 [info     ] one last event!
- 
+
 ```
 
 アプリケーションがスレッドを再利用していないと断定できない場合は、 各リクエストの開始時にスレッドのローカルコンテキストを ( `bind()` の代わりに)  `new()` で初期化することを忘れてはいけません。そうしないと、前のリクエストのデータが入ったままの状態で新しいリクエストを開始してしまう可能性があります。
@@ -735,18 +735,18 @@ structlogは、変数をコンテキストローカルなコンテキストに�
     ...: # clear_contextvars()
     ...: # log.msg("hi there")
     ...:
- 
+
  In [3]: log.msg("hello")
  event='hello' a=1 b=2
- 
+
  In [4]: log.msg("world")
  event='world' a=1 b=2
- 
+
  In [5]: clear_contextvars()
- 
+
  In [6]: log.msg("hi there")
  event='hi there' a=None
- 
+
 ```
 
 ## テスト
@@ -765,10 +765,10 @@ unittest.TestCase.assertLogsのような機能が必要な場合や、その他�
     ...:
     ...: # cap_logs
     ...:
- 
+
  In [3]: cap_logs
  Out[3]: [{'x': 'y', 'event': 'hello', 'log_level': 'info'}]
- 
+
 ```
 
 コンテキストマネージャー内では、設定されたすべてのプロセッサが無効になっていることに注意してください。
@@ -781,12 +781,12 @@ unittest.TestCase.assertLogsのような機能が必要な場合や、その他�
  some_module2.py
 ```
  from structlog import get_logger
- 
+
  logger = get_logger()
  def some_function(data: str = 'python') -> str:
      logger.error("previous data", name=data)
      return data.upper()
-     
+
 ```
 
  31_pytest_fixture.py
@@ -796,17 +796,17 @@ unittest.TestCase.assertLogsのような機能が必要な場合や、その他�
  from structlog.testing import LogCapture
  from some_module2 import some_function
  from pprint import pprint
- 
+
  @pytest.fixture(name="log_output")
  def fixture_log_output():
      return LogCapture()
- 
+
  @pytest.fixture(autouse=True)
  def fixture_configure_structlog(log_output):
      structlog.configure(
          processors=[log_output]
      )
- 
+
  def test_my_stuff(log_output):
      some_function()
      pprint(log_output.entries)
@@ -814,7 +814,7 @@ unittest.TestCase.assertLogsのような機能が必要な場合や、その他�
                      'log_level': 'error',
                      'name': 'python'}
      assert log_output.entries == []
-     
+
 ```
 
 
@@ -825,11 +825,11 @@ unittest.TestCase.assertLogsのような機能が必要な場合や、その他�
  platform darwin -- Python 3.9.0, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
  rootdir: /Users/goichiiisaka/Projects/Python.Osaka/Tutorial.Logging/structlog
  collected 1 item
- 
+
  31_pytest_fixture.py .                                                 [100%]
- 
+
  ============================= 1 passed in 0.13s ==============================
- 
+
 ```
 
 
@@ -848,12 +848,12 @@ unittest.TestCase.assertLogsのような機能が必要な場合や、その他�
     ...: # log.info("test!")
     ...: # cf.logger.calls
     ...:
- 
+
  In [3]: log.info("test!")
- 
+
  In [4]: cf.logger.calls
  Out[4]: [CapturedCall(method_name='info', args=('{"event": "test!"}',), kwargs={})]
- 
+
 ```
 
 
@@ -896,16 +896,16 @@ unittest.TestCase.assertLogsのような機能が必要な場合や、その他�
     ...: # log.info("something.filtered")
     ...: # log.warning("something.not_filtered", password="secret")
     ...:
- 
+
  In [3]: log.info("something.filtered")
- 
+
  In [4]: log.warning("something.not_filtered", password="secret")
  {
   "event": "something.not_filtered",
   "password": "*CENSORED*",
   "timestamp": "datetime.datetime(2021, 9, 23, 23, 24, 41, 873524)"
  }
- 
+
 ```
 
 ## Flaskとスレッドのローカルデータのサンプル
@@ -929,23 +929,23 @@ unittest.TestCase.assertLogsのような機能が必要な場合や、その他�
 ```
  def some_function(data: str) -> str:
      return data.upper()
- 
+
 ```
 
  51_example_flask.py
 ```
  from flask import Flask, render_template
   from some_module import some_function
-  
+
   app = Flask(__name__, template_folder='templates')
   @app.route('/greeting/<name>')
   def index(name):
       name = some_function(name)
       return render_template('index.html', name=name)
-  
+
   if __name__ == '__main__':
       app.run(debug=True)
-         
+
 ```
 
 これは、URL ` http://localhost:5000/greeting/` に続けた文字列が表示されるだけのものです。
@@ -972,12 +972,12 @@ unittest.TestCase.assertLogsのような機能が必要な場合や、その他�
  some_module2.py
 ```
  from structlog import get_logger
- 
+
  logger = get_logger()
  def some_function(data: str) -> str:
      logger.error("previous data", name=data)
      return data.upper()
-     
+
 ```
 
  52_example_flask_with_structlogpy
@@ -988,7 +988,7 @@ unittest.TestCase.assertLogsのような機能が必要な場合や、その他�
  import uuid
  import logging
  import structlog
- 
+
  logger = structlog.get_logger()
  app = Flask(__name__, template_folder='templates')
  @app.route('/greeting/<name>')
@@ -1002,9 +1002,9 @@ unittest.TestCase.assertLogsのような機能が必要な場合や、その他�
      log = logger.bind()
      name = some_function(name)
      log.info('name: ', name=name)
- 
+
      return render_template('index.html', name=name)
- 
+
  if __name__ == '__main__':
      logging.basicConfig(
          format="%(message)s", stream=sys.stdout, level=logging.INFO
@@ -1018,9 +1018,9 @@ unittest.TestCase.assertLogsのような機能が必要な場合や、その他�
          ],
          logger_factory=structlog.stdlib.LoggerFactory(),
      )
- 
+
      app.run(debug=True)
-     
+
 ```
 
 
@@ -1046,7 +1046,7 @@ unittest.TestCase.assertLogsのような機能が必要な場合や、その他�
  event='previous data' view='/greeting/Python' peer='127.0.0.1' request_id='06e21fcd-ac47-4f4d-82b7-e211cf844fe0' name='Python'
  event='name: ' view='/greeting/Python' peer='127.0.0.1' request_id='06e21fcd-ac47-4f4d-82b7-e211cf844fe0' name='PYTHON'
  127.0.0.1 - - [24/Sep/2021 10:44:54] "GET /greeting/Python HTTP/1.1" 200 -
- 
+
 ```
 
  `event-=` で始まっているログが structlog で書き込まれたログです。
@@ -1118,7 +1118,7 @@ unittest.TestCase.assertLogsのような機能が必要な場合や、その他�
  2021-09-24 12:35:29+0900 [-] Factory starting on 1234
  2021-09-24 12:35:29+0900 [-] Starting factory <twisted.internet.protocol.Factory object at 0x7fd38ad81940>
  Out[2]: 2021-09-24 12:35:29+0900 [-] <<class 'twisted.internet.tcp.Port'> of <class 'twisted.internet.protocol.Factory'> on 1234>
- 
+
 ```
 
 Twistedのロギングシステムは少し特殊なので、structlogにはアダプタが同梱されてiて、期待通りの動作をしてくれます。

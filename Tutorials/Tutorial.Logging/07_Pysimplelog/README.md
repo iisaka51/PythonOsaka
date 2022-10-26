@@ -32,7 +32,7 @@ pysimplelog は pip コマンドで次のようにインストールします。
  Out[2]: 'I am a warning'
  2021-09-28 07:25:33 - logger <ERROR> I am an error
  Out[2]: 'I am an error'
- 
+
 ```
 
 ２つの出力先に送出されているのがわかります。
@@ -58,7 +58,7 @@ pysimplelog は pip コマンドで次のようにインストールします。
  warn      |WARNING   |20.0      |True      |True      |
  error     |ERROR     |30.0      |True      |True      |
  critical  |CRITICAL  |100.0     |True      |True      |
- 
+
 ```
 
 これをみてわかるように、pysimpleiog はロギングに情報をストレスなく参照することができるゆにされています。
@@ -70,7 +70,7 @@ pysimplelog は pip コマンドで次のようにインストールします。
  2021-09-28 07:29:50 - demo <INFO> I am an info
  2021-09-28 07:29:50 - demo <WARNING> I am a warning
  2021-09-28 07:29:50 - demo <ERROR> I am an error
- 
+
 ```
 
 ## ログファイル名の変更とログ対応の追加・修正
@@ -125,7 +125,7 @@ pysimplelog は pip コマンドで次のようにインストールします。
  error          |ERROR          |30.0      |True      |True      |
  critical       |CRITICAL       |100.0     |True      |True      |
  super critical |SUPER CRITICAL |200.0     |True      |True      |
- 
+
 ```
 
 追加・修正したログタイプは、 `log()` メソッドから使用することができます。
@@ -186,21 +186,21 @@ pysimplelog は pip コマンドで次のようにインストールします。
  Out[2]: 'I am wrong, called using log method because I have no shortcut method.'
  2021-09-28 08:13:57 - log test <info> I am important, called using log method because I have no shortcut method.
  Out[2]: 'I am important, called using log method because I have no shortcut method.'
- 
+
 ```
 
 出力をコピー＆ペーストしただけなので、紙面の都合上単なる出力になっていますが、実際には標準出力へはカラー表示がされています。
 
-![](https://gyazo.com/ce90315da89e28a20ae84692bbcc2309.png)
+![](images/pysimplelog_example.png)
 
 ## 直近のログを出力
 
 
 ```
  In [1]: %run 03_new_logtype.py
- 
+
  In [2]: %load 04_last_logged_msg.py
- 
+
  In [3]: # %load 04_last_logged_msg.py
     ...: from mylogger import logger
     ...:
@@ -215,7 +215,7 @@ pysimplelog は pip コマンドで次のようにインストールします。
     ...: print(logger.lastLoggedError)
     ...: print(logger.lastLoggedCritical)
     ...:
- 
+
  Last logged messages are:
  =========================
  2021-09-28 08:30:04 - log test <info> I am important, called using log method because I have no shortcut method.
@@ -224,7 +224,7 @@ pysimplelog は pip コマンドで次のようにインストールします。
  2021-09-28 08:30:04 - log test <WARNING> I am warn, called using log method.
  2021-09-28 08:30:04 - log test <ERROR> I am error, called using log method.
  2021-09-28 08:30:04 - log test <CRITICAL> I am critical, called using log method.
- 
+
 ```
 
 ## データをログ
@@ -241,7 +241,7 @@ pysimplelog は pip コマンドで次のようにインストールします。
  2021-09-28 08:34:38 - log test <INFO> Check out this data
  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
  Out[2]: 'Check out this data'
- 
+
 ```
 
 ## トレースバックをログに出力
@@ -264,7 +264,7 @@ pysimplelog は pip コマンドで次のようにインストールします。
  2021-09-28 08:36:01 - log test <ERROR> unsupported operand type(s) for /: 'int' and 'range' (is this python ?)
  (中略)
  Out[2]: "unsupported operand type(s) for /: 'int' and 'range' (is this python ?)"
- 
+
 ```
 
 
@@ -296,7 +296,7 @@ Logger を拡張したいのであれば、次のようにします。
     ...:
     ...: # help(Logger)
     ...:
- 
+
 ```
 
  `__init__()` をオーバーロードする必要がある場合は、このようにすることができます。
@@ -312,7 +312,7 @@ Logger を拡張したいのであれば、次のようにします。
     ...:         super(Logger, self).__init__(*args, **kwargs)
     ...:         # 必要に応じてここに何かコードを追加
     ...:
- 
+
 ```
 
 ### コンストラクタの引数

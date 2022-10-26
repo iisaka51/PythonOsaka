@@ -1,6 +1,6 @@
 logbookを使ってロギングをしてみよう
 =================
-![](https://gyazo.com/65a1fa662a43544808818d91f2c3811e.png)
+![](images/logbook_logo.png)
 
 
 ## LogBookについて
@@ -40,7 +40,7 @@ logbook は拡張モジュールなので次のようにインストールしま
  bash pipの場合
 ```
  $ pip install logbook
- 
+
 ```
 
 
@@ -56,7 +56,7 @@ logbook は拡張モジュールなので次のようにインストールしま
     ...: log.warning('This is a warning')
     ...:
  This is a warning
- 
+
 ```
 
  `logbook.compat` をインポートして、 `redirect_logging()` 関数を呼び出すと、これ以後の  `logging` の出力は透過的にLogbookにリダイレクトされます。
@@ -77,7 +77,7 @@ logbook は拡張モジュールなので次のようにインストールしま
     ...: log.warning('This is a warning')
     ...:
  [2021-09-23 10:26:03.640789] WARNING: My Logger: This is a warning
- 
+
 ```
 
 この結果、logging モジュールからみたときには、LogBook の使い方にはほとんど違いはなくなります。
@@ -100,7 +100,7 @@ logbook は拡張モジュールなので次のようにインストールしま
     ...: logger.warning('Hello Python')
     ...:
  Hello Python
- 
+
 ```
 
 これを logbook では次のようになります。
@@ -116,7 +116,7 @@ logbook は拡張モジュールなので次のようにインストールしま
     ...: log.warning('Hello Python')
     ...:
  [2021-09-23 04:12:02.048742] WARNING: logbook demo: Hello Python
- 
+
 ```
 
 logbook で実装した方がメッセージの出力が詳細になっていますが、これは logging で実装した方がフォーマットを定義していないためです。
@@ -142,20 +142,20 @@ logbook で実装した方がメッセージの出力が詳細になっていま
 ## ハンドラ（Handler)
 ロギング・メソッドを呼び出すたびに、ログ・レコードが作成され、それがハンドラーに渡され、ハンドラーはロギング情報をどのように保存または表示するかを決定します。ハンドラには次のものが提供されています。もちろん独自のハンドラーを作成することもできます。
 
-- 任意のストリームにロギングする	 `StreamHandler` 
-- 標準エラー出力にロギングする	 `StderrHandler` 
-- ファイルに記録する	
- `FileHandler` 、 `MonitoringFileHandler` 、 `RotatingFileHandler` 、 `TimedRotatingFileHandler` 
-- メールにログを出力する			 `MailHandler` 、 `GMailHandler` 
-- syslogデーモンにログを出力する	 `SyslogHandler` 
-- Windows NTのイベントログに記録する		 `NTEventLogHandler` 
+- 任意のストリームにロギングする	 `StreamHandler`
+- 標準エラー出力にロギングする	 `StderrHandler`
+- ファイルに記録する
+ `FileHandler` 、 `MonitoringFileHandler` 、 `RotatingFileHandler` 、 `TimedRotatingFileHandler`
+- メールにログを出力する			 `MailHandler` 、 `GMailHandler`
+- syslogデーモンにログを出力する	 `SyslogHandler`
+- Windows NTのイベントログに記録する		 `NTEventLogHandler`
 
 他にも特別な用途のためのハンドラーもいくつか用意されています。
 
--  `logbook.FingersCrossedHandler` 
+-  `logbook.FingersCrossedHandler`
 メモリにログを記録し、一定のレベルを超えた場合には別のハンドラに情報を委ね、そうでない場合はバッファリングされたレコードをすべて破棄します。
 -  `logbook.more.TaggingHandler` タグ付けされたログレコードをディスパッチするための
-- ZeroMQへのロギングのための  `logbook.queues.ZeroMQHandler` 
+- ZeroMQへのロギングのための  `logbook.queues.ZeroMQHandler`
 -  `logbook.queues.Redis` Redis`へのロギングのためのRedisHandler
 -  `logbook.queues.MultiProcessingHandler` 子プロセスから外側のプロセスのハンドラーにロギングします
 -  `logbook.queues.ThreadedWrapperHandler` ハンドラの実際の処理をバックグラウンド・スレッドに移し、そのスレッドにレコードを配信するためにキューを使用します
@@ -226,7 +226,7 @@ ERRORのみをsyslogに記録し、標準エラー出力には何も表示させ
 ## レコード処理
 logbook が楽な理由は、ログの記録を自動的に処理する機能にあります。これは、すべての動作について追加情報を記録したい場合に便利です。例えば、Webアプリケーションで現在のリクエストのIPを記録するような使い方があります。また、デーモンプロセスでは、プロセスのユーザーと作業ディレクトリを記録したい場合もあるかもしれません。
 
-コンテキストプロセッサは次の 2 つの方法でに注入することができます。 
+コンテキストプロセッサは次の 2 つの方法でに注入することができます。
 
 - ハンドラと同じようにプロセッサをスタックにバインドする
 -  `RecordDispatcher.process_record()` メソッドをオーバーライドする
@@ -237,10 +237,10 @@ logbook が楽な理由は、ログの記録を自動的に処理する機能に
 ```
  import os
  from logbook import Processor
- 
+
  def inject_cwd(record):
      record.extra['cwd'] = os.getcwd()
- 
+
  with my_handler.applicationbound():
      with Processor(inject_cwd).applicationbound():
          # ここでロギングされたものは、
@@ -254,9 +254,9 @@ logbook が楽な理由は、ログの記録を自動的に処理する機能に
 
 ```
  import os
- 
+
  class MyLogger(logbook.Logger):
- 
+
      def process_record(self, record):
          logbook.Logger.process_record(self, record)
          record.extra['cwd'] = os.getcwd()
@@ -274,11 +274,11 @@ logbookに付属している文字列にログを記録するすべてのハン�
 
 ```
  from logbook import StderrHandler
- 
+
  handler = StderrHandler()
  handler.format_string = '{record.channel}: {record.message}'
  handler.formatter
- 
+
 ```
 
 
@@ -288,9 +288,9 @@ logbookに付属している文字列にログを記録するすべてのハン�
 ```
  def my_formatter(record, handler):
       return record.message
- 
+
  handler.formatter = my_formatter
- 
+
 ```
 
 デフォルトの文字列フォーマッタに使用されるフォーマット文字列には、ログレコードそのものであるrecordという変数があります。すべての属性はドット構文を使用して検索でき、余分なdict内の項目はブラケットを使用して検索できます。存在しないextra dictの項目にアクセスする場合は、空の文字列が返されることに注意してください。
@@ -301,7 +301,7 @@ logbookに付属している文字列にログを記録するすべてのハン�
 ```
  handler = StderrHandler(format_string=
      '{record.channel}: {record.message) [{record.extra[cwd]}]')
- 
+
 ```
 
 logbook.moreモジュールには、Jinja2のテンプレートエンジンを使ってログレコードをフォーマットするフォーマッター(JinjaFormatter)があり、特にメールのような複数行のログフォーマットに便利です。
@@ -315,7 +315,7 @@ logbook.moreモジュールには、Jinja2のテンプレートエンジンを�
 ```
  if __name__ == '__main__':
       main()
- 
+
 ```
 
 logbook を使用する場合は、ログハンドラーを設定するために with文でラップする必要があります。
@@ -324,11 +324,11 @@ logbook を使用する場合は、ログハンドラーを設定するために
 ```
  from logbook import FileHandler
  log_handler = FileHandler('application.log')
- 
+
  if __name__ == '__main__':
      with log_handler.applicationbound():
          main()
-         
+
 ```
 
 もしくは、ハンドラーを押し込むこともできます。
@@ -338,10 +338,10 @@ logbook を使用する場合は、ログハンドラーを設定するために
  from logbook import FileHandler
  log_handler = FileHandler('application.log')
  log_handler.push_application()
- 
+
  if __name__ == '__main__':
      main()
-     
+
 ```
 
 ハンドラをスタックから削除したい場合は、ハンドラを逆の順序でポップする必要があることに留意してください。
@@ -358,12 +358,12 @@ Python で書かれた最近の典型的な Web アプリケーションは、�
 
 ```
  from logbook import MailHandler
- 
+
  mail_handler = MailHandler('errors@example.com',
                             ['admin@example.com'],
                             format_string=u'''\
  Subject: Application Error at {record.extra[url]}
- 
+
  Message type:       {record.level_name}
  Location:           {record.filename}:{record.lineno}
  Module:             {record.module}
@@ -371,22 +371,22 @@ Python で書かれた最近の典型的な Web アプリケーションは、�
  Time:               {record.time:%Y-%m-%d %H:%M:%S}
  Remote IP:          {record.extra[ip]}
  Request:            {record.extra[url]} [{record.extra[method]}]
- 
+
  Message:
- 
+
  {record.message}
  ''', bubble=True)
- 
+
  def application(environ, start_response):
      request = Request(environ)
- 
+
      def inject_info(record, handler):
          record.extra.update(
              ip=request.remote_addr,
              method=request.method,
              url=request.url
          )
- 
+
      with mail_handler.threadbound(processor=inject_info):
          # standard WSGI processing happens here.  If an error
          # is logged, a mail will be sent to the admin on
@@ -402,28 +402,28 @@ Python で書かれた最近の典型的な Web アプリケーションは、�
  import os
  from logbook import NestedSetup, NullHandler, FileHandler, \
       MailHandler, Processor
- 
+
  def inject_information(record):
      record.extra['cwd'] = os.getcwd()
- 
+
  # より複雑な設定をするために、ネストされたハンドラー設定を使用することができる。
  setup = NestedSetup([
      # セットアップの処理が足りなくなった場合 stderr ハンドラに到達しないようにする。
      NullHandler(),
      # 少なくとも警告であるメッセージをログファイルに書き込む
      FileHandler('application.log', level='WARNING'),
-     # エラーはメールで配信され、アプリケーションログにも記録されます。 
+     # エラーはメールで配信され、アプリケーションログにも記録されます。
      # また、アプリケーションログにも記録されます
      MailHandler('servererrors@example.com',
                     ['admin@example.com'],
                     level='ERROR', bubble=True),
-     # 追加の情報を記録するために、プロセッサを独自のスタックにプッシュすることもできます。 
+     # 追加の情報を記録するために、プロセッサを独自のスタックにプッシュすることもできます。
      # プロセッサとハンドラは別のスタックに置かれるので、
      # プロセッサが一番下に追加されても、一番最初に追加されても問題ありません。
      # フラグについても同じことが言えます。
      Processor(inject_information)
  ])
- 
+
 ```
 
 このような複雑な設定が定義されると、入れ子になったハンドラーの設定は、単一のハンドラーであるかのように使用することができます。
@@ -432,7 +432,7 @@ Python で書かれた最近の典型的な Web アプリケーションは、�
 ```
  with setup.threadbound():
      # ここでは、すべてが上記のルールに基づいて処理されます。
-  
+
 ```
 
 
@@ -443,7 +443,7 @@ Python で書かれた最近の典型的な Web アプリケーションは、�
 ```
  from logbook.queues import ZeroMQHandler
  handler = ZeroMQHandler('tcp://127.0.0.1:5000')
- 
+
 ```
 
 そして、ログ・レコードを受け取り、ZeroMQSubscriberを使って別のログ・ハンドラーに引き渡すことができる別のプロセスが必要なだけです。通常は次のような設定になります。
@@ -451,11 +451,11 @@ Python で書かれた最近の典型的な Web アプリケーションは、�
 
 ```
  from logbook.queues import ZeroMQSubscriber
- 
+
  subscriber = ZeroMQSubscriber('tcp://127.0.0.1:5000')
  with my_handler:
      subscriber.dispatch_forever()
- 
+
 ```
 
  `dispatch_in_background()` を使って、そのループをバックグラウンドのスレッドで実行することもできます。
@@ -463,7 +463,7 @@ Python で書かれた最近の典型的な Web アプリケーションは、�
 
 ```
  from logbook.queues import ZeroMQSubscriber
- 
+
  subscriber = ZeroMQSubscriber('tcp://127.0.0.1:5000')
  subscriber.dispatch_in_background(my_handler)
 ```
@@ -474,7 +474,7 @@ Python で書かれた最近の典型的な Web アプリケーションは、�
 ```
  from multiprocessing import Queue
  from logbook.queues import MultiProcessingHandler, MultiProcessingSubscriber
- 
+
  queue = Queue(-1)
  handler = MultiProcessingHandler(queue)
  subscriber = MultiProcessingSubscriber(queue)
@@ -486,12 +486,12 @@ Python で書かれた最近の典型的な Web アプリケーションは、�
 ```
  import logbook
  from logbook.queues import RedisHandler
- 
+
  handler = RedisHandler()
  l = logbook.Logger()
  with handler:
      l.info('Your log message')
- 
+
 ```
 
 デフォルトのパラメータでは、redisのキーの下にredisにメッセージを送信します。
@@ -545,7 +545,7 @@ Python で書かれた最近の典型的な Web アプリケーションは、�
  with context_object.threadbound():
      # これはこのスレッドだけで管理される
      # ...
- 
+
  with context_object.applicationbound():
      # これはすべてのアプリケーションで管理される
      # ...
@@ -561,7 +561,7 @@ Python で書かれた最近の典型的な Web アプリケーションは、�
      # ...
  finally:
      context_object.pop_thread()
- 
+
  context_object.push_application()
  try:
      # これはすべてのアプリケーションで管理される
@@ -597,10 +597,10 @@ Python で書かれた最近の典型的な Web アプリケーションは、�
 
 ```
  import os
- 
+
  def inject_cwd(record):
      record.extra['cwd'] = os.getcwd()
- 
+
  with Processor(inject_cwd):
      # このスレッドのこのブロック内のすべてのロギングコールには、
      # カレントワーキングディレクトリの情報が添付されるようになる
@@ -636,7 +636,7 @@ logbook の最後の柱は、Flagスタックです。このスタックは、�
  if __debug__:
      info = get_wallcalculate_debug_info()
      logger.debug("Call to response() failed.  Reason: {0}", info)
- 
+
 ```
 
 ## FingersCrossedHandler
@@ -655,7 +655,7 @@ logbook の最後の柱は、Flagスタックです。このスタックは、�
 
 ```
  from logbook import Flags
- 
+
  with Flags(introspection=False):
      # ここでのすべてのロギングコールはintrospectionを使用しません。
      ...

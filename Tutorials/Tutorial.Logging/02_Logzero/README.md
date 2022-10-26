@@ -1,6 +1,6 @@
 logzeroを使ってロギングをしてみよう
 =================
-![](https://gyazo.com/96f0cc7cc9765f6b965338ebdbc0b42c.png)
+![](images/logzero_logo.png)
 
 
 ## logzero について
