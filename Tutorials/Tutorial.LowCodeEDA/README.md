@@ -252,7 +252,8 @@ Jupyterlab の環境では次の拡張機能を有効にしておきます。
  In [3]:
 ```
 
-![](https://gyazo.com/827b7c7a619503f875bad3f1c46bc4a1.png)
+![](images/plot_histograms.png)
+# https://gyazo.com/827b7c7a619503f875bad3f1c46bc4a1.png)
 
 ## plot_corr で相関を調べる
 
