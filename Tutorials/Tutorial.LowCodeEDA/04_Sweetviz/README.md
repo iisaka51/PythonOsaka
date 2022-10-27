@@ -1,6 +1,6 @@
 Sweetvizで探査的データ分析をしてみよう
 =================
-![](https://gyazo.com/26524c0d359a737bea8b61ee34c21e46.png)
+![](images/Sweetviz_logo.png)
 
 # はじめに
 この使用は探索的データ分析(EDA）の支援ツール Sweetviz についてまとめたものです。
@@ -36,24 +36,24 @@ Sweetviz では次の3種類のレポートを作成することができ、そ�
  Feature: SibSp                               |▌| [ 54%]   00:03 -> (00:03 left)/Users/goichiiisaka/anaconda3/envs/EDA/lib/python3.1/site-packages/sweetviz/utils.py:34: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
    clamped_series = clamped_series.append(other_series, ignore_index=False)
    (以下略）
-   
+
 ```
 
 このコードを実行すると指定したファイル名のレポートがカレントディレクトリに作成され、ブラウザが開いてレポートを表示します。
 
 
-![](https://gyazo.com/07f1bb13b7b1226f4a91ca7ad55f91ae.png)
+![](images/Sweetviz_analyze.png)
 ページトップにある [# Associations] をクリックすると、アソシエーション分析（association analysis）の結果が表示されます。これは、データの中から統計的なパターンや意味のある関連性を抽出したものです。
 
 
-![](https://gyazo.com/62b6c09001eb70fb5629e7a37e36054e.png)
+![](images/Sweetviz_analyze_associations.png)
 
 ここで、表示される正方形のマークは `0` から `1` までのカテゴリ的な関連性（不確実性係数と相関比）を表しています。
 丸形のマークは- `1` から `1` までの対称的な数値相関を表しています。
 データの属性をクリックすると、その詳細なレポートが表示されます。
 
 
-![](https://gyazo.com/e46896eed9113a9e759c2370aa7e0c68.png)
+![](images//Sweetviz_analyze_age.png)
  `show_html()` に  `layout='wide` （デフォルト）を与えると展開されるのではなく、右側のスペースに詳細情報が配置されます。
 
 HTML形式で保存されたレポートはブラウザがあれば内容を参照できるため、メール送付した相手側に特別なアプリケーションは不要です。
@@ -80,13 +80,12 @@ HTML形式で保存されたレポートはブラウザがあれば内容を参�
  Feature: SibSp                               |▌| [ 54%]   00:03 -> (00:03 left)/Users/goichiiisaka/anaconda3/envs/EDA/lib/python3.1/site-packages/sweetviz/utils.py:34: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
    clamped_series = clamped_series.append(other_series, ignore_index=False)
  (以下略)
- 
+
 ```
 
 
-![](https://gyazo.com/ccd8faa4448761363935d91d73eb4b6e.png)
-
-![](https://gyazo.com/7b0d71ca6c4d3f04e499b4d6f561e654.png)
+![](images/Sweetviz_comp_intra.png)
+![](images/Sweetviz_compare_intra_age.png)
 
 
 ## compare()
@@ -112,14 +111,14 @@ Sweetvizz の特徴のひとつにデータセットの比較部分析ができ�
     ...:
  Feature: SibSp                               |▌| [ 54%]   00:04 -> (00:04 left)/Users/goichiiisaka/anaconda3/envs/EDA/lib/python3.1/site-packages/sweetviz/utils.py:34: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
    (以下略）
-   
+
 ```
 
 
-![](https://gyazo.com/baccd3430575243b8df3552883a21711.png)
+![](images/Sweetviz_compare.png)
 属性別に表示されるので、クリックすると詳細な情報が表示されまう。
 
-![](https://gyazo.com/b539ca3ed3bcdce21749a53598f48d76.png)
+![](images/Sweetviz_compare_intra_age.png)
 
 ## デフォルトのカスタマイズ：設定ファイル
 Sweetvizz はINIファイルに記述された設定情報を読み込むことできます。レポートを作成する前にこれを呼び出すことで、任意の設定をオーバーライドすることができます。
@@ -128,10 +127,10 @@ Sweetvizz はINIファイルに記述された設定情報を読み込むこと�
 ```
  [General]
  use_cjk_font = 1
- 
+
  [Layout]
  show_logo = 0
- 
+
  Output_Defaults]
  html_layout = widescreen
  html_scale = 1.0
@@ -169,7 +168,7 @@ Sweetvizz はINIファイルに記述された設定情報を読み込むこと�
  Out[2]: ['config.ini']
  Feature: SibSp                               |▌| [ 54%]   00:03 -> (00:03 left)/Users/goichiiisaka/anaconda3/envs/EDA/lib/python3.1/site-packages/sweetviz/utils.py:34: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
  (以下略）
-   
+
 ```
 
 

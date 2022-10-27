@@ -1,6 +1,6 @@
 AutoVizで探査的データ分析をしてみよう
 =================
-![](https://gyazo.com/169d1fc3235b9c3bde269e8aa9dc6d48.png)
+![](images/AutoViz_log.png)
 
 # はじめに
 この資料はAutoViz についてまとめたものです。
@@ -16,7 +16,7 @@ AutoViz は次のようにインストールすることができます。
  bash
 ```
  $ python -m pip install autoviz
- 
+
 ```
 
 # 使用方法
@@ -36,9 +36,9 @@ AutoViz は次のようにインストールすることができます。
     ...:
     ...: df.to_csv('titanic.csv')
     ...:
- 
+
  In [3]:
- 
+
 ```
 
 あるいは、次のようなモジュール用意しておくのもよいでしょう。
@@ -47,10 +47,10 @@ AutoViz は次のようにインストールすることができます。
 ```
  import pandas as pd
  from urllib.error import HTTPError
- 
+
  class DatasetError(BaseException):
      pass
- 
+
  class DataSet(object):
      baseurl = 'https://raw.githubusercontent.com/adamerose/datasets/master/'
      dataset_names = [
@@ -86,7 +86,7 @@ AutoViz は次のようにインストールすることができます。
          'trump_tweets.csv',
          'us_shooting_incidents.csv',
      ]
- 
+
      def load_dataset(self, name, save=False):
          try:
              assert name in self.dataset_names
@@ -102,14 +102,14 @@ AutoViz は次のようにインストールすることができます。
              raise DatasetError('dataset not available') from None
          except HTTPError as err:
              raise DatasetError(err)
- 
+
      def get_dataset_names(self):
          return self.dataset_names
- 
+
  dataset = DataSet()
  load_dataset = dataset.load_dataset
  get_dataset_names = dataset.get_dataset_names
- 
+
  if __name__ == '__main__':
      import sys
      if len(sys.argv)<=1:
@@ -117,7 +117,7 @@ AutoViz は次のようにインストールすることができます。
          pprint(get_dataset_names())
      else:
          _= load_dataset(sys.argv[1], save=True)
-     
+
 ```
 
  bash
@@ -164,23 +164,23 @@ AutoViz を初期化するために次のコードを実行します。
 
 
 
-![](https://gyazo.com/ff8ab9a7512a306153fed9cb4c745b61.png)
+![](images/AutoViz_startplot.png)
 
 3番目のグラフは、連続変数の分布プロットです。このプロットは、boxplotを使用して外れ値を見つけることができ、またデータが歪んでいるかどうかを見つけることができます。
 
-![](https://gyazo.com/b12fb5be62b562cdc3ade104afece97b.png)
+![](images/AutoViz_plot2.png)
 
-![](https://gyazo.com/43dcb15b0228864a68731cc4f4d2e686.png)
+![](images/AutoViz_plot3.png)
 4番目のグラフは、すべての連続変数のバイオリン・プロットが表示されます（上図参照）。
 
 5 番目の図は、すべての変数の相関をヒートマップで表したもので、相関プロットにより、さまざまな変数の共線性を見つけることができます。
 
-![](https://gyazo.com/701edc11b88414d6459a38655432d211.png)
-6番目の図は、すべてのカテゴリ変数によってグループ化された連続値を可視化されます。これは、意味のある洞察を得る手助けになります。
-![](https://gyazo.com/13ad8d5ad8e613978de2d69a525fc930.png)
-![](https://gyazo.com/737fc4c888c51a5bbe1e7cfa82239f51.png)
+![](images/AutoViz_plot_heatmap.png)
 
-![](](https://gyazo.com/6532049b09b6b5c4410b1d64655ff182.png)![)(https://gyazo.com/8937b54d60aab3b34aa419741953a2ec.png)
+6番目の図は、すべてのカテゴリ変数によってグループ化された連続値を可視化されます。これは、意味のある洞察を得る手助けになります。
+
+![](images/AutoViz_plot4.png)
+![](images/AutoViz_plot5.png)
 
 # カスタマイズ
 
@@ -191,11 +191,11 @@ AutoViz を初期化するために次のコードを実行します。
 ```
  rom autoviz.AutoViz_Class import AutoViz_Class
  from dataset import load_dataset
- 
+
  df = load_dataset('titanic.csv')
- 
+
  AV = AutoViz_Class()
- 
+
  dft = AV.AutoViz(
      filename="",
      sep=",",
@@ -209,13 +209,13 @@ AutoViz を初期化するために次のコードを実行します。
      max_cols_analyzed=30,
      save_plot_dir=None
  )
- 
+
 ```
 
 # API
  `AutoViz()` は次の引数を受け取ります。
 
->  `AutoViz(filename, sep=',', depVar='', dfte=None, header=0, verbose=0, lowess=False, chart_format='svg', max_rows_analyzed=150000, max_cols_analyzed=30, save_plot_dir=None) ` 
+>  `AutoViz(filename, sep=',', depVar='', dfte=None, header=0, verbose=0, lowess=False, chart_format='svg', max_rows_analyzed=150000, max_cols_analyzed=30, save_plot_dir=None) `
 
   -  `filename` ー　 `filename` にはデータが格納されたファイル名もしくkはが空文字列（ `""` ）を受け取ります。もしファイル名ではなく、単にデータフレームを渡したいときは、 `dfte` でデータフレームの変数を与えます。
   -  `sep` ー　ファイル内の区切り文字です。デフォルトはカンマ( `,` )です。他にセミコロン( `;` )やタブなどファイル内で各列を区切る任意の値を指定することができます。
@@ -226,7 +226,7 @@ AutoViz を初期化するために次のコードを実行します。
   -  `lowess` ー　このオプションは、ターゲット変数に対する連続変数の各ペアの回帰線を見ることができる小さなデータセットに非常に適しています。大きなデータセット（100,000行以上）には、このオプションを使わないようにしてください。
   -  `chart_format` ー　これはSVG、PNG、JPGのいずれか与えます。 `verbose=2` オプションを使用すると、このフォーマットでチャートが生成・保存されます。グラフを生成し、後でチャートを再利用するときに便利です。
   -  `max_rows_analyzed` ー　チャート表示に使われる最大行数を制限します。数百万行の非常に大きなデータセットを持っている場合、このオプションを使って、統計的に有効なサンプルを採取することで、チャート生成にかかる時間を制限することができます。
-  -  `max_cols_analyzed` ー　分析可能な連続バーの数を制限します。 
+  -  `max_cols_analyzed` ー　分析可能な連続バーの数を制限します。
 
 
 # AutoViz の強み
@@ -241,11 +241,14 @@ AutoVizは選択された変数をカテゴリー、数値、ブーリアン、N
 
 # Wordclouds に対応
 AutoVizは、データ中の自然言語（NLP：Natural language processing）変数に対してWordcloudsを自動的に作成することができるようになりました。NLP変数を自動的に検出し、それらに対応するワードクラウドを作成することができす。
-![](https://gyazo.com/a729a6709fb66e9d35ff8adb1a21b7f8.png)
+
+![](images/AutoViz_wordclouds.png)
+
 # Dockerコンテナとしても動作する
 AutoVizが機械学習のパイプラインの一部としてDockerコンテナ上で動作するようになりました。[Orcest ](https://www.orchest.io/) などのツールと連携してパイプラインに組み込めるようになりました。
   - [AutoViz pipeline example for Orchest.io ](https://github.com/rsesha/autoviz_pipeline)
   - [Deep AutoViML Pipeline for orchest.io version 2.0 ](https://github.com/rsesha/deep_autoviml_pipeline)
+
 [](https://vimeo.com/589879082)
 
 # HoloView との連携

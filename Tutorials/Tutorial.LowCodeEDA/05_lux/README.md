@@ -1,7 +1,7 @@
 Luxで探査的データ分析をしてみよう
 =================
 
-![](https://gyazo.com/6e41ac8eba279abb964e928c53275688.png)
+![](images/lux_logo.png)
 
 # はじめに
 効率的なデータ探索のための現在の課題
@@ -32,7 +32,7 @@ Lux のインストールは次のように行います。
 ```
  # Linux or MacOS
  $ python -m pip install lux-api
- 
+
  # Windwos
  $ py -3 -m pip install lux-api
 ```
@@ -43,7 +43,7 @@ Jupyter Notebook の拡張機能を有効にしておきます。
 ```
  $ jupyter nbextension install --py luxwidget
  $ jupyter nbextension enable --py luxwidget
- 
+
 ```
 
 ## Jupyterlab の場合
@@ -88,7 +88,7 @@ Jupyter のセルで以下を実行してエラーが表示されなければOK�
  lux.debug_info()
 ```
 
-![](https://gyazo.com/a09f6a68c9ae8e02ab6ccf72b5597536.png)
+![](images/Lux_debug_info.png)
 
 # Luxの使用方法
 Lux は Jupyterlab/Jupyter Notebook から利用します。
@@ -102,29 +102,30 @@ Lux は Jupyterlab/Jupyter Notebook から利用します。
 
 通常のように　Jupyter Notebook を使うだけです。
 
-![](https://gyazo.com/9375b272eef2e2079564f0fd3c89b641.png)
-違いに’気づきましたか？ [# Toggle Pandas/Lux] のボタンが追加されています。これをクリックすると、データセットに存在する量的変数間の関係をプロットしてくれます。複数表示される場合の表示順序は、相関の強いものから弱いものです。
+![](images/Lux_head.png)
+
+違いに気づきましたか？ [# Toggle Pandas/Lux] のボタンが追加されています。これをクリックすると、データセットに存在する量的変数間の関係をプロットしてくれます。複数表示される場合の表示順序は、相関の強いものから弱いものです。
 
 
-![](https://gyazo.com/750effd21c485ad27ca6247c0232f7ad.png)
+![](images/Lux_head_correltion.png)
 データに欠損値などがあるときは黄色い三角のアイコンが表示されます。これをクリックすると下部に情報が表示されます。
 すぐ隣のボタン[# Distribution] タブでデータセット中の量的変数のヒストグラムを表示します。表示順序は、大きく歪んでいるものから小さく歪んでいるものです。
 
 
-![](https://gyazo.com/db6c15d4ffb51b730898a1766cc9fd70.png)
+![](images/Lux_head_distribution.png)
 [# Occurrence] タブはデータのカテゴリー属性の棒グラフが表示されます。その順序は、最も偏った分布から均等な分布へと並べられます。
 
 
-![](https://gyazo.com/4ab2ae03f0fbd4584430f4043c8fbc60.png)
+![](images/Lux_head_occurrence.png)
 
 データ要約を知るための  `describe()` メソッドを呼び出してみます。
-![](https://gyazo.com/0b0cef556fd7f6a39b0ae56b241ad33d.png)
+![](imags/Lux_describe.png)
 
 ここでも [# Toggle Pandas/Lux] のボタンが表示されています。クリックすると
 
 
-![](https://gyazo.com/3f67a69b3b95289be9e70f7095c6ee57.png)
-![](https://gyazo.com/9dd4640258b1c63feb0aff14250987f1.png)
+![](images/Lux_describe_distibution.png)
+![](images/Lux_describe_occurrence.png)
 
 例えば、特定の機能または複数の機能をまとめて詳しく知りたいとします。データフレームの `intent` 属性を使って、それらの属性に関連するすべての可視化を取得することができます。
 
@@ -136,7 +137,7 @@ Lux は Jupyterlab/Jupyter Notebook から利用します。
 
 Luxウィジェットは、意図した機能の可視化を表示するだけではありません。FilterとEnhance を使うことで、より多くの分析のための追加推奨事項を提供します。
 
-![](https://gyazo.com/954e51aedfe3baf08d232bdd8e40b129.png)
+![](images/Lux_intent_enhance.png)
 [# Enhance] タブは、入力が1つの特徴量の場合、X軸に目的変数を固定し、異なる属性と比較することで推奨の可視化を提供してくれます。 `intent` に2つの特徴量を与えたときは、X軸とY軸に目的変数を固定します。 `df.intent=['age', 'fare']` としたときでは、X軸が  `age` 、Y軸が  `fare` で固定されます。
 
 [# Filter] タブは、X軸に意図した変数を固定し、データセットの異なる部分と比較することによって、推奨の可視化を提供してくれます。

@@ -1,7 +1,7 @@
 Pandas-Profilingで探査的データ分析をしてみよう
 =================
 
-![](https://gyazo.com/a522e368c83e3fe54da7c08d5a67f866.png)
+![](images/pandas_profiling_logo.png)
 
 # Panda-Profiling について
 Pandas Profiling は、2016年から開発されているオープンソースのPythonモジュールで、わずか数行のコードで探索的データ分析を迅速に行うことができます。また、こ生成するレポートは、プログラミングを知らない人にも見せることができるインタラクティブなWeb形式のものです。pandas-profiling が出力するのはHTMLオブジェクトひとつだけです。ただし、そこには、より具体的で個別のデータ探索を行う前に知っておくべき情報がほとんど含まれていて、広範囲に構造化されたHTMLファイルを素早く生成するようになっています。
@@ -38,7 +38,7 @@ pandas-profiling には、学習用のデータセットが内包されていま
     ...: # df
     ...:
     ...:
- 
+
  In [3]: v1
  Out[3]:
  ['anagrams',
@@ -60,7 +60,7 @@ pandas-profiling には、学習用のデータセットが内包されていま
   'taxis',
   'tips',
   'titanic']
- 
+
  In [4]: df
  Out[4]:
       survived  pclass     sex   age  ...  deck  embark_town  alive  alone
@@ -75,9 +75,9 @@ pandas-profiling には、学習用のデータセットが内包されていま
  888         0       3  female   NaN  ...   NaN  Southampton     no  False
  889         1       1    male  26.0  ...     C    Cherbourg    yes   True
  890         0       3    male  32.0  ...   NaN   Queenstown     no   True
- 
+
  [891 rows x 15 columns]
- 
+
  In [5]: df.describe()
  Out[5]:
           survived      pclass         age       sibsp       parch        fare
@@ -89,9 +89,9 @@ pandas-profiling には、学習用のデータセットが内包されていま
  50%      0.000000    3.000000   28.000000    0.000000    0.000000   14.454200
  75%      1.000000    3.000000   38.000000    1.000000    0.000000   31.000000
  max      1.000000    3.000000   80.000000    8.000000    6.000000  512.329200
- 
+
  In [6]:
- 
+
 ```
 
 
@@ -104,14 +104,14 @@ Jupyterlab の環境では次のように実行するだけです。
 ```
  import pandas as pd
  from pandas_profiling import ProfileReport
- 
+
  df = pd.read_csv('titanic.csv')
- 
- 
+
+
  # for Jupyterlab
  profile = ProfileReport(df)
  profile
- 
+
 ```
 
 これでHTMLがノートブックに取り込まれて表示されます。基本的にはこれでOKなのですが、データによってはエラーになることがあります。その場合は次のようにしてみてください。(参考 [issue #954  ](https://github.com/ydataai/pandas-profiling/issues/954#issuecomment-1103833073))
@@ -134,9 +134,9 @@ IPythonなどでは、 `to_file()` メソッドを呼び出してHTMLファイ�
  Generate report structure: 100%|███████████████████| 1/1 [00:17<00:00, 17.65s/it]
  Render HTML: 100%|█████████████████████████████████| 1/1 [00:12<00:00, 12.75s/it]
  Export report to file: 100%|███████████████████████| 1/1 [00:00<00:00, 22.33it/s]
- 
+
  In [3]:
- 
+
 ```
 
 あとは、ブラウザでオープンするか、Pythonのコードで処理したいときは標準ライブラリ webbrowser を使ってブラウザを起動させてレポートを開くこともできます。
@@ -151,23 +151,23 @@ IPythonなどでは、 `to_file()` メソッドを呼び出してHTMLファイ�
     ...: url = 'file://' + str(html.absolute())
     ...: _ = webbrowser.open_new(url)
     ...:
- 
+
  In [3]:
- 
+
 ```
 
-![](https://gyazo.com/5c449b6dee47ccf77ed61b34960d3eb1.png)
+![](images/pandas_profiling_overview.png)
 
-![](https://gyazo.com/100fa1c9428248a9d2d48ead1114a6a9.png)
+![](images/pandas_profiling_variables.png)
 
-![](https://gyazo.com/e6f06da0a1a017c7e841e81b0697194e.png)
+![](images/pandas_profiling_interactions.png)
 
-![](https://gyazo.com/54f03db691326401ac8942fdfd947d11.png)
+![](images/pandas_profiling_correlations.png)
 
-![](https://gyazo.com/52b32cac6d0c79b0e1381a9a4774e4a4.png)
+![](images/pandas_profiling_missing_values.png)
 
+![](images/pandas_profiling_samples.png)
 
-![](https://gyazo.com/434b0ada5579a29fbcd4118e497157ee.png)
 これらの結果はオフィシャルサイトでも[公開 ](https://pandas-profiling.ydata.ai/examples/master/titanic/titanic_report.html) しているように、簡単にWEBで共有することができます。
 
 

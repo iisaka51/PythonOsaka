@@ -314,7 +314,7 @@ Jupyterlab の環境では次の拡張機能を有効にしておきます。
 ![](images/detect_outliers.png)
 
 # Pandas-Profiling
-![](images/pandas_profiling_logo.png)
+![](03_Pandas_Profiling/images/pandas_profiling_logo.png)
 
 Pandas Profiling は、2016年から開発されているオープンソースのPythonモジュールで、わずか数行のコードで探索的データ分析を迅速に行うことができます。また、こ生成するレポートは、プログラミングを知らない人にも見せることができるインタラクティブなWeb形式のものです。pandas-profiling が出力するのはHTMLオブジェクトひとつだけです。ただし、そこには、より具体的で個別のデータ探索を行う前に知っておくべき情報がほとんど含まれていて、広範囲に構造化されたHTMLファイルで、JupyterlabやWebページに簡単に取り込むことができ共有も簡単です。
 
@@ -324,7 +324,7 @@ Pandas Profiling は、2016年から開発されているオープンソース�
 
 
 # Sweetviz
-![](images/sweetviz_logo.png)
+![](04_Sweetviz/images/Sweetviz_logo.png)
 Sweetvizは、たった2行のコードで探索的データ分析(EDA）を始めるための美しく高密度な可視化レポートを作成するオープンソースのPythonライブラリです。出力は、完全に自己完結したHTMLアプリケーションになっています。
 レポートは、目標値を素早く視覚化し、データセットを比較することもできます。ターゲットの特性、トレーニングデータとテストデータの比較、その他のデータ特性評価タスクの迅速な分析に役立つものとなっています。
 
@@ -338,7 +338,7 @@ Sweetviz では次の3種類のレポートを作成することができ、そ�
 
 
 # Lux
-![](images/lux_logo.png)
+![](05_lux/images/lux_logo.png)
 
 [Lux](https://pypi.org/project/lux/) は、データを可視化するためのインテリジェントPython ライブラリです。探索的データ解析の可視化処理を自動化する Jjupyterウィジェットを通して視覚的発見が容易になります。
 
@@ -346,7 +346,7 @@ Sweetviz では次の3種類のレポートを作成することができ、そ�
 
 
 # DataPrep
-![](images/dataprep_logo.png)
+![](06_DataPrep/images/dataprep_logo.png)
 DataPrepは、データを準備(prepare)するために2020年から開発が始まった　Pythonパッケージです。このパッケージには、主に以下の3つのAPIが含まれています。
 
   - データ探索( dataprep.eda )
@@ -416,11 +416,11 @@ PandasGUIのアプリケーションが起動して、初めの画面ではデ�
 ![](images/pandasGUI_example1.png)
 ![](images/pandasGUI_example2.png)
 
-    - [PandasGUIで探査的データ分析をしてみよう](09_Pandas_GUI)
+ - [PandasGUIで探査的データ分析をしてみよう](09_Pandas_GUI)
 
 
 ## AutoViz
-![](images/autoviz_logo.png)
+![](10_AutoViz/images/AutoViz_logo.png)
 
 小さなデータセットの可視化は簡単でそれほど問題になることはありませんが、数百の変数を持つ大規模なデータセットでは、データセットから強調すべき最良の特徴量を決定することはほぼ不可能です。データ分析を行う環境によっては、標準的でない可視化ライブラリを使用しなければならず、洞察を得るための最適な可視化を行うにはかなりのコーディングが必要となることが多いものです。
 [Autoviz](https://pypi.org/project/autoviz/) は、データ可視化のための作業を行うときに発生する、こうしたさまざまな課題の多くに対処することができます。AutoViz は、pandasのDataFrameオブジェクトや、CSVファイルのいずれかを与える、たった1行のコードで実現することができます。
@@ -428,7 +428,7 @@ PandasGUIのアプリケーションが起動して、初めの画面ではデ�
   - [AutoVizで探査的データ分析をしてみよう](10_AutoViz)
 
 # D-Tale
-![](images/dtale_logo.png)
+![](11_Dtale/images/DTale_logo.png)
 
 Python自体の学習コストは低いものの、こうしたライブラリの学習は難しく、初心者にとっては使い方を覚えるのに時間がかかることがあります。経験豊かなPythonユーザーであっても、いくつかの作業は繰り返し行われることがあり、時間を浪費してしまうことになりがちです。こんなときに役立つのが [D-Tale](https://github.com/man-group/dtale)です。
 D-Taleは探索的データ分析やデータクリーニングといったタスクの最適化を支援してくれます。時間を節約することで、コードの洗練や機械学習モデルのチューニングなど、より重要なタスクに集中することができます。
@@ -561,7 +561,7 @@ scattertext は次のようにインストールします。
 
 
 # Holoviz
-![](images/holoviz_logo.png)
+![](15_HoloViz/images/HoloViz_Logos.png)
 
 [HoloViz](https://holoviz.org/) は、EDAのためのツールというわけではないのですが、可視化をより簡単に、より正確に、より強力にすることができます。 EDAで得た知見や洞察をプレゼンテーションするときに役立ちます。
 HoloViz は次のPythonパッケージで構成されています。

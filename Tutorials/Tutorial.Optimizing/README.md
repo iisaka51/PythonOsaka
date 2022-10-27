@@ -9,7 +9,7 @@ Anaconda Python をベースにしたIntel Distribution for Pyhonが[同包 ](ht
 Intel社はこれまで有償ソフトであったコンパイラ他の製品を [oneAPI ](https://www.oneapi.com/) として再編し無料で使えるようにしています。
 [oneAPI Base Toolkit ](https://software.intel.com/content/www/us/en/develop/articles/free-intel-software-developer-tools.html) をインストールすると、このIntel Distribuition for Python を使用することができます。次図は、MKLでビルドされたIntel Distribution for Python の numpy （グラフでは青）と、pip でインストールできる numpy（グラフでは赤）の性能比較で、数値が高い（グラフが高い）ほど性能がよいことを表しています。
 
-![](https://gyazo.com/997d0c2145a60494fe6c843b95be9601.png)
+![](images/intel_python_benchmark.png)
 出典：https://www.xlsoft.com/jp/products/intel/python/index.html
 
 > Python での実行環境を管理するツールとして conda の他に pyenv などがります。

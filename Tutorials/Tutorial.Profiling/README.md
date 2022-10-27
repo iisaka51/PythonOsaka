@@ -1707,7 +1707,7 @@ Timeitと同様に、 `%time` においても、パーセント記号を２つ�
 大規模なプログラムがある場合、関数が互いにどのように呼び出されるかを確認したい場合があります。 [gprof2dot ](https://github.com/jrfonseca/gprof2dot) を使用すると、プロファイラーの出力からGraphvizのdotグラフを生成します。
 
 
-![](gprof2dot_example.png)
+![](images/gprof2dot_example.png)
 
 cProfile / profileを含む多くの有名なプロファイラーをサポートしています。
 

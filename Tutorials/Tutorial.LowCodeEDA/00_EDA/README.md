@@ -79,9 +79,9 @@ palmerpenguins はサンプルデータで、 `load_penguins` で読み出せる
   7   year               344 non-null    int64
  dtypes: float64(4), int64(1), object(3)
  memory usage: 21.6+ KB
- 
+
  In [3]:
- 
+
 ```
 
 ### データ構造の考察ポイント
@@ -123,7 +123,7 @@ palmerpenguins はサンプルデータで、 `load_penguins` で読み出せる
  50%         44.450000      17.300000  ...  4050.000000  2008.000000
  75%         48.500000      18.700000  ...  4750.000000  2009.000000
  max         59.600000      21.500000  ...  6300.000000  2009.000000
- 
+
  [8 rows x 5 columns]
  Out[2]:
  array([[<AxesSubplot:title={'center':'bill_length_mm'}>,
@@ -132,12 +132,13 @@ palmerpenguins はサンプルデータで、 `load_penguins` で読み出せる
          <AxesSubplot:title={'center':'body_mass_g'}>],
         [<AxesSubplot:title={'center':'year'}>, <AxesSubplot:>]],
        dtype=object)
- 
+
  In [3]:
- 
+
 ```
 
-![](https://gyazo.com/23d9b321b7a47593e51a9596a9965019.png)
+![](images/EDA_histgram.png)
+
 ### 分布の考察ポイント
 分布では次のような考察を行います。
 
@@ -174,9 +175,9 @@ palmerpenguins はサンプルデータで、 `load_penguins` で読み出せる
     ...: df.duplicated().sum()
     ...:
  Out[2]: 1
- 
+
  In [3]:
- 
+
 ```
 
 このコードを実行した結果、0より大きい値が表示されると重複値(重風した行）があることになります。重複値を削除したいときは、次のコードを実行します。
@@ -193,9 +194,9 @@ palmerpenguins はサンプルデータで、 `load_penguins` で読み出せる
     ...: df.duplicated().sum()
     ...:
  Out[2]: 0
- 
+
  In [3]:
- 
+
 ```
 
 欠損値を調べるときは `.isna()` を呼び出します。
@@ -235,9 +236,9 @@ palmerpenguins はサンプルデータで、 `load_penguins` で読み出せる
  body_mass_g          0.005814
  sex                  0.031977
  dtype: float64
- 
+
  In [3]:
- 
+
 ```
 
 ## 欠損値と重複値の考察ポイント
@@ -268,13 +269,13 @@ palmerpenguins はサンプルデータで、 `load_penguins` で読み出せる
     ...: plt.show()
     ...:
  Out[2]: <AxesSubplot:>
- 
+
  In [3]:
- 
+
 ```
 
 
-![](https://gyazo.com/4f2ad7462e1e90282a0c90f1f7f6f0aa.png)
+![](images/EDA_boxplot.png)
 
 
 
@@ -304,13 +305,14 @@ palmerpenguins はサンプルデータで、 `load_penguins` で読み出せる
     ...:
     ...: plt.show()
     ...:
- 
+
  In [3]:
- 
+
 ```
 
 
-![](https://gyazo.com/c845d0ac113bdc72c6add020edb536b1.png)
+![](images/EDA_boxplot_subplot.png)
+
 ## 外れ値の考察ポイント
 外れ値では次の項目について考察します。
 
@@ -343,11 +345,11 @@ palmerpenguins はサンプルデータで、 `load_penguins` で読み出せる
  flipper_length_mm        0.656181      -0.583851  ...     0.871202  0.169675
  body_mass_g              0.595110      -0.471916  ...     1.000000  0.042209
  year                     0.054545      -0.060354  ...     0.042209  1.000000
- 
+
  [5 rows x 5 columns]
- 
+
  In [3]:
- 
+
 ```
 
 ## 相関関係での考察ポイント
@@ -374,7 +376,7 @@ palmerpenguins はサンプルデータで、 `load_penguins` で読み出せる
     ...:
     ...: new_df = pd.get_dummies(df,drop_first=True)
     ...:
- 
+
  In [3]: df
  Out[3]:
         species     island  bill_length_mm  ...  body_mass_g     sex  year
@@ -389,9 +391,9 @@ palmerpenguins はサンプルデータで、 `load_penguins` で読み出せる
  341  Chinstrap      Dream            49.6  ...       3775.0    male  2009
  342  Chinstrap      Dream            50.8  ...       4100.0    male  2009
  343  Chinstrap      Dream            50.2  ...       3775.0  female  2009
- 
+
  [344 rows x 8 columns]
- 
+
  In [4]: new_df
  Out[4]:
       bill_length_mm  bill_depth_mm  ...  island_Torgersen  sex_male
@@ -406,11 +408,11 @@ palmerpenguins はサンプルデータで、 `load_penguins` で読み出せる
  341            49.6           18.2  ...                 0         1
  342            50.8           19.0  ...                 0         1
  343            50.2           18.7  ...                 0         0
- 
+
  [344 rows x 10 columns]
- 
+
  In [5]:
- 
+
 ```
 
 場合によっては、変数が正規分布に従うように変換したい場合があります。これには、NumPuの  `np.log()` 、 `np.sqrt()` 、box-cox変換、その他の正規分布に合うようにデータを変換する関数を試すことができます。
@@ -423,7 +425,7 @@ palmerpenguins はサンプルデータで、 `load_penguins` で読み出せる
     - 相互作用変数を作成する
   - 線形関係を作りたい
     - 二次関数以上の関数を作る
-  - データセットにない変数や情報が考えられる 
+  - データセットにない変数や情報が考えられる
     - ある変数の関数を使ってその変数を作成する
 
 
