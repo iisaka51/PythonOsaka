@@ -12,7 +12,7 @@ Python では、関数やクラス、モジュールなどに Pythonドキュメ
 
 docstringの例： pathlib ライブラリのPathクラスから抜粋
 
-```
+```python
 class Path(PurePath):
     """PurePath subclass that can make system calls.
 
@@ -34,7 +34,7 @@ class Path(PurePath):
 
 組み込み関数 `help()` はこの docstring を読み取り表示してくれます。
 
-```
+```bash
 $ ppython -c 'from pathlib import Path; help(Path)'
 Help on class Path in module pathlib:
 
@@ -93,7 +93,7 @@ PEP-257 でのポイント
 
 今ここに、`fibo.py` があるとします。
 
-```
+```python'fibo.py
 def fibo(n):
     """
     >>> fibo(8)
@@ -113,7 +113,7 @@ if __name__ == '__main__':
 
 doctest を呼び出せばテストをしてくれます。
 
-```
+```bash
 $ python -m doctest -v fibo.py
 ```
 
@@ -153,7 +153,7 @@ sphinx はdocstringを構文解析することでドキュメントの自動生�
 
 記述例
 
-```
+```python
 def func(arg1, arg2):
     """概要
     
@@ -176,21 +176,21 @@ Google がプログラム言語ごとに規定したスタイルガイドで、
 
 セクションごとに記述します。
 
-| セクション | 内容 |
-|-----------|------|
-| Attributes	| クラスの属性の説明 |
-| Args	| 引数の説明 |
-| Returns	| retrun文での戻り値の説明 |
-| Yieds	| yeild文での戻り値の説明 |
-| Raises	| 例外処理の説明 |
-| Examples	| クラスや関数の実行例 |
-| Note	| 自由記載 |
-| Todo	Todoリストを記載 |
+| セクション | 内容                     |
+|------------|--------------------------|
+| Attributes | クラスの属性の説明       |
+| Args	     | 引数の説明               |
+| Returns    | retrun文での戻り値の説明 |
+| Yieds	     | yeild文での戻り値の説明  |
+| Raises     | 例外処理の説明           |
+| Examples   | クラスや関数の実行例     |
+| Note       | 自由記載                 |
+| Todo       } Todoリストを記載         |
 
 
 記述例
 
-```
+```python
 def fetch_smalltable_rows(
     table_handle: smalltable.Table,
     keys: Sequence[bytes | str],
@@ -231,21 +231,21 @@ def fetch_smalltable_rows(
 Numpy プロジェクトで規定された[スタイルガイド](https://numpydoc.readthedocs.io/en/latest/format.html#)
 
 
-| セクション	| 内容 |
-|--------------|------|
-| Attributes	| クラスの属性の説明 |
-| Parameters	| 引数の説明 |
-| Returns	| return文での戻り値の説明 |
-| Yields	| yeild文での戻り値の説明 |
-| Raises	| 例外処理の説明 |
-| Examples	| クラスや関数の実行例 |
-| Notes | 自由記載 |
-| See Also	| 関連して参照 |
+| セクション	   | 内容                     |
+|------------------|--------------------------|
+| Attributes	   |  クラスの属性の説明      |
+| Parameters	   | 引数の説明               |
+| Returns	   | return文での戻り値の説明 |
+| Yields	   | yeild文での戻り値の説明  |
+| Raises	   | 例外処理の説明           |
+| Examples	   | クラスや関数の実行例     |
+| Notes            | 自由記載                 |
+| See Also	   | 関連して参照             |
 
 
 [記述例](https://numpydoc.readthedocs.io/en/latest/example.html#)　から抜粋
 
-```
+```python
 def foo(var1, var2, *args, long_var_name="hi", only_seldom_used_keyword=0, **kwargs):
     r"""Summarize the function in one line.
 
@@ -368,24 +368,24 @@ sphinx が広く使用されているのですが、このツールは reStructu
 
 ここでは、直接 Markdown を処理でき、PDFでの出力の設定などが簡単にできる MkDocs について説明します。
 
-```
+```bash
 $ pdm -dG test mkdoc smkdocs-with-pdf mkdocs-kroki-plugin mkdocs-marmaid2-plugin
 ```
 
 Python の pdoc ライブラリは docstring を読み取りドキュメントを生成してくれます。
 この出力を mkdocs に取り込みたいときは、mkdocs-pdoc-plugin を追加しておきます。
 
-```
+```bash
 $ pdm add -dG test git+https://github.com/spirali/mkdocs-pdoc-plugin
 ```
 
 Ansible のロール/プレイブックを取り込みたいときは、次のプラグインも追加しておきます。
 
-```
+```bash
 $ pdm -dG test  mkdocs-ansible-collection mkdocs-ansible 
 ```
 
-```
+```bash
 $ mkdocs -h
 Usage: mkdocs [OPTIONS] COMMAND [ARGS]...
 
@@ -410,7 +410,7 @@ Commands:
 
 プロジェクトのディレクトリで mkdocs を初期設定をします。
 
-```
+```bash
 $ mkdocs new .
 INFO    -  Writing config file: ./mkdocs.yml
 INFO    -  Writing initial docs: ./docs/index.md
@@ -445,23 +445,22 @@ Makrdownとしてリンクを記述すれば、別のファイルに繊維しま
 
 `mkdocs.yml` はmkdocs の設定ファイルで、はじめはサイト名を定義する設定しかありません。
 
-```
+```bash
 site_name: My Docs
 ```
 
 このファイルにセクションとして以下を定義してゆきます。
 
-| セクション	       | 説明 |
-|---------------------|-------------------------------------------|
-| site_name           | サイト名　このセクションは必須 |
-| site_url            | 外部公開するときのURL |
-| repo_url            | 指定したリポジトリへのリンクが表示される |
-| nav	              | ドキュメントのレイアウトを定義する |
+| セクション          | 説明                                       |
+|---------------------|--------------------------------------------|
+| site_name           | サイト名　このセクションは必須             |
+| site_url            | 外部公開するときのURL                      |
+| repo_url            | 指定したリポジトリへのリンクが表示される   |
+| nav	              | ドキュメントのレイアウトを定義する         |
 | theme	              | サイトの見た目などに関わるテーマを定義する |
-| markdown_extensions | Markdown拡張機能を定義します |
+| markdown_extensions | Markdown拡張機能を定義します               |
 | plugins             | サイト構築時に使用するプラグインを定義する |
 |
-
 
 
 詳細は [mkdocs configuration](https://www.mkdocs.org/user-guide/configuration/) を
@@ -473,7 +472,7 @@ site_name: My Docs
 
 `mkdocs build` でドキュメントを生成します。
 
-```
+```bash
 $ mkdocs build
 WARNING -  Config value 'packages': Unrecognised configuration name: packages
 INFO    -  Cleaning site directory
@@ -484,7 +483,7 @@ INFO    -  Documentation built in 0.04 seconds
 
 `site` 以下にHTMLファイルほかが自動的に生成されます。
 
-```
+```bash
 $ tree site
 site
 ├── 404.html
@@ -528,7 +527,7 @@ site
 Webサーバーが立ち上げます。
 表示されたURLを開くとブラウザで参照することができます。　
 
-```
+```bash
 $ mkdocs serve
 INFO    -  Building documentation...
 INFO    -  Cleaning site directory
@@ -548,12 +547,12 @@ mkdocs はドキュメントの外観を簡単に変更することができま�
 
 テーマを塚します。
 
-```
+```bash
 $ pdm add -gD test mkdocs-simple-blog
 ```
 `mkdocs.yml` に `tehme` を追記してビルドしなおします。
 
-```
+```YAML'mkdocs.yml
 site_name: My Docs
 plugins:
   - with-pdf
@@ -567,7 +566,7 @@ mkdocs-marmaid2-plugin を追加しているため、 [marmaid](https://mermaid.
 
 `mkdocs.yml` の`plugins` のセクションを次のように定義します。
 
-```
+```YAML'mkdocs.yml
 plugins:
   - mermaid2:
       search: 11.4.1
@@ -577,7 +576,7 @@ plugins:
 
 外部にアクセスさせたくない場合は次のように、 mermaid.esm.min.msj をダウンロードしてローカルに配置します。
 
-```
+```bash
 $ mkdir  docs/javascript
 $ pushd docs/javascript
 $ curl -sLO https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs
@@ -585,7 +584,8 @@ $ popd
 ```
 
 この場合の `mkdocs.yml` は次のように定義します。
-```
+
+```YAML:mkdocs.yml
 plugins:
   - mermaid2:
       javascript: javascript/mermaid.min.js
@@ -600,13 +600,13 @@ kroki のコンテナーをDocks/Podman で起動して利用します。
 - [yuzutech/kroki-mermaid - Docker Image | Docker Hub](https://hub.docker.com/r/yuzutech/kroki-mermaid)
 
 
-```
+```bash
 $ podman run -d yuzutech/kroki-mermaid
 ```
 
 `ServerUrl を次のように定義します。
 `
-```
+```YAML
 plugins:
   - with-pdf:
   - mermaid2:
@@ -621,7 +621,7 @@ plugins:
 
 `mkdocs.yml` に次の行を設定します。
 
-```
+```YAML
 site_name: My Docs
 plugins:
   - with-pdf
@@ -630,7 +630,7 @@ plugins:
 この後は、`mkdocs build` を実行すると、
 PDFファイルも生成されるようになります。
 
-```
+```bash
 $ mkdocs build
 INFO    -  Cleaning site directory
 INFO    -  Building documentation to directory: /home/goichi/sample/site
@@ -648,7 +648,7 @@ mdocs-with-pdf はmermaid はうまく処理してくれないため、
 mkdocs-kroki-plugin を経由させるとうまくいきます。
 
 
-```
+```YAML
 plugins:
   - with-pdf:
   - mermaid2:
@@ -727,20 +727,13 @@ OpenAI GPT-4などのLLMと連携することで、画像の説明生成やテ�
 
 Python から呼び出して利用することもできます。
 
-```
+```pytnon
 from markitdown import MarkItDown
 
 markitdown = MarkItDown()
 result = markitdown.convert("sample.xlsx")
 print(result.text_content)
 ```
-
-
-
-
-
-
-
 
 ## 参考資料
 
