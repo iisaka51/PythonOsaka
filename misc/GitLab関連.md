@@ -373,12 +373,12 @@ Git のブウランチや使用しているPythonなどのコマンドバージ�
 /home/goichi/ansible-dev
 
 ~/ansible-dev is 📦 v0.1.0 via 🐍 v3.12.8
-❯ cd genai/genai_source_ark_pj/
+❯ cd path/to/projectroot/
 
-genai_source_ark_pj on  main via 🐍 v3.12.8
+projectroot on  main via 🐍 v3.12.8
 ❯ source venvs/ansible-dev/bin/activate
 
-genai_source_ark_pj on  main via 🐍 v3.9.21 (ansible-dev)
+projectroot on  main via 🐍 v3.9.21 (ansible-dev)
 ❯
 ```
 
